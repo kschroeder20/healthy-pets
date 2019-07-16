@@ -3,7 +3,7 @@ import React from 'react';
 
 function App() {
   return (
-    
+    <h1>Pet App</h1>
   );
 }
 
