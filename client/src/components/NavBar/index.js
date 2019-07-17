@@ -29,6 +29,11 @@ class Navbar extends Component {
                                     Login
                                 </Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/profile">
+                                    Sign-Up
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

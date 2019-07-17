@@ -5,7 +5,9 @@ import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
 import Navbar from './components/NavBar';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import SignUpForm from './components/SignUpForm';
 import Login from './components/Login';
+import config from './app.config';
 
 function onAuthRequired({ history }) {
   history.push('/login')
@@ -16,10 +18,10 @@ class App extends Component {
     return (
       <Router>
         <Security
-          issuer="https://dev-217893.okta.com/oauth2/default"
-          client_id="0oax790rjgenQw6O3356"
-          redirect_uri={window.location.origin + '/implicit/callback'}
-          onAuthRequired={onAuthRequired}
+      issuer={config.issuer}
+      client_id={config.client_id}
+      redirect_uri={config.redirect_uri}
+      onAuthRequired={onAuthRequired}
         >
           <div className="App">
             <Navbar />
@@ -33,6 +35,7 @@ class App extends Component {
                 )}
               />
               <Route path="/implicit/callback" component={ImplicitCallback} />
+              <Route path="/signup" component={SignUpForm} />
             </div>
           </div>
         </Security>
