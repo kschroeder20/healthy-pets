@@ -1,18 +1,19 @@
-import React from 'react';
-import OktaAuth from '@okta/okta-auth-js';
-import { withAuth } from '@okta/okta-react';
+import React from "react";
+import OktaAuth from "@okta/okta-auth-js";
+import { withAuth } from "@okta/okta-react";
+import NavBar from "../NavBar";
 
-import config from '../../app.config';
+import config from "../../app.config";
 
 export default withAuth(
   class RegistrationForm extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
         sessionToken: null
       };
       this.oktaAuth = new OktaAuth({ url: config.url });
@@ -52,11 +53,11 @@ export default withAuth(
 
     handleSubmit(e) {
       e.preventDefault();
-      fetch('/api/users', {
-        method: 'POST',
+      fetch("/api/users", {
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
+          Accept: "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(this.state)
       })
@@ -83,6 +84,7 @@ export default withAuth(
 
       return (
         <form onSubmit={this.handleSubmit}>
+          <NavBar />
           <div className="form-element">
             <label>Email:</label>
             <input

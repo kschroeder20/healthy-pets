@@ -1,6 +1,7 @@
-import React from 'react';
-import OktaAuth from '@okta/okta-auth-js';
-import { withAuth } from '@okta/okta-react';
+import React from "react";
+import OktaAuth from "@okta/okta-auth-js";
+import { withAuth } from "@okta/okta-react";
+import NavBar from "../NavBar";
 
 export default withAuth(
   class LoginForm extends React.Component {
@@ -9,8 +10,8 @@ export default withAuth(
       this.state = {
         sessionToken: null,
         error: null,
-        username: '',
-        password: ''
+        username: "",
+        password: ""
       };
 
       this.oktaAuth = new OktaAuth({ url: props.baseUrl });
@@ -34,7 +35,7 @@ export default withAuth(
         )
         .catch(err => {
           this.setState({ error: err.message });
-          console.log(err.statusCode + ' error', err);
+          console.log(err.statusCode + " error", err);
         });
     }
 
@@ -58,6 +59,7 @@ export default withAuth(
 
       return (
         <form onSubmit={this.handleSubmit}>
+          <NavBar />
           {errorMessage}
           <div className="form-element">
             <label>Username:</label>
