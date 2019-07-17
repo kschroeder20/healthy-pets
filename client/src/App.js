@@ -18,16 +18,15 @@ class App extends Component {
     return (
       <Router>
         <Security
-      issuer={config.issuer}
-      client_id={config.client_id}
-      redirect_uri={config.redirect_uri}
-      onAuthRequired={onAuthRequired}
+          issuer={config.issuer}
+          client_id={config.client_id}
+          redirect_uri={config.redirect_uri}
+          onAuthRequired={onAuthRequired}
         >
           <div className="App">
             <Navbar />
             <div className="container">
               <Route path="/" exact={true} component={Home} />
-              <SecureRoute path="/profile" exact={true} component={Profile} />
               <Route
                 path="/login"
                 render={() => (
@@ -36,6 +35,7 @@ class App extends Component {
               />
               <Route path="/implicit/callback" component={ImplicitCallback} />
               <Route path="/signup" component={SignUpForm} />
+              <SecureRoute path="/profile" exact={true} component={Profile} />
             </div>
           </div>
         </Security>
