@@ -4,12 +4,17 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.2",
     "express": "^4.17.1",
+    "express-session": "^1.16.2",
     "if-env": "^1.0.4",
     "mongodb": "^3.2.7",
     "mongoose": "^5.6.4",
+    "morgan": "^1.9.1",
     "nodemon": "^1.19.1",
-    "reactstrap": "^8.0.1"
+    "reactstrap": "^8.0.1",
+    "spectre.css": "^0.5.8"
   },
   "devDependencies": {
     "concurrently": "^4.1.1",
