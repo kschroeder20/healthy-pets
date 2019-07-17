@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const petRoutes = require("./pets");
 
-// Book routes
+// Use router to start routes from a predefined URL
 router.use("/pets", petRoutes);
 
 module.exports = router;
