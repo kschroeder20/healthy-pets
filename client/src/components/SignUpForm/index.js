@@ -1,127 +1,98 @@
-import React from 'react';
-import OktaAuth from '@okta/okta-auth-js';
-import { withAuth } from '@okta/okta-react';
+import React, { Component } from 'react'
+import axios from 'axios'
 
-import config from '../../app.config';
+class Signup extends Component {
+  constructor() {
+    super()
+    this.state = {
+      username: '',
+      password: '',
+      confirmPassword: '',
 
-export default withAuth(
-  class RegistrationForm extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        sessionToken: null
-      };
-      this.oktaAuth = new OktaAuth({ url: config.url });
-      this.checkAuthentication = this.checkAuthentication.bind(this);
-      this.checkAuthentication();
-
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-      this.handleLastNameChange = this.handleLastNameChange.bind(this);
-      this.handleEmailChange = this.handleEmailChange.bind(this);
-      this.handlePasswordChange = this.handlePasswordChange.bind(this);
     }
-
-    async checkAuthentication() {
-      const sessionToken = await this.props.auth.getIdToken();
-      if (sessionToken) {
-        this.setState({ sessionToken });
-      }
-    }
-
-    componentDidUpdate() {
-      this.checkAuthentication();
-    }
-
-    handleFirstNameChange(e) {
-      this.setState({ firstName: e.target.value });
-    }
-    handleLastNameChange(e) {
-      this.setState({ lastName: e.target.value });
-    }
-    handleEmailChange(e) {
-      this.setState({ email: e.target.value });
-    }
-    handlePasswordChange(e) {
-      this.setState({ password: e.target.value });
-    }
-
-    handleSubmit(e) {
-      e.preventDefault();
-      fetch('/api/users', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(this.state)
-      })
-        .then(user => {
-          this.oktaAuth
-            .signIn({
-              username: this.state.email,
-              password: this.state.password
-            })
-            .then(res =>
-              this.setState({
-                sessionToken: res.sessionToken
-              })
-            );
-        })
-        .catch(err => console.log);
-    }
-
-    render() {
-      if (this.state.sessionToken) {
-        this.props.auth.redirect({ sessionToken: this.state.sessionToken });
-        return null;
-      }
-
-      return (
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-element">
-            <label>Email:</label>
-            <input
-              type="email"
-              id="email"
-              value={this.state.email}
-              onChange={this.handleEmailChange}
-            />
-          </div>
-          <div className="form-element">
-            <label>First Name:</label>
-            <input
-              type="text"
-              id="firstName"
-              value={this.state.firstName}
-              onChange={this.handleFirstNameChange}
-            />
-          </div>
-          <div className="form-element">
-            <label>Last Name:</label>
-            <input
-              type="text"
-              id="lastName"
-              value={this.state.lastName}
-              onChange={this.handleLastNameChange}
-            />
-          </div>
-          <div className="form-element">
-            <label>Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={this.state.password}
-              onChange={this.handlePasswordChange}
-            />
-          </div>
-          <input type="submit" id="submit" value="Register" />
-        </form>
-      );
-    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
-);
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+  handleSubmit(event) {
+    console.log('sign-up handleSubmit, username: ')
+    console.log(this.state.username)
+    event.preventDefault()
+
+    //request to server to add a new username/password
+    axios.post('/user/', {
+      username: this.state.username,
+      password: this.state.password
+    })
+      .then(response => {
+        console.log(response)
+        if (!response.data.errmsg) {
+          console.log('successful signup')
+          this.setState({ //redirect to login page
+            redirectTo: '/login'
+          })
+        } else {
+          console.log('username already taken')
+        }
+      }).catch(error => {
+        console.log('signup error: ')
+        console.log(error)
+
+      })
+  }
+
+
+  render() {
+    return (
+      <div className="SignupForm">
+        <h4>Sign up</h4>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-1 col-ml-auto">
+              <label className="form-label" htmlFor="username">Username</label>
+            </div>
+            <div className="col-3 col-mr-auto">
+              <input className="form-input"
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="col-1 col-ml-auto">
+              <label className="form-label" htmlFor="password">Password: </label>
+            </div>
+            <div className="col-3 col-mr-auto">
+              <input className="form-input"
+                placeholder="password"
+                type="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <div className="form-group ">
+            <div className="col-7"></div>
+            <button
+              className="btn btn-primary col-1 col-mr-auto"
+              onClick={this.handleSubmit}
+              type="submit"
+            >Sign up</button>
+          </div>
+        </form>
+      </div>
+
+    )
+  }
+}
+
+export default Signup
