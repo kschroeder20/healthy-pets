@@ -17,6 +17,8 @@
     "nodemon": "^1.19.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "react": "^16.8.6",
+    "react-grid-system": "^4.4.10",
     "reactstrap": "^8.0.1",
     "spectre.css": "^0.5.8"
   },
