@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '@okta/okta-react';
+import Title from "../components/Title";
 
 export default withAuth(
     class Home extends Component {
@@ -55,9 +56,12 @@ export default withAuth(
                 );
 
             return (
-                <div className="jumbotron">
-                    <h1 className="display-4">Pet Protal</h1>
+                <div>
+                    <Title />
+                <div className="jumbotron text-center">
+                    <h1 className="display-4">Pet Portal</h1>
                     {mainContent}
+                </div>
                 </div>
             );
         }

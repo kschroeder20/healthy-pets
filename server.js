@@ -5,6 +5,9 @@ const routes = require("./routes/api");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const config = require('./config/config.json');
+
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -16,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 //Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/healthypets", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || `mongodb://${config.database.dbName}:${config.database.dbpass}@ds351987.mlab.com:51987/heroku_wm2lrfp9`, { useNewUrlParser: true });
 
 // Start the API server
 app.listen(PORT, function () {
