@@ -10,21 +10,20 @@ class Profile extends Component {
     currentUserEmail: ""
   };
 
-  componentDidMount() {
-    const idToken = JSON.parse(localStorage.getItem("okta-token-storage"));
-    this.setState({
-      currentUserEmail: idToken.idToken.claims.email,
-      currentUserName: idToken.idToken.claims.name
-    });
-  }
+  //   componentDidMount() {
+  //     const idToken = JSON.parse(localStorage.getItem("okta-token-storage"));
+  //     this.setState({
+  //       currentUserEmail: idToken.idToken.claims.email,
+  //       currentUserName: idToken.idToken.claims.name
+  //     });
+  //   }
   render() {
     const { currentUserEmail, currentUserName } = this.state;
     return (
       <div>
-        <div className="profile-welcome text-center">
-          <h1>Welcome {currentUserName}!</h1>
-          <p>Email: {currentUserEmail}</p>
-        </div>
+        <h1>Welcome {currentUserName}</h1>
+        <p>Email: {currentUserEmail}</p>
+        <p>This is where we are going to put all of our pet information</p>
         <div>
           <Container>
             <Row>
@@ -32,7 +31,7 @@ class Profile extends Component {
                 <OwnerInfo />
                 <Medical />
               </Col>
-              <Col sm={4} />
+              <Col sm={4}></Col>
               <Col sm={4}>
                 <PetInfo />
               </Col>
@@ -42,6 +41,38 @@ class Profile extends Component {
       </div>
     );
   }
+  // componentDidMount() {
+  //   const idToken = JSON.parse(localStorage.getItem("okta-token-storage"));
+  //   this.setState({
+  //     currentUserEmail: idToken.idToken.claims.email,
+  //     currentUserName: idToken.idToken.claims.name
+  //   });
+  // }
+  // render() {
+  //   const { currentUserEmail, currentUserName } = this.state;
+  //   return (
+  //     <div>
+  //       <div className="profile-welcome text-center">
+  //         <h1>Welcome {currentUserName}!</h1>
+  //         <p>Email: {currentUserEmail}</p>
+  //       </div>
+  //       <div>
+  //         <Container>
+  //           <Row>
+  //             <Col sm={4}>
+  //               <OwnerInfo />
+  //               <Medical />
+  //             </Col>
+  //             <Col sm={4} />
+  //             <Col sm={4}>
+  //               <PetInfo />
+  //             </Col>
+  //           </Row>
+  //         </Container>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 }
 
 export default Profile;
