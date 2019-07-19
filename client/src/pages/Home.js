@@ -6,6 +6,7 @@ import PetNav from "../components/PetNav";
 
 // rt default withAuth(
 class Home extends Component {
+  state = { isSignedIn: false }
   render() {
 
 
