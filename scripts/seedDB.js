@@ -1,72 +1,74 @@
+require('dotenv').config()
+
 const mongoose = require("mongoose");
 const db = require("../models");
 
 // This file empties the Pets collection and inserts the pets below
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/googlebooksearch", { useNewUrlParser: true }
+    process.env.MONGODB_URI, { useNewUrlParser: true }
 );
 
 const petSeed = [
     {
-        ownerName: "",
-        homePhone: "",
-        mobilePhone: "",
-        email: '',
-        address: '',
+        ownerName: "Kevin",
+        homePhone: "000-000-0000",
+        mobilePhone: "000-000-0000",
+        email: 'schroederkevin94@gmail.com',
+        address: '111 North St.',
         vetContact: {
-            name: "",
-            phone: "",
-            email: '',
-            address: '',
+            name: "Paul",
+            phone: "000-000-0000",
+            email: 'paul@daman.com',
+            address: '222 South St.',
         },
         date: new Date(Date.now()),
         dogs: [{
-            name: '',
+            name: 'Scooter',
             image: "",
-            birthday: "",
-            species: "",
-            color: "",
-            breed: '',
-            sex: '',
-            weight: '',
-            rabiesTag: 0,
-            microchip: 0,
-            medications: [],
-            inoculations: [],
-            allergies: [],
-            food: [],
-            procedures: []
+            birthday: "1/1/2019",
+            species: "Golden Retriever",
+            color: "Golden",
+            breed: 'Retriever (?)',
+            sex: 'male',
+            weight: '100',
+            rabiesTag: 20,
+            microchip: 900,
+            medications: ['med1', 'med2', 'med3'],
+            inoculations: ['inoc1', 'inoc2', 'inoc3'],
+            allergies: ['grass', 'dust', 'cats'],
+            food: ['only dry'],
+            procedures: ['none']
         }]
     },
     {
-        ownerName: "",
-        homePhone: "",
-        mobilePhone: "",
-        email: '',
-        address: '',
+        ownerName: "Steve",
+        homePhone: "111-111-1111",
+        mobilePhone: "111-111-1111",
+        email: 'steve@gmail.com',
+        address: '111 North St.',
         vetContact: {
-            name: "",
-            phone: "",
-            email: '',
-            address: '',
+            name: "Paul",
+            phone: "111-111-1111",
+            email: 'paul@daman.com',
+            address: '222 South St.',
         },
         date: new Date(Date.now()),
         dogs: [{
-            name: '',
+            name: 'Shahein',
             image: "",
-            birthday: "",
-            species: "",
-            color: "",
-            breed: '',
-            sex: '',
-            weight: '',
-            rabiesTag: 0,
-            microchip: 0,
-            medications: [],
-            inoculations: [],
-            allergies: [],
-            food: [],
-            procedures: []
+            birthday: "2/1/2019",
+            species: "Poodle",
+            color: "White",
+            breed: 'Poodle (?)',
+            sex: 'male',
+            weight: '100',
+            rabiesTag: 20,
+            microchip: 900,
+            medications: ['med1', 'med2', 'med3'],
+            inoculations: ['inoc1', 'inoc2', 'inoc3'],
+            allergies: ['grass', 'dust', 'cats'],
+            food: ['only wet'],
+            procedures: ['none']
         }]
     }
 ];
