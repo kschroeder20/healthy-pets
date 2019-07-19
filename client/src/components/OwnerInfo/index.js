@@ -6,7 +6,6 @@ function OwnerInfo(props) {
     <div className="card">
       <div className="card-body">
         <h5 className="card-title">Owner Profile</h5>
-        <button className="owner-edit-button">Edit</button>
         <OwnerModal/>
       </div>
       <ul className="list-group list-group-flush">

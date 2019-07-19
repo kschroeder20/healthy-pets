@@ -7,7 +7,6 @@ function Medical(props) {
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Medical History</h5>
-        <button className="medical-edit-button">Edit</button>
         <MedicalModal />
       </div>
       <ul class="list-group list-group-flush">
