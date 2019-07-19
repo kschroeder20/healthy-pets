@@ -6,7 +6,6 @@ function PetInfo(props) {
     <div class="card" id="pet-card">
       <div class="card-body">
         <h5 class="card-title">Pet Profile</h5>
-        <button className="pet-edit-button">Edit</button>
         <PetModal/>
       </div>
       <ul class="list-group list-group-flush">

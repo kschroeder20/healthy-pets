@@ -8,12 +8,14 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    width                 : '40rem',
+    height                : '40rem'
   }
 };
  
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#pet-edit-button');
+Modal.setAppElement('#root');
  
 class PetModal extends Component {
   constructor() {
@@ -50,13 +52,12 @@ class PetModal extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="Pet Modal"
         >
  
           <h2 ref={subtitle => this.subtitle = subtitle}>Pet Information</h2>
           <button onClick={this.closeModal}>close</button>
           <form>
-            <input />
                 <div className="form-group">
                     <label for="petName">Pet Name:</label>
                     <input type="text" className="form-control" id="petName" placeholder="Owner Name"/>

@@ -8,12 +8,14 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    width                 : '40rem',
+    height                : '40rem'
   }
 };
  
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#owner-edit-button');
+Modal.setAppElement('#root');
  
 class OwnerModal extends Component {
   constructor() {
@@ -50,14 +52,12 @@ class OwnerModal extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="Owner Modal"
         >
  
           <h2 ref={subtitle => this.subtitle = subtitle}>Owner Information</h2>
           <button onClick={this.closeModal}>close</button>
-          <div>I am a modal</div>
           <form>
-            <input />
                 <div className="form-group">
                     <label for="ownerName">Owner Name:</label>
                     <input type="text" className="form-control" id="ownerName" placeholder="Owner Name"/>
