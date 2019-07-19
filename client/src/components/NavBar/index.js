@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { FaPaw } from 'react-icons/fa';
+import { IconContext } from "react-icons";
 
 class Navbar extends Component {
     render() {
@@ -17,6 +19,11 @@ class Navbar extends Component {
                     >
                         <span className="navbar-toggler-icon" />
                     </button>
+                    <IconContext.Provider value={{ color: "white", className: "global-class-name" }}>
+                        <FaPaw/>
+                        <FaPaw/>
+                        <FaPaw/>
+                    </IconContext.Provider>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">

@@ -21,19 +21,20 @@ class Profile extends Component {
     const { currentUserEmail, currentUserName } = this.state;
     return (
       <div>
-        <h1>Welcome {currentUserName}</h1>
-        <p>Email: {currentUserEmail}</p>
-        <p>This is where we are going to put all of our pet information</p>
+        <div className="profile-welcome text-center">
+          <h1>Welcome {currentUserName}!</h1>
+          <p>Email: {currentUserEmail}</p>
+        </div>
         <div>
           <Container>
             <Row>
               <Col sm={4}>
-                  <OwnerInfo/>
-                  <Medical/>
+                <OwnerInfo />
+                <Medical />
               </Col>
-              <Col sm={4}></Col>
+              <Col sm={4} />
               <Col sm={4}>
-                  <PetInfo/>
+                <PetInfo />
               </Col>
             </Row>
           </Container>
