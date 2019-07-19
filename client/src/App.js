@@ -20,15 +20,15 @@ class App extends Component {
   //   super(props);
 
   // }
-  state = { isSignedIn: false }
+  // state = { isSignedIn: false }
 
-  componentDidMount = () => {
-    console.log(this.state.isSignedIn)
-  };
+  // componentDidMount = () => {
+  //   console.log(this.state.isSignedIn)
+  // };
 
-  signInSuccess = () => {
-    this.setState({ isSignedIn: true })
-  };
+  // signInSuccess = () => {
+  //   this.setState({ isSignedIn: true })
+  // };
   // uiConfig = {
   //   signInFlow: "popup",
   //   signInOptions: [
@@ -56,7 +56,7 @@ class App extends Component {
         <div className="App">
 
           <span>
-            <Navbar isSignedIn={this.state.isSignedIn} />
+            {/* <Navbar /> */}
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/profile" component={Profile} />

@@ -2,23 +2,20 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "@okta/okta-react";
 import Title from "../components/Title";
+import NavBar from '../components/NavBar';
 import PetNav from "../components/PetNav";
 
 // rt default withAuth(
 class Home extends Component {
-  state = { isSignedIn: false }
+  state = { isSignedIn: true }
+
+  handleLogout = (e) => {
+    // this.props.isSignedIn = false;
+    // this.props.successfulSignin;
+    this.setState({isSignedIn: false})
+}
+
   render() {
-
-
-
-
-
-
-
-
-
-
-
 
     //if we are authenticated
     // const mainContent = this.state.authenticated ? (
@@ -42,8 +39,10 @@ class Home extends Component {
     //         </div>
     //     );
 
+
     return (
       <div>
+        <NavBar isSignedIn={this.state.isSignedIn} handleLogout={this.handleLogout}/>
         <Title />
         <div className="jumbotron text-center">
           <h1 className="display-4">Pet Portal</h1>
