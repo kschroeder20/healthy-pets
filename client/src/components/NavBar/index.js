@@ -6,10 +6,10 @@ import firebase from "firebase";
 import axios from "axios";
 
 class Navbar extends Component {
-    state = { isSignedIn: this.props.isSignedIn }
 
     handleLogout = (e) => {
-        this.setState({ isSignedIn: false });
+        // this.props.isSignedIn = false;
+        // this.props.successfulSignin;
         window.location.href = '/';
     }
 
@@ -45,7 +45,7 @@ class Navbar extends Component {
                                     Profile
                                 </Link>
                             </li> */}
-                            {this.state.isSignedIn ? (
+                            {this.props.isSignedIn ? (
                                 <span>
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/profile">

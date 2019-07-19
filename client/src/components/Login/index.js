@@ -11,7 +11,10 @@ export default class index extends Component {
             firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
         callbacks: {
-            signInSuccess: () => { window.location.href = '/' }
+            signInSuccess: (props) => {
+                //this.props.signInSuccess();
+                window.location.href = '/'
+            }
         }
     }
 
@@ -20,6 +23,7 @@ export default class index extends Component {
             this.setState({ isSignedIn: !!user })
             console.log("user", user)
         })
+        console.log(this.props);
     }
 
     render() {

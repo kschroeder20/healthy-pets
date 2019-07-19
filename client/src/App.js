@@ -21,6 +21,14 @@ class App extends Component {
 
   // }
   state = { isSignedIn: false }
+
+  componentDidMount = () => {
+    console.log(this.state.isSignedIn)
+  };
+
+  signInSuccess = () => {
+    this.setState({ isSignedIn: true })
+  };
   // uiConfig = {
   //   signInFlow: "popup",
   //   signInOptions: [
@@ -40,6 +48,8 @@ class App extends Component {
   // }
 
 
+
+
   render() {
     return (
       <Router>
@@ -52,7 +62,7 @@ class App extends Component {
               <Route path="/profile" component={Profile} />
               <Route path="/logout" component={LogOut} />
               {/* <button onClick={() => firebase.auth().signOut()}>Sign out!</button> */}
-              <Route path="/login" component={Login} />
+              <Route path="/login" component={Login} successfulSignin={this.successfulSignin} />
               {/* <StyledFirebaseAuth
                     uiConfig={this.uiConfig}
                     firebaseAuth={firebase.auth()}
