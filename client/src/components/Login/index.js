@@ -11,7 +11,7 @@ export default class index extends Component {
             firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
         callbacks: {
-            signInSuccess: () => false
+            signInSuccess: () => { window.location.href = '/' }
         }
     }
 
@@ -23,28 +23,11 @@ export default class index extends Component {
     }
 
     render() {
-        // return (
-        //     <Router>
-        //         <div className="App">
-        //             {this.state.isSignedIn ? (
-        //                 <span>
-        //                     <Navbar />
-        //                     <Switch>
-        //                         <Route exact path="/" component={Home} />
-        //                         <Route path="/profile" component={Profile} />
-        //                         <Route path="/login" component={Login} />
-        //                         <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
-        //                         <Route component={Home} />
-        //                     </Switch>
-        //                 </span>
-        //             ) : (
         return (
             <StyledFirebaseAuth
                 uiConfig={this.uiConfig}
                 firebaseAuth={firebase.auth()}
             />
-            // )}
-
         )
     }
 }

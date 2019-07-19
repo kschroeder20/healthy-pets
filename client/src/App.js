@@ -4,6 +4,7 @@ import Navbar from './components/NavBar';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Login from './components/Login';
+import LogOut from './components/LogOut';
 import React, { Component } from "react"
 import "./App.css"
 import firebase from "firebase"
@@ -15,46 +16,50 @@ firebase.initializeApp({
 })
 
 class App extends Component {
-  state = { isSignedIn: false }
-  uiConfig = {
-    signInFlow: "popup",
-    signInOptions: [
-      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
-    ],
-    callbacks: {
-      signInSuccess: () => false
-    }
-  }
+  // constructor(props) {
+  //   super(props);
 
-  componentDidMount = () => {
-    firebase.auth().onAuthStateChanged(user => {
-      this.setState({ isSignedIn: !!user })
-      console.log("user", user)
-    })
-  }
+  // }
+  state = { isSignedIn: false }
+  // uiConfig = {
+  //   signInFlow: "popup",
+  //   signInOptions: [
+  //     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+  //     firebase.auth.EmailAuthProvider.PROVIDER_ID
+  //   ],
+  //   callbacks: {
+  //     signInSuccess: () => false
+  //   }
+  // }
+
+  // componentDidMount = () => {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     this.setState({ isSignedIn: !!user })
+  //     console.log("user", user)
+  //   })
+  // }
+
 
   render() {
     return (
       <Router>
         <div className="App">
-          {this.state.isSignedIn ? (
-            <span>
-              <Navbar />
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/profile" component={Profile} />
-                <Route path="/login" component={Login} />
-                {/* <button onClick={() => firebase.auth().signOut()}>Sign out!</button> */}
-                <Route component={Home} />
-              </Switch>
-            </span>
-          ) : (
-              <StyledFirebaseAuth
-                uiConfig={this.uiConfig}
-                firebaseAuth={firebase.auth()}
-              />
-            )}
+
+          <span>
+            <Navbar isSignedIn={this.state.isSignedIn} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/profile" component={Profile} />
+              <Route path="/logout" component={LogOut} />
+              {/* <button onClick={() => firebase.auth().signOut()}>Sign out!</button> */}
+              <Route path="/login" component={Login} />
+              {/* <StyledFirebaseAuth
+                    uiConfig={this.uiConfig}
+                    firebaseAuth={firebase.auth()}
+                  /> */}
+              <Route component={Home} />
+            </Switch>
+          </span>
         </div>
       </Router>
     )

@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FaPaw } from 'react-icons/fa';
 import { IconContext } from "react-icons";
+import firebase from "firebase";
+import axios from "axios";
 
 class Navbar extends Component {
+    state = { isSignedIn: this.props.isSignedIn }
+
+    handleLogout = (e) => {
+        this.setState({ isSignedIn: false });
+        window.location.href = '/';
+    }
+
     render() {
         return (
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
@@ -20,9 +29,9 @@ class Navbar extends Component {
                         <span className="navbar-toggler-icon" />
                     </button>
                     <IconContext.Provider value={{ color: "white", className: "global-class-name" }}>
-                        <FaPaw/>
-                        <FaPaw/>
-                        <FaPaw/>
+                        <FaPaw />
+                        <FaPaw />
+                        <FaPaw />
                     </IconContext.Provider>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ml-auto">
@@ -31,15 +40,37 @@ class Navbar extends Component {
                                     Home
                                 </Link>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className="nav-link" to="/profile">
-                                    Login
+                                    Profile
                                 </Link>
-                            </li>
+                            </li> */}
+                            {this.state.isSignedIn ? (
+                                <span>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/profile">
+                                            Profile
+                                    </Link>
+                                    </li>
+
+                                    <li className="nav-item" >
+                                        <Link className="nav-link" to="/" onClick={() => firebase.auth().signOut()} onClick={(e) => this.handleLogout(e)}>
+                                            Logout
+                                    </Link>
+                                    </li>
+                                </span>
+                            ) : (
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/login" >
+                                            Login
+                                    </Link>
+                                    </li>
+
+                                )}
                         </ul>
-                    </div>
+                    </ div>
                 </div>
-            </nav>
+            </nav >
         );
     }
 }
