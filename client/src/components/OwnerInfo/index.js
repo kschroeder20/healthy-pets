@@ -1,11 +1,13 @@
 import React from "react";
+import OwnerModal from "../OwnerModal";
 
 function OwnerInfo(props) {
   return (
     <div className="card">
       <div className="card-body">
         <h5 className="card-title">Owner Profile</h5>
-        <button className="edit-button">Edit</button>
+        <button className="owner-edit-button">Edit</button>
+        <OwnerModal/>
       </div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item">Name:{props.ownerName}</li>
