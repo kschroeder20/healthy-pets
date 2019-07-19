@@ -3,14 +3,11 @@ import { Link } from 'react-router-dom';
 import { FaPaw } from 'react-icons/fa';
 import { IconContext } from "react-icons";
 import firebase from "firebase";
-import axios from "axios";
 
 class Navbar extends Component {
-
-    handleLogout = (e) => {
-        // this.props.isSignedIn = false;
-        // this.props.successfulSignin;
-        window.location.href = '/';
+    componentDidMount = () => {
+        console.log(this.props.isSignedIn)
+        const userSignedIn = window.localStorage.getItem('userSingedIn');
     }
 
     render() {
@@ -34,40 +31,42 @@ class Navbar extends Component {
                         <FaPaw />
                     </IconContext.Provider>
                     <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav ml-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">
-                                    Home
+                        {window.localStorage.getItem('userSingedIn') === "true" ? (
+                            <ul className="navbar-nav ml-auto">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/">
+                                        Home
                                 </Link>
-                            </li>
-                            {/* <li className="nav-item">
-                                <Link className="nav-link" to="/profile">
-                                    Profile
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/profile">
+                                        Profile
                                 </Link>
-                            </li> */}
-                            {this.props.isSignedIn ? (
-                                <span>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/profile">
-                                            Profile
-                                    </Link>
-                                    </li>
+                                </li>
 
-                                    <li className="nav-item" >
-                                        <Link className="nav-link" to="/" onClick={() => firebase.auth().signOut()} onClick={(e) => this.handleLogout(e)}>
-                                            Logout
-                                    </Link>
+                                <li className="nav-item" >
+                                    <Link className="nav-link" to="/" onClick={() => firebase.auth().signOut()} onClick={this.props.handleLogout}>
+                                        Logout
+                                </Link>
+                                </li>
+                            </ul>
+
+                        ) : (
+                                <ul className="navbar-nav ml-auto">
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/">
+                                            Home
+                                 </Link>
                                     </li>
-                                </span>
-                            ) : (
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/login" >
                                             Login
                                     </Link>
                                     </li>
+                                </ul>
 
-                                )}
-                        </ul>
+                            )}
+
                     </ div>
                 </div>
             </nav >

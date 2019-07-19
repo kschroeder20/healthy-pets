@@ -2,26 +2,37 @@ import React, { Component } from "react";
 import OwnerInfo from "../components/OwnerInfo";
 import PetInfo from "../components/PetInfo";
 import Medical from "../components/MedicalHistory";
+import NavBar from "../components/NavBar";
 import { Container, Row, Col } from "react-grid-system";
 
 class Profile extends Component {
   state = {
     currentUserName: "",
-    currentUserEmail: ""
+    currentUserEmail: "",
+    isSignedIn: true
   };
 
-  //   componentDidMount() {
-  //     const idToken = JSON.parse(localStorage.getItem("okta-token-storage"));
-  //     this.setState({
-  //       currentUserEmail: idToken.idToken.claims.email,
-  //       currentUserName: idToken.idToken.claims.name
-  //     });
-  //   }
+  componentDidMount() {
+    const user = JSON.parse(window.localStorage.getItem('user'));
+    const username = user.displayName;
+    const useremail = user.email;
+    this.setState({
+      currentUserName: username,
+      currentUserEmail: useremail
+    })
+  }
+
+  handleLogout = (e) => {
+    this.setState({ isSignedIn: false })
+  }
+
   render() {
     const { currentUserEmail, currentUserName } = this.state;
+
     return (
       <div>
-        <h1>Welcome {currentUserName}</h1>
+        {/* <NavBar isSignedIn={true} handleLogout={this.handleLogout} /> */}
+        <h1>Welcome {this.state.currentUserName}</h1>
         <p>Email: {currentUserEmail}</p>
         <p>This is where we are going to put all of our pet information</p>
         <div>
