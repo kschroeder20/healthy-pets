@@ -19,6 +19,7 @@
     "passport-local": "^1.0.0",
     "react": "^16.8.6",
     "react-grid-system": "^4.4.10",
+    "react-icons": "^3.7.0",
     "reactstrap": "^8.0.1",
     "spectre.css": "^0.5.8"
   },
