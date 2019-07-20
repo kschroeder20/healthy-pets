@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import API from "../../utils/API";
 
 export default class index extends Component {
     state = {
@@ -16,21 +17,21 @@ export default class index extends Component {
         callbacks: {
             signInSuccess: () => {
                 window.sessionStorage.setItem('userSignedIn', true);
-                editOwnerWithId();
+                //editOwnerWithId();
                 window.location.href = '/'
             }
         }
     }
 
-    editOwnerWithId = () => {
-        const user = JSON.parse(window.sessionStorage.getItem('user'));
-        const userId = user.uid;
-        API.updatePet(userId)
-            .then(res => {
-                console.log(res.data);
-            })
-            .catch(err => console.log(err));
-    }
+    // editOwnerWithId = () => {
+    //     const user = JSON.parse(window.sessionStorage.getItem('user'));
+    //     const userId = user.uid;
+    //     API.updatePet(userId)
+    //         .then(res => {
+    //             console.log(res.data);
+    //         })
+    //         .catch(err => console.log(err));
+    // }
 
     componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
