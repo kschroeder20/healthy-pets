@@ -21,7 +21,7 @@ class App extends Component {
           <span>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/profile" component={Profile} />
+              <Route path="/profile/:id" component={Profile} />
               <Route path="/logout" component={LogOut} />
               <Route path="/login" component={Login} />
               <Route component={Home} />

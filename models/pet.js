@@ -5,6 +5,7 @@ const petSchema = new Schema({
     ownerName: { type: String, required: true },
     name: String,
     homePhone: String,
+    uid: Number,
     mobilePhone: { type: String, required: true },
     email: { type: String, required: true },
     address: { type: String, required: true },

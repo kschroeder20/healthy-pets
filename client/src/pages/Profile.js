@@ -20,9 +20,7 @@ class Profile extends Component {
     const useremail = user.email;
     const userId = user.uid;
     const userSignedIn = window.sessionStorage.getItem('userSignedIn');
-    console.log(`${username} ${useremail} ${userSignedIn}`)
     this.setState({ currentUserName: `${username}`, currentUserEmail: `${useremail}`, currentUserId: `${userId}`, isSignedIn: `${userSignedIn}` }, function () {
-      console.log(this.state);
       this.loadPets();
     });
   }
