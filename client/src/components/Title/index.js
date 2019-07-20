@@ -1,6 +1,6 @@
 import React from "react";
 
-const Title = function() {
+const Title = function () {
   return (
     <div className="jumbotron jumbotron-fluid text-center">
       <div className="container">

@@ -11,8 +11,8 @@ export default class index extends Component {
             firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
         callbacks: {
-            signInSuccess: (props) => {
-                //this.props.signInSuccess();
+            signInSuccess: () => {
+                window.sessionStorage.setItem('userSignedIn', true);
                 window.location.href = '/'
             }
         }
@@ -21,9 +21,9 @@ export default class index extends Component {
     componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
             this.setState({ isSignedIn: !!user })
-            console.log("user", user)
+            window.sessionStorage.setItem('user', JSON.stringify(user))
+            console.log("user", user);
         })
-        console.log(this.props);
     }
 
     render() {
