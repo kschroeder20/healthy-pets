@@ -1,11 +1,11 @@
 import React from "react";
-import PetModal from "../PetModal";
+import PetModal from "../Modals/PetModal";
 
 function PetInfo(props) {
   return (
     <div class="card" id="pet-card">
       <div class="card-body">
-        <h5 class="card-title">Pet Profile</h5>
+        <h3 class="card-title">Pet Profile</h3>
         <PetModal/>
       </div>
       <ul class="list-group list-group-flush">

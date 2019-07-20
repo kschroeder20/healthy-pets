@@ -1,12 +1,12 @@
 import React from "react";
 import "./style.css";
-import MedicalModal from "../MedicalModal";
+import MedicalModal from "../Modals/MedicalModal";
 
 function Medical(props) {
   return (
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Medical History</h5>
+        <h3 class="card-title">Medical History</h3>
         <MedicalModal />
       </div>
       <ul class="list-group list-group-flush">
