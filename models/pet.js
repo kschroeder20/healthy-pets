@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const bookSchema = new Schema({
+const petSchema = new Schema({
     ownerName: { type: String, required: true },
     name: String,
     homePhone: String,
@@ -34,6 +34,6 @@ const bookSchema = new Schema({
     }]
 });
 
-const Book = mongoose.model("Book", bookSchema);
+const Pet = mongoose.model("Pet", petSchema);
 
-module.exports = Book;
+module.exports = Pet;

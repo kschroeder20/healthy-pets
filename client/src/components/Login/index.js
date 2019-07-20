@@ -3,7 +3,10 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 export default class index extends Component {
-    state = { isSignedIn: false }
+    state = {
+
+        isSignedIn: false
+    }
     uiConfig = {
         signInFlow: "popup",
         signInOptions: [
@@ -13,9 +16,20 @@ export default class index extends Component {
         callbacks: {
             signInSuccess: () => {
                 window.sessionStorage.setItem('userSignedIn', true);
+                editOwnerWithId();
                 window.location.href = '/'
             }
         }
+    }
+
+    editOwnerWithId = () => {
+        const user = JSON.parse(window.sessionStorage.getItem('user'));
+        const userId = user.uid;
+        API.updatePet(userId)
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => console.log(err));
     }
 
     componentDidMount = () => {

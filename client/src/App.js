@@ -14,10 +14,6 @@ firebase.initializeApp({
 })
 
 class App extends Component {
-  componentDidMount = () => {
-    console.log(process.env.REACT_APP_API_KEY)
-  }
-
   render() {
     return (
       <Router>
