@@ -1,6 +1,4 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
-import Navbar from './components/NavBar';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Login from './components/Login';
@@ -8,47 +6,17 @@ import LogOut from './components/LogOut';
 import React, { Component } from "react"
 import "./App.css"
 import firebase from "firebase"
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
+
 
 firebase.initializeApp({
-  apiKey: "AIzaSyDz36s2csIU48ULaVEKGENh81pCUvYCVBk",
-  authDomain: "healthy-pets-32ee4.firebaseapp.com"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN
 })
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  // }
-  state = { isSignedIn: false }
-
-  // componentDidMount = () => {
-  //   console.log(this.state.isSignedIn)
-  // };
-
-  signInSuccess = () => {
-    this.setState({ isSignedIn: true })
-  };
-  // uiConfig = {
-  //   signInFlow: "popup",
-  //   signInOptions: [
-  //     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-  //     firebase.auth.EmailAuthProvider.PROVIDER_ID
-  //   ],
-  //   callbacks: {
-  //     signInSuccess: () => false
-  //   }
-  // }
-
-  // componentDidMount = () => {
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     this.setState({ isSignedIn: !!user })
-  //     console.log("user", user)
-  //   })
-  // }
-
-
-
+  componentDidMount = () => {
+    console.log(process.env.REACT_APP_API_KEY)
+  }
 
   render() {
     return (
@@ -59,12 +27,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/profile" component={Profile} />
               <Route path="/logout" component={LogOut} />
-              {/* <button onClick={() => firebase.auth().signOut()}>Sign out!</button> */}
-              <Route path="/login" component={Login} signInSuccess={this.signInSuccess} />
-              {/* <StyledFirebaseAuth
-                    uiConfig={this.uiConfig}
-                    firebaseAuth={firebase.auth()}
-                  /> */}
+              <Route path="/login" component={Login} />
               <Route component={Home} />
             </Switch>
           </span>

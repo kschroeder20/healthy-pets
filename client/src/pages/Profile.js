@@ -16,9 +16,11 @@ class Profile extends Component {
     const user = JSON.parse(window.localStorage.getItem('user'));
     const username = user.displayName;
     const useremail = user.email;
+    const userSignedIn = window.localStorage.getItem('userSignedIn');
     this.setState({
       currentUserName: username,
-      currentUserEmail: useremail
+      currentUserEmail: useremail,
+      isSignedIn: userSignedIn
     })
   }
 
@@ -31,7 +33,7 @@ class Profile extends Component {
 
     return (
       <div>
-        {/* <NavBar isSignedIn={true} handleLogout={this.handleLogout} /> */}
+        <NavBar />
         <h1>Welcome {this.state.currentUserName}</h1>
         <p>Email: {currentUserEmail}</p>
         <p>This is where we are going to put all of our pet information</p>

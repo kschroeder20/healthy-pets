@@ -5,9 +5,11 @@ import { IconContext } from "react-icons";
 import firebase from "firebase";
 
 class Navbar extends Component {
-    componentDidMount = () => {
-        console.log(this.props.isSignedIn)
-        const userSignedIn = window.localStorage.getItem('userSingedIn');
+
+    handleLogout = (e) => {
+        firebase.auth().signOut();
+        window.sessionStorage.setItem('userSignedIn', false);
+        window.sessionStorage.setItem('user', null);
     }
 
     render() {
@@ -31,7 +33,7 @@ class Navbar extends Component {
                         <FaPaw />
                     </IconContext.Provider>
                     <div className="collapse navbar-collapse" id="navbarNav">
-                        {window.localStorage.getItem('userSingedIn') === "true" ? (
+                        {window.sessionStorage.getItem('userSignedIn') === "true" ? (
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/">
@@ -45,7 +47,7 @@ class Navbar extends Component {
                                 </li>
 
                                 <li className="nav-item" >
-                                    <Link className="nav-link" to="/" onClick={() => firebase.auth().signOut()} onClick={this.props.handleLogout}>
+                                    <Link className="nav-link" to="/" onClick={(e) => this.handleLogout(e)}>
                                         Logout
                                 </Link>
                                 </li>

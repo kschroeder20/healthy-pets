@@ -12,7 +12,7 @@ export default class index extends Component {
         ],
         callbacks: {
             signInSuccess: () => {
-                window.localStorage.setItem('userSignedIn', true);
+                window.sessionStorage.setItem('userSignedIn', true);
                 window.location.href = '/'
             }
         }
@@ -21,7 +21,7 @@ export default class index extends Component {
     componentDidMount = () => {
         firebase.auth().onAuthStateChanged(user => {
             this.setState({ isSignedIn: !!user })
-            window.localStorage.setItem('user', JSON.stringify(user))
+            window.sessionStorage.setItem('user', JSON.stringify(user))
             console.log("user", user);
         })
     }
