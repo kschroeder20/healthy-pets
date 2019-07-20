@@ -9,13 +9,14 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    findByEmail: function (req, res) {
+    findById: function (req, res) {
         db.Pet
-            .find({ email: req.params.id })
+            .find({ id: req.params.id })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
+        console.log(req)
         db.Pet
             .create(req.body)
             .then(dbModel => {
@@ -24,13 +25,13 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     update: function (req, res) {
-        db.Book
+        db.Pet
             .findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     remove: function (req, res) {
-        db.Book
+        db.Pet
             .findById({ _id: req.params.id })
             .then(dbModel => dbModel.remove())
             .then(dbModel => res.json(dbModel))

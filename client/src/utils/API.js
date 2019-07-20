@@ -8,8 +8,8 @@ export default {
         return axios.get(`/api/pets/${id}`)
     },
     // Saves a Pet to the database
-    savePet: (petData) => {
-        return axios.post("/api/pets", petData);
+    saveData: (data) => {
+        return axios.post("/api/pets", data);
     },
     deletePet: (id) => {
         return axios.delete(`/api/pets/${id}`)
