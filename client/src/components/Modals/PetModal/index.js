@@ -11,6 +11,14 @@ const customStyles = {
     transform             : 'translate(-50%, -50%)',
     width                 : '40rem',
     height                : '40rem'
+  },
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgb(8, 5, 145, 0.6)'
   }
 };
  
@@ -36,7 +44,7 @@ class PetModal extends Component {
  
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
+    this.subtitle.style.color = 'rgb(8, 5, 145)';
   }
  
   closeModal() {
@@ -46,7 +54,7 @@ class PetModal extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.openModal}>Edit</button>
+        <button className="edit" onClick={this.openModal}>Edit</button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -55,8 +63,7 @@ class PetModal extends Component {
           contentLabel="Pet Modal"
         >
  
-          <h2 ref={subtitle => this.subtitle = subtitle}>Pet Information</h2>
-          <button onClick={this.closeModal}>close</button>
+          <h2 class="text-center" ref={subtitle => this.subtitle = subtitle}>Pet Information</h2>
           <form>
                 <div className="form-group">
                     <label for="petName">Pet Name:</label>
@@ -95,6 +102,7 @@ class PetModal extends Component {
                     <input type="number" className="form-control" id="microchip" placeholder="Microchip #"/>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
+                <button class="btn btn-danger" onClick={this.closeModal}>Close</button>
           </form>
         </Modal>
       </div>
