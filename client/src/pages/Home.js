@@ -4,6 +4,7 @@ import { withAuth } from "@okta/okta-react";
 import Title from "../components/Title";
 import PetNav from "../components/PetNav";
 import Picture from "../components/Picture";
+import Calendar from "../components/Calendar";
 
 // rt default withAuth(
 class Home extends Component {
