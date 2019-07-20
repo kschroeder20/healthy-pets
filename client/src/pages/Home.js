@@ -36,7 +36,6 @@ class Home extends Component {
         <Title />
         <div className="jumbotron text-center">
           <h1 className="display-4">Pet Portal</h1>
-          <Picture />
         </div>
       </div>
     );
