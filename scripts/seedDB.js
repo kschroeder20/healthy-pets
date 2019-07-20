@@ -22,13 +22,13 @@ const petSeed = [
             address: '222 South St.',
         },
         date: new Date(Date.now()),
-        dogs: [{
+        pets: [{
             name: 'Scooter',
             image: "",
             birthday: "1/1/2019",
-            species: "Golden Retriever",
+            species: "Dog",
             color: "Golden",
-            breed: 'Retriever (?)',
+            breed: 'Golden Retriever',
             sex: 'male',
             weight: '100',
             rabiesTag: 20,
@@ -53,13 +53,13 @@ const petSeed = [
             address: '222 South St.',
         },
         date: new Date(Date.now()),
-        dogs: [{
+        pets: [{
             name: 'Shahein',
             image: "",
             birthday: "2/1/2019",
-            species: "Poodle",
+            species: "Dog",
             color: "White",
-            breed: 'Poodle (?)',
+            breed: 'Poodle',
             sex: 'male',
             weight: '100',
             rabiesTag: 20,
@@ -73,9 +73,9 @@ const petSeed = [
     }
 ];
 
-db.Pets
+db.Pet
     .remove({})
-    .then(() => db.Pets.collection.insertMany(petSeed))
+    .then(() => db.Pet.collection.insertMany(petSeed))
     .then(data => {
         console.log(data.result.n + " records inserted!");
         process.exit(0);

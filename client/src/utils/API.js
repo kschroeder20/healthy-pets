@@ -4,9 +4,8 @@ export default {
     getPets: () => {
         return axios.get('/api/pets')
     },
-    getPetByEmail: (email) => {
-        email = email.replace(/[^a-zA-Z0-9]/g, '');
-        return axios.get(`/api/pets/${email}`)
+    getPetById: (id) => {
+        return axios.get(`/api/pets/${id}`)
     },
     // Saves a Pet to the database
     savePet: (petData) => {

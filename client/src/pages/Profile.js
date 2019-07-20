@@ -4,24 +4,35 @@ import PetInfo from "../components/PetInfo";
 import Medical from "../components/MedicalHistory";
 import NavBar from "../components/NavBar";
 import { Container, Row, Col } from "react-grid-system";
+import API from "../utils/API";
 
 class Profile extends Component {
   state = {
     currentUserName: "",
     currentUserEmail: "",
-    isSignedIn: true
+    currentUserId: 0,
+    isSignedIn: ''
   };
 
-  componentDidMount() {
-    const user = JSON.parse(window.localStorage.getItem('user'));
+  componentDidMount = () => {
+    const user = JSON.parse(window.sessionStorage.getItem('user'));
     const username = user.displayName;
     const useremail = user.email;
-    const userSignedIn = window.localStorage.getItem('userSignedIn');
-    this.setState({
-      currentUserName: username,
-      currentUserEmail: useremail,
-      isSignedIn: userSignedIn
-    })
+    const userId = user.uid;
+    const userSignedIn = window.sessionStorage.getItem('userSignedIn');
+    console.log(`${username} ${useremail} ${userSignedIn}`)
+    this.setState({ currentUserName: `${username}`, currentUserEmail: `${useremail}`, currentUserId: `${userId}`, isSignedIn: `${userSignedIn}` }, function () {
+      console.log(this.state);
+      this.loadPets();
+    });
+  }
+
+  loadPets = () => {
+    API.getPetById(this.state.currentUserId)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
   }
 
   handleLogout = (e) => {
