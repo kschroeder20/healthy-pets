@@ -10,13 +10,13 @@ class Profile extends Component {
     currentUserEmail: ""
   };
 
-  componentDidMount() {
-    const idToken = JSON.parse(localStorage.getItem("okta-token-storage"));
-    this.setState({
-      currentUserEmail: idToken.idToken.claims.email,
-      currentUserName: idToken.idToken.claims.name
-    });
-  }
+  //   componentDidMount() {
+  //     const idToken = JSON.parse(localStorage.getItem("okta-token-storage"));
+  //     this.setState({
+  //       currentUserEmail: idToken.idToken.claims.email,
+  //       currentUserName: idToken.idToken.claims.name
+  //     });
+  //   }
   render() {
     const { currentUserEmail, currentUserName } = this.state;
     return (
@@ -28,12 +28,12 @@ class Profile extends Component {
           <Container>
             <Row>
               <Col sm={4}>
-                  <OwnerInfo/>
-                  <Medical/>
+                <OwnerInfo />
+                <Medical />
               </Col>
               <Col sm={4}></Col>
               <Col sm={4}>
-                  <PetInfo/>
+                <PetInfo />
               </Col>
             </Row>
           </Container>
@@ -41,6 +41,38 @@ class Profile extends Component {
       </div>
     );
   }
+  // componentDidMount() {
+  //   const idToken = JSON.parse(localStorage.getItem("okta-token-storage"));
+  //   this.setState({
+  //     currentUserEmail: idToken.idToken.claims.email,
+  //     currentUserName: idToken.idToken.claims.name
+  //   });
+  // }
+  // render() {
+  //   const { currentUserEmail, currentUserName } = this.state;
+  //   return (
+  //     <div>
+  //       <div className="profile-welcome text-center">
+  //         <h1>Welcome {currentUserName}!</h1>
+  //         <p>Email: {currentUserEmail}</p>
+  //       </div>
+  //       <div>
+  //         <Container>
+  //           <Row>
+  //             <Col sm={4}>
+  //               <OwnerInfo />
+  //               <Medical />
+  //             </Col>
+  //             <Col sm={4} />
+  //             <Col sm={4}>
+  //               <PetInfo />
+  //             </Col>
+  //           </Row>
+  //         </Container>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 }
 
 export default Profile;
