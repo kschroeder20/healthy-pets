@@ -8,6 +8,7 @@ import React, { Component } from "react";
 import Title from "../components/Title"
 import NavBar from '../components/NavBar';
 import Picture from "../components/Picture";
+import Calendar from "../components/Calendar";
 
 // rt default withAuth(
 class Home extends Component {
@@ -25,7 +26,6 @@ class Home extends Component {
         <Title />
         <div className="jumbotron text-center">
           <h1 className="display-4">Pet Portal</h1>
-          <Picture />
         </div>
       </div>
     );
