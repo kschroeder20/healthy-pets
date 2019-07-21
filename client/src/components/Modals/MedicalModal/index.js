@@ -32,13 +32,22 @@ class MedicalModal extends Component {
     super();
  
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      medication: '',
+      vaccines: '',
+      allergies: '',
+      food: '',
+      procedures: ''
     };
  
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.saveInfo = this.saveInfo.bind(this);
+    this.changeMedication = this.changeMedication.bind(this);
+    this.changeVaccines = this.changeVaccines.bind(this);
+    this.changeAllergies = this.changeVaccines.bind(this);
+    this.changeFood = this.changeFood.bind(this);
+    this.changeProcedures = this.changeProcedures.bind(this);
   }
  
   openModal() {
@@ -54,8 +63,38 @@ class MedicalModal extends Component {
     this.setState({modalIsOpen: false});
   }
 
-  saveInfo() {
-    console.log("info is saved");
+  changeMedication(event) {
+    console.log("medication is saved");
+    this.setState({medication: event.target.value});
+  }
+
+  changeVaccines(event) {
+    console.log("vaccine is saved");
+    this.setState({vaccines: event.target.value});
+  }
+
+  changeAllergies(event) {
+    console.log("allergies are saved");
+    this.setState({allergies: event.target.value});
+  }
+
+  changeFood(event) {
+    console.log("food is saved");
+    this.setState({food: event.target.value});
+  }
+
+  changeProcedures(event) {
+    console.log("procedures are saved");
+    this.setState({procedures: event.target.value});
+  }
+
+  handleSubmit (event) {
+    event.preventDefault();
+    // this.changeMedication();
+    // this.changeAllergies();
+    // this.changeFood();
+    // this.changeVaccines();
+    // this.changeProcedures();
   }
  
   render() {
@@ -70,30 +109,25 @@ class MedicalModal extends Component {
           contentLabel="Medical Modal"
         >
  
-          <h2 class="text-center" ref={subtitle => this.subtitle = subtitle}>Medical History</h2>
-          <form>
+          <h2 className="text-center" ref={subtitle => this.subtitle = subtitle}>Medical History</h2>
+          <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                    <label for="medication">Medication:</label>
-                    <input type="text" className="form-control" id="medication" placeholder="Medication List"/>
+                    <input type="text" className="form-control" value={this.state.medication} onChange={this.changeMedication} placeholder="Medication List"/>
                 </div>
                 <div className="form-group">
-                    <label for="vaccines">Vaccines:</label>
-                    <input type="text" className="form-control" id="vaccines" placeholder="Vaccines"/>
+                    <input type="text" className="form-control" value={this.state.vaccines} onChange={this.changeVaccines} placeholder="Vaccines"/>
                 </div>
                 <div className="form-group">
-                    <label for="allergies">Allergies:</label>
-                    <input type="text" className="form-control" id="allergies" placeholder="Allergies"/>
+                    <input type="text" className="form-control" value={this.state.allergies} onChange={this.changeAllergies} placeholder="Allergies"/>
                 </div>
                 <div className="form-group">
-                    <label for="food">Food:</label>
-                    <input type="text" className="form-control" id="food" placeholder="Food"/>
+                    <input type="text" className="form-control" value={this.state.food} onChange={this.changeFood} placeholder="Food"/>
                 </div>
                 <div className="form-group">
-                    <label for="procedures">Procedures</label>
-                    <input type="text" className="form-control" id="procedures" placeholder="Procedures"/>
+                    <input type="text" className="form-control" value={this.state.procedures} onChange={this.changeProcedures} placeholder="Procedures"/>
                 </div>
-                <button type="submit" class="btn btn-primary" onClick={this.saveInfo}>Save</button>
-                <button class="btn btn-danger" onClick={this.closeModal}>Close</button>
+                <input type="submit" value="Submit" color="primary" className="btn btn-primary" />
+                <button className="btn btn-danger" onClick={this.closeModal}>Close</button>
           </form>
         </Modal>
       </div>

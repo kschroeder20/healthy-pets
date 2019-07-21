@@ -4,17 +4,17 @@ import MedicalModal from "../Modals/MedicalModal";
 
 function Medical(props) {
   return (
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">Medical History</h3>
+    <div className="card">
+      <div className="card-body">
+        <h3 className="card-title">Medical History</h3>
         <MedicalModal />
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Medications:{props.medication}</li>
-        <li class="list-group-item">Vaccines:{props.vaccines}</li>
-        <li class="list-group-item">Allergies:{props.allergies}</li>
-        <li class="list-group-item">Food:{props.food}</li>
-        <li class="list-group-item">Procedures:{props.procedures}</li>
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item">Medications:{props.medication}</li>
+        <li className="list-group-item">Vaccines:{props.vaccines}</li>
+        <li className="list-group-item">Allergies:{props.allergies}</li>
+        <li className="list-group-item">Food:{props.food}</li>
+        <li className="list-group-item">Procedures:{props.procedures}</li>
       </ul>
     </div>
   );
