@@ -15,14 +15,22 @@ class Profile extends Component {
   };
 
   componentDidMount = () => {
-    const user = JSON.parse(window.sessionStorage.getItem('user'));
-    const username = user.displayName;
-    const useremail = user.email;
-    const userId = user.uid;
-    const userSignedIn = window.sessionStorage.getItem('userSignedIn');
-    this.setState({ currentUserName: `${username}`, currentUserEmail: `${useremail}`, currentUserId: `${userId}`, isSignedIn: `${userSignedIn}` }, function () {
-      this.loadPets();
-    });
+    const url = window.location.pathname;
+    const pathnameArr = url.split('/');
+    const userId = pathnameArr[pathnameArr.length - 1];
+    console.log(userId);
+    this.setState({ currentUserId: userId }, () => this.getUserInfo());
+    //console.log(this.state)
+
+    //this.getUserInfo();
+  }
+
+  getUserInfo = () => {
+    API.getPetById(this.state.currentUserId)
+      .then(res => {
+        console.log(res.data[0]);
+      })
+      .catch(err => console.log(err));
   }
 
   loadPets = () => {

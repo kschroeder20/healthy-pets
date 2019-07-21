@@ -11,6 +11,7 @@ mongoose.connect(
 const petSeed = [
     {
         ownerName: "Kevin",
+        uid: "rv6Qd4xLGkbUwStfCQfF02koXts2",
         homePhone: "000-000-0000",
         mobilePhone: "000-000-0000",
         email: 'schroederkevin94@gmail.com',
@@ -42,6 +43,7 @@ const petSeed = [
     },
     {
         ownerName: "Steve",
+        uid: 'abc',
         homePhone: "111-111-1111",
         mobilePhone: "111-111-1111",
         email: 'steve@gmail.com',
