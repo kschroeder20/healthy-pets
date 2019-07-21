@@ -30,12 +30,30 @@ class PetModal extends Component {
     super();
  
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      petName: '',
+      birthday: '',
+      species: '',
+      color: '',
+      breed: '',
+      sex: '',
+      weight: '',
+      rabies: '',
+      microChip: ''
     };
  
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.changePetName = this.changePetName.bind(this);
+    this.changeBirthday = this.changeBirthday.bind(this);
+    this.changeSpecies = this.changeSpecies.bind(this);
+    this.changeColor = this.changeColor.bind(this);
+    this.changeBreed = this.changeBreed.bind(this);
+    this.changeSex = this.changeSex.bind(this);
+    this.changeWeight = this.changeWeight.bind(this);
+    this.changeRabies = this.changeRabies.bind(this);
+    this.changeMicroChip = this.changeMicroChip.bind(this);
   }
  
   openModal() {
@@ -50,6 +68,55 @@ class PetModal extends Component {
   closeModal() {
     this.setState({modalIsOpen: false});
   }
+
+  changePetName(event) {
+    this.setState({petName: event.target.value});
+    console.log(`Pet Name: ${event.target.value}`);
+  }
+
+  changeBirthday(event) {
+    this.setState({birthday: event.target.value});
+    console.log(`Birthday: ${event.target.value}`);
+  }
+
+  changeSpecies(event) {
+    this.setState({species: event.target.value});
+    console.log(`Species: ${event.target.value}`);
+  }
+
+  changeColor(event) {
+    this.setState({color: event.target.value});
+    console.log(`Color: ${event.target.value}`);
+  }
+
+  changeBreed(event) {
+    this.setState({breed: event.target.value});
+    console.log(`breed: ${event.target.value}`);
+  }
+
+  changeSex(event) {
+    this.setState({sex: event.target.value});
+    console.log(`sex: ${event.target.value}`);
+  }
+
+  changeWeight(event) {
+    this.setState({weight: event.target.value});
+    console.log(`weight: ${event.target.value}`);
+  }
+
+  changeRabies(event) {
+    this.setState({rabies: event.target.value});
+    console.log(`rabies: ${event.target.value}`);
+  }
+
+  changeMicroChip(event) {
+    this.setState({microChip: event.target.value});
+    console.log(`microchip: ${event.target.value}`);
+  }
+
+  handleSubmit (event) {
+    event.preventDefault();
+  }
  
   render() {
     return (
@@ -63,46 +130,37 @@ class PetModal extends Component {
           contentLabel="Pet Modal"
         >
  
-          <h2 class="text-center" ref={subtitle => this.subtitle = subtitle}>Pet Information</h2>
-          <form>
+          <h2 className="text-center" ref={subtitle => this.subtitle = subtitle}>Pet Information</h2>
+          <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                    <label for="petName">Pet Name:</label>
-                    <input type="text" className="form-control" id="petName" placeholder="Owner Name"/>
+                    <input type="text" className="form-control" value={this.state.petName} onChange={this.changePetName} placeholder="Pet Name"/>
                 </div>
                 <div className="form-group">
-                    <label for="birthday">Birthday:</label>
-                    <input type="date" className="form-control" id="birthday" placeholder="MM/DD/YYYY"/>
+                    <input type="date" className="form-control" value={this.state.birthday} onChange={this.changeBirthday} placeholder="Birthday MM/DD/YYYY"/>
                 </div>
                 <div className="form-group">
-                    <label for="species">Species:</label>
-                    <input type="text" className="form-control" id="species" placeholder="Species"/>
+                    <input type="text" className="form-control" value={this.state.species} onChange={this.changeSpecies} placeholder="Species"/>
                 </div>
                 <div className="form-group">
-                    <label for="color">Color:</label>
-                    <input type="text" className="form-control" id="color" placeholder="Color"/>
+                    <input type="text" className="form-control" value={this.state.color} onChange={this.changeColor} placeholder="Color"/>
                 </div>
                 <div className="form-group">
-                    <label for="breed">Breed:</label>
-                    <input type="text" className="form-control" id="breed" placeholder="Breed"/>
+                    <input type="text" className="form-control" value={this.state.breed} onChange={this.changeBreed} placeholder="Breed"/>
                 </div>
                 <div className="form-group">
-                    <label for="sex">Pet Sex:</label>
-                    <input type="text" className="form-control" id="sex" placeholder="Sex"/>
+                    <input type="text" className="form-control" value={this.state.sex} onChange={this.changeSex} placeholder="Sex"/>
                 </div>
                 <div className="form-group">
-                    <label for="weight">Weight:</label>
-                    <input type="number" className="form-control" id="weight" placeholder="Weight"/>
+                    <input type="number" className="form-control" value={this.state.weight} onChange={this.changeWeight} placeholder="Weight"/>
                 </div>
                 <div className="form-group">
-                    <label for="tag">Rabies Tag#:</label>
-                    <input type="number" className="form-control" id="tag" placeholder="Rabies Tag #"/>
+                    <input type="number" className="form-control" value={this.state.rabies} onChange={this.changeRabies} placeholder="Rabies Tag #"/>
                 </div>
                 <div className="form-group">
-                    <label for="microchip">Microchip#:</label>
-                    <input type="number" className="form-control" id="microchip" placeholder="Microchip #"/>
+                    <input type="number" className="form-control" value={this.state.microChip} onChange={this.changeMicroChip} placeholder="Microchip #"/>
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
-                <button class="btn btn-danger" onClick={this.closeModal}>Close</button>
+                <input type="submit" value="Submit" color="primary" className="btn btn-primary" />
+                <button className="btn btn-danger" onClick={this.closeModal}>Close</button>
           </form>
         </Modal>
       </div>

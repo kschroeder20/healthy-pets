@@ -30,12 +30,26 @@ class OwnerModal extends Component {
     super();
  
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      owner: '',
+      homePhone: '',
+      cellPhone: '',
+      email: '',
+      address: '',
+      vetName: '',
+      vetPhone: ''
     };
  
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.changeOwner = this.changeOwner.bind(this);
+    this.changeHomePhone = this.changeHomePhone.bind(this);
+    this.changeCellPhone = this.changeCellPhone.bind(this);
+    this.changeEmail = this.changeEmail.bind(this);
+    this.changeAddress = this.changeAddress.bind(this);
+    this.changeVetName = this.changeVetName.bind(this);
+    this.changeVetPhone = this.changeVetPhone.bind(this);
   }
  
   openModal() {
@@ -50,6 +64,52 @@ class OwnerModal extends Component {
   closeModal() {
     this.setState({modalIsOpen: false});
   }
+
+  changeOwner(event) {
+    this.setState({owner: event.target.value});
+    console.log(`Owner: ${event.target.value}`);
+  }
+
+  changeHomePhone(event) {
+    this.setState({homePhone: event.target.value});
+    console.log(`Home Phone: ${event.target.value}`);
+  }
+
+  changeCellPhone(event) {
+    this.setState({cellPhone: event.target.value});
+    console.log(`Cell Phone: ${event.target.value}`);
+  }
+
+  changeEmail(event) {
+    this.setState({email: event.target.value});
+    console.log(`Email: ${event.target.value}`);
+  }
+
+  changeAddress(event) {
+    this.setState({address: event.target.value});
+    console.log(`Address: ${event.target.value}`);
+  }
+
+  changeVetName(event) {
+    this.setState({vetName: event.target.value});
+    console.log(`Vet Name: ${event.target.value}`);
+  }
+
+  changeVetPhone(event) {
+    this.setState({vetPhone: event.target.value});
+    console.log(`Vet Phone: ${event.target.value}`);
+  }
+
+  handleSubmit (event) {
+    event.preventDefault();
+    // this.changeOwner();
+    // this.changeHomePhone();
+    // this.changeCellPhone();
+    // this.changeEmail();
+    // this.changeAddress();
+    // this.changeVetName();
+    // this.changeVetPhone();
+  }
  
   render() {
     return (
@@ -63,38 +123,31 @@ class OwnerModal extends Component {
           contentLabel="Owner Modal"
         >
  
-          <h2 class="text-center" ref={subtitle => this.subtitle = subtitle}>Owner Information</h2>
-          <form>
+          <h2 className="text-center" ref={subtitle => this.subtitle = subtitle}>Owner Information</h2>
+          <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                    <label for="ownerName">Owner Name:</label>
-                    <input type="text" className="form-control" id="ownerName" placeholder="Owner Name"/>
+                    <input type="text" className="form-control" value={this.state.owner} onChange={this.changeOwner} placeholder="Owner Name"/>
                 </div>
                 <div className="form-group">
-                    <label for="homePhone">Home Phone:</label>
-                    <input type="tel" className="form-control" id="homePhone" placeholder="###-###-####"/>
+                    <input type="tel" className="form-control" value={this.state.homePhone} onChange={this.changeHomePhone} placeholder="Home Phone"/>
                 </div>
                 <div className="form-group">
-                    <label for="cellPhone">Cell Phone:</label>
-                    <input type="tel" className="form-control" id="cellPhone" placeholder="###-###-####"/>
+                    <input type="tel" className="form-control" value={this.state.cellPhone} onChange={this.changeCellPhone} placeholder="Cell Phone"/>
                 </div>
                 <div className="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" className="form-control" id="email" placeholder="example@example.com"/>
+                    <input type="email" className="form-control" value={this.state.email} onChange={this.changeEmail} placeholder="Email"/>
                 </div>
                 <div className="form-group">
-                    <label for="address">Address:</label>
-                    <input type="text" className="form-control" id="address" placeholder="123 Main Street, Anywhere, USA 12345"/>
+                    <input type="text" className="form-control" value={this.state.address} onChange={this.changeAddress} placeholder="Address"/>
                 </div>
                 <div className="form-group">
-                    <label for="vetName">Primary Vet Name:</label>
-                    <input type="tel" className="form-control" id="vetName" placeholder="Vet Name"/>
+                    <input type="tel" className="form-control" value={this.state.vetName} onChange={this.changeVetName} placeholder="Vet Name"/>
                 </div>
                 <div className="form-group">
-                    <label for="vetPhone">Primary Vet Phone:</label>
-                    <input type="tel" className="form-control" id="vetPhone" placeholder="###-###-####"/>
+                    <input type="tel" className="form-control" value={this.state.vetPhone} onChange={this.changeVetPhone} placeholder="Vet Phone Number"/>
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
-                <button class="btn btn-danger" onClick={this.closeModal}>Close</button>
+                <input type="submit" value="Submit" color="primary" className="btn btn-primary" />
+                <button className="btn btn-danger" onClick={this.closeModal}>Close</button>
           </form>
         </Modal>
       </div>
