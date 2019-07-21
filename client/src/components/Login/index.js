@@ -78,8 +78,8 @@ export default class index extends Component {
             uid: user.uid
         })
             .then(res => {
-                console.log(res);
-                //window.location.replace(`/profile/${user.uid}`)
+                //console.log(res);
+                window.location.replace(`/profile/${user.uid}`)
             }).catch(err => console.log(err))
     }
 

@@ -11,12 +11,11 @@ module.exports = {
     },
     findById: function (req, res) {
         db.Pet
-            .find({ id: req.params.id })
+            .find({ uid: req.params.id })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
-        console.log(req)
         db.Pet
             .create(req.body)
             .then(dbModel => {
