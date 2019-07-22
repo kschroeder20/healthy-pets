@@ -1,19 +1,19 @@
 body {
-    background-image: url("https://s3.amazonaws.com/spoonflower/public/design_thumbnails/0509/2553/rr12in_Ocean_Blue_SF_shop_preview.jpg"); 
-    background-color: #9ed6d5;  
-    background-repeat: repeat; 
-  }
+  background-image: url("https://s3.amazonaws.com/spoonflower/public/design_thumbnails/0509/2553/rr12in_Ocean_Blue_SF_shop_preview.jpg");
+  background-color: #9ed6d5;
+  background-repeat: repeat;
+}
 
 .jumbotron {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .profile-welcome {
-    background-color: #E9ECEF;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 50%;
-    margin: auto;
-    border-radius: 10px;
-    padding: 20px;
+  background-color: #e9ecef;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 50%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 20px;
 }

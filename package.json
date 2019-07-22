@@ -25,6 +25,7 @@
     "react-firebaseui": "^3.1.2",
     "react-grid-system": "^4.4.10",
     "react-icons": "^3.7.0",
+    "react-images-upload": "^1.2.7",
     "react-modal": "^3.9.1",
     "reactstrap": "^8.0.1",
     "spectre.css": "^0.5.8"
