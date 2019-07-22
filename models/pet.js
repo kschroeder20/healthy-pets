@@ -16,7 +16,7 @@ const petSchema = new Schema({
         address: String,
     },
     date: { type: Date, default: Date.now },
-    dogs: [{
+    pets: [{
         name: String,
         image: { data: Buffer, contentType: String },
         birthday: { type: Date },
