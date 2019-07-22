@@ -1,0 +1,30 @@
+.carousel {
+  width: 50vw;
+  height: auto;
+  opacity: 0.9;
+  margin-bottom: 2%;
+}
+
+img {
+  height: 50vh;
+  width: 100vw;
+}
+
+.hero {
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.75);
+}
+
+.hero p {
+  font-size: 1.5em;
+  color: black;
+}
+.hero h3 {
+  font-size: 3em;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: lightcyan;
+}
