@@ -16,9 +16,12 @@ class Navbar extends Component {
         return (
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">
+                    {/* <Link className="navbar-brand" to="/">
                         Healthy Pets
-                    </Link>
+                    </Link> */}
+                    <span className="navbar-brand" to="/">
+                        Healthy Pets
+                    </span>
                     <button
                         className="navbar-toggler"
                         type="button"
@@ -35,17 +38,16 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         {window.sessionStorage.getItem('userSignedIn') === "true" ? (
                             <ul className="navbar-nav ml-auto">
-                                <li className="nav-item">
+                                {/* <li className="nav-item">
                                     <Link className="nav-link" to="/">
                                         Home
                                 </Link>
-                                </li>
-                                <li className="nav-item">
+                                </li> */}
+                                {/* <li className="nav-item">
                                     <Link className="nav-link" to="/profile">
                                         Profile
                                 </Link>
-                                </li>
-
+                                </li> */}
                                 <li className="nav-item" >
                                     <Link className="nav-link" to="/" onClick={(e) => this.handleLogout(e)}>
                                         Logout
