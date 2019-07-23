@@ -1,11 +1,12 @@
 import React from "react";
+import "./style.css";
 
-const Title = function () {
+const Title = function() {
   return (
-    <div className="jumbotron jumbotron-fluid text-center">
+    <div className="jumbotron p-4 jumbotron-fluid text-center">
       <div className="container">
         <h1 className="display-4">Welcome to HealthyPet!</h1>
-        <h3>
+        <h3 className="hsmall">
           Your one stop location for all your pet's information.
         </h3>
         <p className="lead">
