@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import Modal from "react-modal";
-import "./style.css";
+import React, { Component } from 'react';
+import Modal from 'react-modal';
+import './style.css';
 
 const customStyles = {
   content: {
@@ -25,7 +25,7 @@ const customStyles = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement("#root");
+Modal.setAppElement(document.getElementById('root'));
 
 class MedicalModal extends Component {
   constructor() {
