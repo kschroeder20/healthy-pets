@@ -102,6 +102,7 @@ class OwnerModal extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log('submitted');
   }
 
   render() {
@@ -192,6 +193,7 @@ class OwnerModal extends Component {
               value="Submit"
               color="primary"
               className="btn btn-primary"
+              onClick={this.handleSubmit}
             />
             <button className="btn btn-danger" onClick={this.closeModal}>
               Close
