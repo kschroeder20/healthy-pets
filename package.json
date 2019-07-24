@@ -18,9 +18,6 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.19.1",
     "passport": "^0.4.0",
-<<<<<<< HEAD
-    "passport-local": "^1.0.0"
-=======
     "passport-local": "^1.0.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
@@ -31,7 +28,6 @@
     "react-modal": "^3.9.1",
     "reactstrap": "^8.0.1",
     "spectre.css": "^0.5.8"
->>>>>>> 44a5853236f64107f8d801275f5ddfd20de56677
   },
   "devDependencies": {
     "concurrently": "^4.1.1",

@@ -19,24 +19,16 @@ class Profile extends Component {
     const pathnameArr = url.split('/');
     const userId = pathnameArr[pathnameArr.length - 1];
     console.log(userId);
-    this.setState({ currentUserId: userId }, () => this.getUserInfo());
+    this.setState({ currentUserId: userId }, () => this.getUserInfo(userId));
     //console.log(this.state)
 
     //this.getUserInfo();
   }
 
-  getUserInfo = () => {
-    API.getPetById(this.state.currentUserId)
+  getUserInfo = (userId) => {
+    API.getPetById(userId)
       .then(res => {
         console.log(res.data[0]);
-      })
-      .catch(err => console.log(err));
-  }
-
-  loadPets = () => {
-    API.getPetById(this.state.currentUserId)
-      .then(res => {
-        console.log(res.data);
       })
       .catch(err => console.log(err));
   }
