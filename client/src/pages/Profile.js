@@ -45,19 +45,34 @@ class Profile extends Component {
     return (
       <div>
         <NavBar />
-        <h1>Welcome {this.state.currentUserName}</h1>
+        <h1>Welcome {currentUserName}</h1>
         <p>Email: {currentUserEmail}</p>
-        <p>This is where we are going to put all of our pet information</p>
         <div>
           <Container>
             <Row>
               <Col sm={4}>
-                <OwnerInfo user={this.state.user}/>
+                <OwnerInfo 
+                  owner={this.state.user.ownerName}
+                  homePhone={this.state.user.homePhone}
+                  mobilePhone={this.state.user.mobilePhone}
+                  email={this.state.user.email}
+                  address={this.state.user.address}
+                  vetName={this.state.user.vetName}
+                  vetPhone={this.state.user.vetPhone}/>
                 <Medical />
               </Col>
               <Col sm={4}></Col>
               <Col sm={4}>
-                <PetInfo />
+                <PetInfo 
+                  petName={this.state.user.petName}
+                  birthday={this.state.user.petBirthday}
+                  species={this.state.user.petSpecies}
+                  color={this.state.user.petColor}
+                  breed={this.state.user.petBreed}
+                  sex={this.state.user.petSex}
+                  weight={this.state.user.petWeight}
+                  tag={this.state.user.petRabiesTag}
+                  microchip={this.state.user.petMicrochip}/>
               </Col>
             </Row>
           </Container>
