@@ -35,14 +35,14 @@ class OwnerModal extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.state = {
       modalIsOpen: false,
-      owner: "",
+      ownerName: "",
       homePhone: "",
-      cellPhone: "",
+      mobilePhone: "",
       email: "",
       address: "",
       vetName: "",
       vetPhone: "",
-      currentUserId: 0
+      currentUserId: ""
     };
   }
 
@@ -56,16 +56,16 @@ class OwnerModal extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
     this.updateDb(this.state.currentUserId);
   }
 
   updateDb = (userId) => {
-  API.updatePet({...this.state, userId})
-    .then(res => {
-      console.log(res);
-    })
-    .catch(err => console.log(err));
+    API.updatePet({ ...this.state, userId })
+      .then(res => {
+        // ADD CODE TO SEND TO CARD HERE
+        console.log(res);
+      })
+      .catch(err => console.log(err));
   }
 
   openModal() {
@@ -82,7 +82,6 @@ class OwnerModal extends Component {
   }
 
   handleChange = e => {
-    console.log(e.target.id);
     this.setState({
       [e.target.id]: e.target.value
     });
@@ -108,12 +107,12 @@ class OwnerModal extends Component {
             Owner Information
           </h2>
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor="owner">Enter Your Name</label>
+            <label htmlFor="ownerName">Enter Your Name</label>
             <input
               type="text"
               className="form-control"
-              id="owner"
-              value={this.state.owner}
+              id="ownerName"
+              value={this.state.ownerName}
               onChange={this.handleChange}
             />
             <label htmlFor="homePhone">Home Phone</label>
@@ -124,13 +123,13 @@ class OwnerModal extends Component {
               onChange={this.handleChange}
               value={this.state.homePhone}
             />
-            <label htmlFor="cellPhone">Cell Phone</label>
+            <label htmlFor="mobilePhone">Cell Phone</label>
             <input
               type="tel"
               className="form-control"
-              id="cellPhone"
+              id="mobilePhone"
               onChange={this.handleChange}
-              value={this.state.cellPhone}
+              value={this.state.mobilePhone}
             />
             <label htmlFor="email">Email Address</label>
             <input
