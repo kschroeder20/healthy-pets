@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
-import Modal from 'react-modal';
+import React, { Component } from "react";
+import Modal from "react-modal";
+import API from "../../../utils/API";
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '40rem',
-    height: '40rem'
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "40rem",
+    height: "40rem"
   },
   overlay: {
     position: "fixed",
@@ -22,13 +23,16 @@ const customStyles = {
   }
 };
 
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement(document.getElementById('root'));
+//Binds modal to root element of app.
+Modal.setAppElement(document.getElementById("root"));
 
 class OwnerModal extends Component {
   constructor() {
     super();
-
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.state = {
       modalIsOpen: false,
       owner: "",
@@ -37,19 +41,31 @@ class OwnerModal extends Component {
       email: "",
       address: "",
       vetName: "",
-      vetPhone: ""
+      vetPhone: "",
+      currentUserId: 0
     };
+  }
 
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.changeOwner = this.changeOwner.bind(this);
-    this.changeHomePhone = this.changeHomePhone.bind(this);
-    this.changeCellPhone = this.changeCellPhone.bind(this);
-    this.changeEmail = this.changeEmail.bind(this);
-    this.changeAddress = this.changeAddress.bind(this);
-    this.changeVetName = this.changeVetName.bind(this);
-    this.changeVetPhone = this.changeVetPhone.bind(this);
+  componentDidMount = () => {
+    const url = window.location.pathname;
+    const pathnameArr = url.split("/");
+    const userId = pathnameArr[pathnameArr.length - 1];
+    this.setState({ currentUserId: userId });
+  };
+
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state);
+    this.updateDb(this.state.currentUserId);
+  }
+
+  updateDb = (userId) => {
+  API.updatePet({...this.state, userId})
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => console.log(err));
   }
 
   openModal() {
@@ -65,45 +81,12 @@ class OwnerModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  changeOwner(event) {
-    this.setState({ owner: event.target.value });
-    console.log(`Owner: ${event.target.value}`);
-  }
-
-  changeHomePhone(event) {
-    this.setState({ homePhone: event.target.value });
-    console.log(`Home Phone: ${event.target.value}`);
-  }
-
-  changeCellPhone(event) {
-    this.setState({ cellPhone: event.target.value });
-    console.log(`Cell Phone: ${event.target.value}`);
-  }
-
-  changeEmail(event) {
-    this.setState({ email: event.target.value });
-    console.log(`Email: ${event.target.value}`);
-  }
-
-  changeAddress(event) {
-    this.setState({ address: event.target.value });
-    console.log(`Address: ${event.target.value}`);
-  }
-
-  changeVetName(event) {
-    this.setState({ vetName: event.target.value });
-    console.log(`Vet Name: ${event.target.value}`);
-  }
-
-  changeVetPhone(event) {
-    this.setState({ vetPhone: event.target.value });
-    console.log(`Vet Phone: ${event.target.value}`);
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log('submitted');
-  }
+  handleChange = e => {
+    console.log(e.target.id);
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  };
 
   render() {
     return (
@@ -124,77 +107,64 @@ class OwnerModal extends Component {
           >
             Owner Information
           </h2>
-          <form onSubmit={this.handleSubmit} method="POST">
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.owner}
-                onChange={this.changeOwner}
-                placeholder="Owner Name"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="tel"
-                className="form-control"
-                value={this.state.homePhone}
-                onChange={this.changeHomePhone}
-                placeholder="Home Phone"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="tel"
-                className="form-control"
-                value={this.state.cellPhone}
-                onChange={this.changeCellPhone}
-                placeholder="Cell Phone"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="email"
-                className="form-control"
-                value={this.state.email}
-                onChange={this.changeEmail}
-                placeholder="Email"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.address}
-                onChange={this.changeAddress}
-                placeholder="Address"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="tel"
-                className="form-control"
-                value={this.state.vetName}
-                onChange={this.changeVetName}
-                placeholder="Vet Name"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="tel"
-                className="form-control"
-                value={this.state.vetPhone}
-                onChange={this.changeVetPhone}
-                placeholder="Vet Phone Number"
-              />
-            </div>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="owner">Enter Your Name</label>
             <input
-              type="submit"
-              value="Submit"
-              color="primary"
-              className="btn btn-primary"
-              onClick={this.handleSubmit}
+              type="text"
+              className="form-control"
+              id="owner"
+              value={this.state.owner}
+              onChange={this.handleChange}
             />
+            <label htmlFor="homePhone">Home Phone</label>
+            <input
+              type="tel"
+              className="form-control"
+              id="homePhone"
+              onChange={this.handleChange}
+              value={this.state.homePhone}
+            />
+            <label htmlFor="cellPhone">Cell Phone</label>
+            <input
+              type="tel"
+              className="form-control"
+              id="cellPhone"
+              onChange={this.handleChange}
+              value={this.state.cellPhone}
+            />
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              onChange={this.handleChange}
+              value={this.state.email}
+            />
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              className="form-control"
+              id="address"
+              onChange={this.handleChange}
+              value={this.state.address}
+            />
+            <label htmlFor="vetName">Vet Name</label>
+            <input
+              type="tel"
+              className="form-control"
+              id="vetName"
+              onChange={this.handleChange}
+              value={this.state.vetName}
+            />
+            <label htmlFor="vetPhone">Vet Phone</label>
+            <input
+              type="tel"
+              className="form-control"
+              id="vetPhone"
+              onChange={this.handleChange}
+              value={this.state.vetPhone}
+            />
+            <button className="btn btn-primary">Submit</button>
             <button className="btn btn-danger" onClick={this.closeModal}>
               Close
             </button>
