@@ -34,17 +34,15 @@ class PetModal extends Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.state = {
-      name: '',
-      birthday: '',
-      species: '',
-      color: '',
-      breed: '',
-      sex: '',
-      weight: 0,
-      rabiesTag: 0,
-      microchip: 0,
+      petName: "",
+      petBirthday: 0,
+      petColor: "",
+      petBreed: "",
+      petSex: "",
+      petWeight: 0,
+      petRabiesTag: 0,
+      petMicrochip: 0,
       currentUserId: ''
-
     };
   }
 
@@ -113,8 +111,8 @@ class PetModal extends Component {
               <input
                 type="text"
                 className="form-control"
-                value={this.state.name}
-                id="name"
+                value={this.state.petName}
+                id="petName"
                 onChange={this.handleChange}
                 placeholder="Pet Name"
               />
@@ -123,8 +121,8 @@ class PetModal extends Component {
               <input
                 type="date"
                 className="form-control"
-                value={this.state.birthday}
-                id="birthday"
+                value={this.state.petBirthday}
+                id="petBirthday"
                 onChange={this.handleChange}
                 placeholder="Birthday MM/DD/YYYY"
               />
@@ -133,8 +131,8 @@ class PetModal extends Component {
               <input
                 type="text"
                 className="form-control"
-                value={this.state.species}
-                id="species"
+                value={this.state.petSpecies}
+                id="petSpecies"
                 onChange={this.handleChange}
                 placeholder="Species"
               />
@@ -143,8 +141,8 @@ class PetModal extends Component {
               <input
                 type="text"
                 className="form-control"
-                value={this.state.color}
-                id="color"
+                value={this.state.petColor}
+                id="petColor"
                 onChange={this.handleChange}
                 placeholder="Color"
               />
@@ -153,8 +151,8 @@ class PetModal extends Component {
               <input
                 type="text"
                 className="form-control"
-                value={this.state.breed}
-                id="breed"
+                value={this.state.petBreed}
+                id="petBreed"
                 onChange={this.handleChange}
                 placeholder="Breed"
               />
@@ -163,8 +161,8 @@ class PetModal extends Component {
               <input
                 type="text"
                 className="form-control"
-                value={this.state.sex}
-                id="sex"
+                value={this.state.petSex}
+                id="petSex"
                 onChange={this.handleChange}
                 placeholder="Sex"
               />
@@ -173,8 +171,8 @@ class PetModal extends Component {
               <input
                 type="number"
                 className="form-control"
-                value={this.state.weight}
-                id="weight"
+                value={this.state.petWeight}
+                id="petWeight"
                 onChange={this.handleChange}
                 placeholder="Weight"
               />
@@ -183,8 +181,8 @@ class PetModal extends Component {
               <input
                 type="number"
                 className="form-control"
-                value={this.state.rabiesTag}
-                id="rabiesTag"
+                value={this.state.petRabiesTag}
+                id="petRabiesTag"
                 onChange={this.handleChange}
                 placeholder="Rabies Tag #"
               />
@@ -193,8 +191,8 @@ class PetModal extends Component {
               <input
                 type="number"
                 className="form-control"
-                value={this.state.microChip}
-                id="microChip"
+                value={this.state.petMicroChip}
+                id="petMicroChip"
                 onChange={this.handleChange}
                 placeholder="Microchip #"
               />
@@ -205,7 +203,6 @@ class PetModal extends Component {
               color="primary"
               className="btn btn-primary"
             />
-            <button className="btn btn-primary">Submit</button>
             <button className="btn btn-danger" onClick={this.closeModal}>
               Close
             </button>
