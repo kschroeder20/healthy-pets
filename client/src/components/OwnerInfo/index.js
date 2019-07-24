@@ -1,12 +1,22 @@
 import React, {Component} from "react";
 import OwnerModal from "../Modals/OwnerModal";
+import Axios from "axios";
 
 class OwnerInfo extends Component {
-  // super(props)
-
-
-  componentWillMount = (props) => {
-    console.log(props);
+  // constructor(props){
+  //   super(props);
+  //   this.state= {
+  //     info: []
+  //   }
+  // }
+  
+  componentWillMount = (uid) => {
+    Axios.get(`/api/pets/${uid}`)
+    .then(res => {
+      // this.setState({ props.ownerData })
+      console.log(res)
+    });
+    // console.log(props);
   }
 
   render () {
@@ -17,13 +27,13 @@ class OwnerInfo extends Component {
           <OwnerModal/>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">Name:{this.props.owner}</li>
-          <li className="list-group-item">Home Phone:{this.props.homePhone}</li>
-          <li className="list-group-item">Cell Phone:{this.props.cellPhone}</li>
-          <li className="list-group-item">Email:{this.props.email}</li>
-          <li className="list-group-item">Address:{this.props.address}</li>
-          <li className="list-group-item">Primary Vet Name:{this.props.vetName}</li>
-          <li className="list-group-item">Primary Vet Phone:{this.props.vetPhone}</li>
+          <li className="list-group-item"><strong>Name:</strong> {this.props.owner}</li>
+          <li className="list-group-item"><strong>Home Phone:</strong> {this.props.homePhone}</li>
+          <li className="list-group-item"><strong>Cell Phone:</strong> {this.props.mobilePhone}</li>
+          <li className="list-group-item"><strong>Email:</strong> {this.props.email}</li>
+          <li className="list-group-item"><strong>Address:</strong> {this.props.address}</li>
+          <li className="list-group-item"><strong>Primary Vet Name:</strong> {this.props.vetName}</li>
+          <li className="list-group-item"><strong>Primary Vet Phone:</strong> {this.props.vetPhone}</li>
         </ul>
       </div>
     );

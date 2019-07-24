@@ -57,13 +57,15 @@ class OwnerModal extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.updateDb(this.state.currentUserId);
+    this.closeModal();
   }
 
   updateDb = (userId) => {
     API.updatePet({ ...this.state, userId })
       .then(res => {
+        const ownerData = res.data;
         // ADD CODE TO SEND TO CARD HERE
-        console.log(res);
+        console.log(ownerData.ownerName);
       })
       .catch(err => console.log(err));
   }

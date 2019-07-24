@@ -1,26 +1,40 @@
-import React from "react";
+import React, {Component} from "react";
 import PetModal from "../Modals/PetModal";
+import Axios from "axios";
 
-function PetInfo(props) {
-  return (
-    <div className="card" id="pet-card">
-      <div className="card-body">
-        <h3 className="card-title">Pet Profile</h3>
-        <PetModal/>
+class PetInfo extends Component {
+
+  componentWillMount = (uid) => {
+    Axios.get(`/api/pets/${uid}`)
+    .then(res => {
+      // this.setState({ props.ownerData })
+      console.log(res)
+    });
+    // console.log(props);
+  }
+
+  render() {
+    return (
+      <div className="card" id="pet-card">
+        <div className="card-body">
+          <h3 className="card-title">Pet Profile</h3>
+          <PetModal/>
+        </div>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item"><strong>Name: </strong> {this.props.petName}</li>
+          <li className="list-group-item"><strong>Birthday: </strong> {this.props.birthday}</li>
+          <li className="list-group-item"><strong>Species: </strong> {this.props.species}</li>
+          <li className="list-group-item"><strong>Color: </strong> {this.props.color}</li>
+          <li className="list-group-item"><strong>Breed: </strong> {this.props.breed}</li>
+          <li className="list-group-item"><strong>Pet Sex: </strong> {this.props.sex}</li>
+          <li className="list-group-item"><strong>Weight: </strong> {this.props.weight}</li>
+          <li className="list-group-item"><strong>Rabies Tag#: </strong> {this.props.tag}</li>
+          <li className="list-group-item"><strong>Microchip#: </strong> {this.props.microchip}</li>
+        </ul>
       </div>
-      <ul className="list-group list-group-flush">
-        <li className="list-group-item">Name:{props.petName}</li>
-        <li className="list-group-item">Birthday:{props.birthday}</li>
-        <li className="list-group-item">Species:{props.species}</li>
-        <li className="list-group-item">Color:{props.color}</li>
-        <li className="list-group-item">Breed:{props.breed}</li>
-        <li className="list-group-item">Pet Sex:{props.sex}</li>
-        <li className="list-group-item">Weight:{props.weight}</li>
-        <li className="list-group-item">Rabies Tag#:{props.tag}</li>
-        <li className="list-group-item">Microchip#:{props.microchip}</li>
-      </ul>
-    </div>
-  );
-}
+    );
+  }
+  }
+
 
 export default PetInfo;
