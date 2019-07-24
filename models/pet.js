@@ -13,23 +13,37 @@ const petSchema = new Schema({
     vetEmail: String,
     vetAddress: String,
     date: { type: Date, default: Date.now },
-    pets: [{
-        name: String,
-        image: { data: Buffer, contentType: String },
-        birthday: { type: Date },
-        species: String,
-        color: String,
-        breed: String,
-        sex: String,
-        weight: Number,
-        rabiesTag: Number,
-        microchip: Number,
-        medications: Array,
-        inoculations: Array,
-        allergies: Array,
-        food: Array,
-        procedures: Array
-    }]
+    petName: String,
+    petImage: { data: Buffer, contentType: String },
+    petBirthday: String,
+    petColor: String,
+    petBreed: String,
+    petSex: String,
+    petWeight: Number,
+    petRabiesTag: Number,
+    petMicrochip: Number,
+    petMedications: Array,
+    petInoculations: Array,
+    petAllergies: Array,
+    petFood: Array,
+    petProcedures: Array
+    // pets: [{
+    //     name: String,
+    //     image: { data: Buffer, contentType: String },
+    //     birthday: { type: Date },
+    //     species: String,
+    //     color: String,
+    //     breed: String,
+    //     sex: String,
+    //     weight: Number,
+    //     rabiesTag: Number,
+    //     microchip: Number,
+    //     medications: Array,
+    //     inoculations: Array,
+    //     allergies: Array,
+    //     food: Array,
+    //     procedures: Array
+    // }]
 });
 
 const Pet = mongoose.model("Pet", petSchema);
