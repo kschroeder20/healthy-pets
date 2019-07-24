@@ -4,23 +4,23 @@ import './style.css';
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '40rem',
-    height: '40rem',
-    borderRadius: '10px'
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "40rem",
+    height: "40rem",
+    borderRadius: "10px"
   },
   overlay: {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgb(8, 5, 145, 0.6)'
+    backgroundColor: "rgb(8, 5, 145, 0.6)"
   }
 };
 
@@ -33,11 +33,11 @@ class MedicalModal extends Component {
 
     this.state = {
       modalIsOpen: false,
-      medication: '',
-      vaccines: '',
-      allergies: '',
-      food: '',
-      procedures: ''
+      medication: "",
+      vaccines: "",
+      allergies: "",
+      food: "",
+      procedures: ""
     };
 
     this.openModal = this.openModal.bind(this);
@@ -56,7 +56,7 @@ class MedicalModal extends Component {
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = 'rgb(8, 5, 145)';
+    this.subtitle.style.color = "rgb(8, 5, 145)";
   }
 
   closeModal() {
@@ -90,17 +90,14 @@ class MedicalModal extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // this.changeMedication();
-    // this.changeAllergies();
-    // this.changeFood();
-    // this.changeVaccines();
-    // this.changeProcedures();
   }
 
   render() {
     return (
       <div>
-        <button className="edit" onClick={this.openModal}>Edit</button>
+        <button className="edit" onClick={this.openModal}>
+          Edit
+        </button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -108,26 +105,67 @@ class MedicalModal extends Component {
           style={customStyles}
           contentLabel="Medical Modal"
         >
-
-          <h2 className="text-center" ref={subtitle => this.subtitle = subtitle}>Medical History</h2>
-          <form onSubmit={this.handleSubmit}>
+          <h2
+            className="text-center"
+            ref={subtitle => (this.subtitle = subtitle)}
+          >
+            Medical History
+          </h2>
+          <form onSubmit={this.handleSubmit} method="POST">
             <div className="form-group">
-              <input type="text" className="form-control" value={this.state.medication} onChange={this.changeMedication} placeholder="Medication List" />
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.medication}
+                onChange={this.changeMedication}
+                placeholder="Medication List"
+              />
             </div>
             <div className="form-group">
-              <input type="text" className="form-control" value={this.state.vaccines} onChange={this.changeVaccines} placeholder="Vaccines" />
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.vaccines}
+                onChange={this.changeVaccines}
+                placeholder="Vaccines"
+              />
             </div>
             <div className="form-group">
-              <input type="text" className="form-control" value={this.state.allergies} onChange={this.changeAllergies} placeholder="Allergies" />
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.allergies}
+                onChange={this.changeAllergies}
+                placeholder="Allergies"
+              />
             </div>
             <div className="form-group">
-              <input type="text" className="form-control" value={this.state.food} onChange={this.changeFood} placeholder="Food" />
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.food}
+                onChange={this.changeFood}
+                placeholder="Food"
+              />
             </div>
             <div className="form-group">
-              <input type="text" className="form-control" value={this.state.procedures} onChange={this.changeProcedures} placeholder="Procedures" />
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.procedures}
+                onChange={this.changeProcedures}
+                placeholder="Procedures"
+              />
             </div>
-            <input type="submit" value="Submit" color="primary" className="btn btn-primary" />
-            <button className="btn btn-danger" onClick={this.closeModal}>Close</button>
+            <input
+              type="submit"
+              value="Submit"
+              color="primary"
+              className="btn btn-primary"
+            />
+            <button className="btn btn-danger" onClick={this.closeModal}>
+              Close
+            </button>
           </form>
         </Modal>
       </div>

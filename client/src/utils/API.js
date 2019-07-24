@@ -14,7 +14,7 @@ export default {
     deletePet: (id) => {
         return axios.delete(`/api/pets/${id}`)
     },
-    updatePet: (id) => {
-        return axios.update(`/api/pets/${id}`)
+    updatePet: (info) => {
+        return axios.put(`/api/pets/${info.userId}`, info)
     }
 };

@@ -13,12 +13,12 @@ const customStyles = {
     height: '40rem'
   },
   overlay: {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgb(8, 5, 145, 0.6)'
+    backgroundColor: "rgb(8, 5, 145, 0.6)"
   }
 };
 
@@ -31,15 +31,15 @@ class PetModal extends Component {
 
     this.state = {
       modalIsOpen: false,
-      petName: '',
-      birthday: '',
-      species: '',
-      color: '',
-      breed: '',
-      sex: '',
-      weight: '',
-      rabies: '',
-      microChip: ''
+      petName: "",
+      birthday: "",
+      species: "",
+      color: "",
+      breed: "",
+      sex: "",
+      weight: "",
+      rabies: "",
+      microChip: ""
     };
 
     this.openModal = this.openModal.bind(this);
@@ -62,7 +62,7 @@ class PetModal extends Component {
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = 'rgb(8, 5, 145)';
+    this.subtitle.style.color = "rgb(8, 5, 145)";
   }
 
   closeModal() {
@@ -121,7 +121,9 @@ class PetModal extends Component {
   render() {
     return (
       <div>
-        <button className="edit" onClick={this.openModal}>Edit</button>
+        <button className="edit" onClick={this.openModal}>
+          Edit
+        </button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -129,38 +131,103 @@ class PetModal extends Component {
           style={customStyles}
           contentLabel="Pet Modal"
         >
-
-          <h2 className="text-center" ref={subtitle => this.subtitle = subtitle}>Pet Information</h2>
-          <form onSubmit={this.handleSubmit}>
+          <h2
+            className="text-center"
+            ref={subtitle => (this.subtitle = subtitle)}
+          >
+            Pet Information
+          </h2>
+          <form onSubmit={this.handleSubmit} method="POST">
             <div className="form-group">
-              <input type="text" className="form-control" value={this.state.petName} onChange={this.changePetName} placeholder="Pet Name" />
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.petName}
+                onChange={this.changePetName}
+                placeholder="Pet Name"
+              />
             </div>
             <div className="form-group">
-              <input type="date" className="form-control" value={this.state.birthday} onChange={this.changeBirthday} placeholder="Birthday MM/DD/YYYY" />
+              <input
+                type="date"
+                className="form-control"
+                value={this.state.birthday}
+                onChange={this.changeBirthday}
+                placeholder="Birthday MM/DD/YYYY"
+              />
             </div>
             <div className="form-group">
-              <input type="text" className="form-control" value={this.state.species} onChange={this.changeSpecies} placeholder="Species" />
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.species}
+                onChange={this.changeSpecies}
+                placeholder="Species"
+              />
             </div>
             <div className="form-group">
-              <input type="text" className="form-control" value={this.state.color} onChange={this.changeColor} placeholder="Color" />
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.color}
+                onChange={this.changeColor}
+                placeholder="Color"
+              />
             </div>
             <div className="form-group">
-              <input type="text" className="form-control" value={this.state.breed} onChange={this.changeBreed} placeholder="Breed" />
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.breed}
+                onChange={this.changeBreed}
+                placeholder="Breed"
+              />
             </div>
             <div className="form-group">
-              <input type="text" className="form-control" value={this.state.sex} onChange={this.changeSex} placeholder="Sex" />
+              <input
+                type="text"
+                className="form-control"
+                value={this.state.sex}
+                onChange={this.changeSex}
+                placeholder="Sex"
+              />
             </div>
             <div className="form-group">
-              <input type="number" className="form-control" value={this.state.weight} onChange={this.changeWeight} placeholder="Weight" />
+              <input
+                type="number"
+                className="form-control"
+                value={this.state.weight}
+                onChange={this.changeWeight}
+                placeholder="Weight"
+              />
             </div>
             <div className="form-group">
-              <input type="number" className="form-control" value={this.state.rabies} onChange={this.changeRabies} placeholder="Rabies Tag #" />
+              <input
+                type="number"
+                className="form-control"
+                value={this.state.rabies}
+                onChange={this.changeRabies}
+                placeholder="Rabies Tag #"
+              />
             </div>
             <div className="form-group">
-              <input type="number" className="form-control" value={this.state.microChip} onChange={this.changeMicroChip} placeholder="Microchip #" />
+              <input
+                type="number"
+                className="form-control"
+                value={this.state.microChip}
+                onChange={this.changeMicroChip}
+                placeholder="Microchip #"
+              />
             </div>
-            <input type="submit" value="Submit" color="primary" className="btn btn-primary" />
-            <button className="btn btn-danger" onClick={this.closeModal}>Close</button>
+            <input
+              type="submit"
+              value="Submit"
+              color="primary"
+              className="btn btn-primary"
+            />
+            <button className="btn btn-danger" onClick={this.closeModal}>
+              Close
+            </button>
           </form>
         </Modal>
       </div>
