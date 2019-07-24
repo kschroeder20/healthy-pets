@@ -26,7 +26,7 @@ module.exports = {
     update: function (req, res) {
         console.log(req.body);
         db.Pet
-            .findOneAndUpdate({ uid: req.body.uid }, req.body)
+            .findOneAndUpdate({ uid: req.body.userId }, req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },

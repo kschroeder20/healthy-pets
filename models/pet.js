@@ -3,18 +3,15 @@ const Schema = mongoose.Schema;
 
 const petSchema = new Schema({
     ownerName: { type: String, required: true },
-    name: String,
     homePhone: String,
     uid: String,
     mobilePhone: { type: String, required: true },
     email: { type: String, required: true },
     address: { type: String, required: true },
-    vetContact: {
-        name: String,
-        phone: Number,
-        email: String,
-        address: String,
-    },
+    vetName: String,
+    vetPhone: String,
+    vetEmail: String,
+    vetAddress: String,
     date: { type: Date, default: Date.now },
     pets: [{
         name: String,

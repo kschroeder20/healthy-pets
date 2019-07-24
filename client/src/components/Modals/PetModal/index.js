@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import API from "../../../utils/API";
 
 const customStyles = {
   content: {
@@ -28,32 +29,45 @@ Modal.setAppElement(document.getElementById('root'));
 class PetModal extends Component {
   constructor() {
     super();
-
-    this.state = {
-      modalIsOpen: false,
-      petName: "",
-      birthday: "",
-      species: "",
-      color: "",
-      breed: "",
-      sex: "",
-      weight: "",
-      rabies: "",
-      microChip: ""
-    };
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.changePetName = this.changePetName.bind(this);
-    this.changeBirthday = this.changeBirthday.bind(this);
-    this.changeSpecies = this.changeSpecies.bind(this);
-    this.changeColor = this.changeColor.bind(this);
-    this.changeBreed = this.changeBreed.bind(this);
-    this.changeSex = this.changeSex.bind(this);
-    this.changeWeight = this.changeWeight.bind(this);
-    this.changeRabies = this.changeRabies.bind(this);
-    this.changeMicroChip = this.changeMicroChip.bind(this);
+    this.state = {
+      name: '',
+      birthday: '',
+      species: '',
+      color: '',
+      breed: '',
+      sex: '',
+      weight: 0,
+      rabiesTag: 0,
+      microchip: 0,
+      currentUserId: ''
+
+    };
+  }
+
+  componentDidMount = () => {
+    const url = window.location.pathname;
+    const pathnameArr = url.split("/");
+    const userId = pathnameArr[pathnameArr.length - 1];
+    this.setState({ currentUserId: userId });
+  };
+
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.updateDb(this.state.currentUserId);
+  }
+
+  updateDb = (userId) => {
+    API.updatePet({ ...this.state, userId })
+      .then(res => {
+        // ADD CODE TO SEND TO CARD HERE
+        console.log(res);
+      })
+      .catch(err => console.log(err));
   }
 
   openModal() {
@@ -69,54 +83,11 @@ class PetModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  changePetName(event) {
-    this.setState({ petName: event.target.value });
-    console.log(`Pet Name: ${event.target.value}`);
-  }
-
-  changeBirthday(event) {
-    this.setState({ birthday: event.target.value });
-    console.log(`Birthday: ${event.target.value}`);
-  }
-
-  changeSpecies(event) {
-    this.setState({ species: event.target.value });
-    console.log(`Species: ${event.target.value}`);
-  }
-
-  changeColor(event) {
-    this.setState({ color: event.target.value });
-    console.log(`Color: ${event.target.value}`);
-  }
-
-  changeBreed(event) {
-    this.setState({ breed: event.target.value });
-    console.log(`breed: ${event.target.value}`);
-  }
-
-  changeSex(event) {
-    this.setState({ sex: event.target.value });
-    console.log(`sex: ${event.target.value}`);
-  }
-
-  changeWeight(event) {
-    this.setState({ weight: event.target.value });
-    console.log(`weight: ${event.target.value}`);
-  }
-
-  changeRabies(event) {
-    this.setState({ rabies: event.target.value });
-    console.log(`rabies: ${event.target.value}`);
-  }
-
-  changeMicroChip(event) {
-    this.setState({ microChip: event.target.value });
-    console.log(`microchip: ${event.target.value}`);
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
+  handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  };
 
   render() {
     return (
@@ -137,13 +108,14 @@ class PetModal extends Component {
           >
             Pet Information
           </h2>
-          <form onSubmit={this.handleSubmit} method="POST">
+          <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
-                value={this.state.petName}
-                onChange={this.changePetName}
+                value={this.state.name}
+                id="name"
+                onChange={this.handleChange}
                 placeholder="Pet Name"
               />
             </div>
@@ -152,7 +124,8 @@ class PetModal extends Component {
                 type="date"
                 className="form-control"
                 value={this.state.birthday}
-                onChange={this.changeBirthday}
+                id="birthday"
+                onChange={this.handleChange}
                 placeholder="Birthday MM/DD/YYYY"
               />
             </div>
@@ -161,7 +134,8 @@ class PetModal extends Component {
                 type="text"
                 className="form-control"
                 value={this.state.species}
-                onChange={this.changeSpecies}
+                id="species"
+                onChange={this.handleChange}
                 placeholder="Species"
               />
             </div>
@@ -170,7 +144,8 @@ class PetModal extends Component {
                 type="text"
                 className="form-control"
                 value={this.state.color}
-                onChange={this.changeColor}
+                id="color"
+                onChange={this.handleChange}
                 placeholder="Color"
               />
             </div>
@@ -179,7 +154,8 @@ class PetModal extends Component {
                 type="text"
                 className="form-control"
                 value={this.state.breed}
-                onChange={this.changeBreed}
+                id="breed"
+                onChange={this.handleChange}
                 placeholder="Breed"
               />
             </div>
@@ -188,7 +164,8 @@ class PetModal extends Component {
                 type="text"
                 className="form-control"
                 value={this.state.sex}
-                onChange={this.changeSex}
+                id="sex"
+                onChange={this.handleChange}
                 placeholder="Sex"
               />
             </div>
@@ -197,7 +174,8 @@ class PetModal extends Component {
                 type="number"
                 className="form-control"
                 value={this.state.weight}
-                onChange={this.changeWeight}
+                id="weight"
+                onChange={this.handleChange}
                 placeholder="Weight"
               />
             </div>
@@ -205,8 +183,9 @@ class PetModal extends Component {
               <input
                 type="number"
                 className="form-control"
-                value={this.state.rabies}
-                onChange={this.changeRabies}
+                value={this.state.rabiesTag}
+                id="rabiesTag"
+                onChange={this.handleChange}
                 placeholder="Rabies Tag #"
               />
             </div>
@@ -215,7 +194,8 @@ class PetModal extends Component {
                 type="number"
                 className="form-control"
                 value={this.state.microChip}
-                onChange={this.changeMicroChip}
+                id="microChip"
+                onChange={this.handleChange}
                 placeholder="Microchip #"
               />
             </div>
@@ -225,6 +205,7 @@ class PetModal extends Component {
               color="primary"
               className="btn btn-primary"
             />
+            <button className="btn btn-primary">Submit</button>
             <button className="btn btn-danger" onClick={this.closeModal}>
               Close
             </button>
