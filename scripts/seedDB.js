@@ -30,11 +30,11 @@ const petSeed = [
         petWeight: 0,
         petRabiesTag: 0,
         petMicrochip: 0,
-        petMedications: [],
-        petInoculations: [],
-        petAllergies: [],
-        petFood: [],
-        petProcedures: []
+        petMedications: "",
+        petInoculations: "",
+        petAllergies: "",
+        petFood: "",
+        petProcedures: ""
         // pets: [{
         //     name: 'Scooter',
         //     image: "",

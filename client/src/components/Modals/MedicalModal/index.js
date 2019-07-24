@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import './style.css';
+import API from "../../../utils/API";
+
 
 const customStyles = {
   content: {
@@ -25,29 +27,46 @@ const customStyles = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement(document.getElementById('root'));
+Modal.setAppElement(document.getElementById("root"));
 
 class MedicalModal extends Component {
   constructor() {
     super();
-
-    this.state = {
-      modalIsOpen: false,
-      medication: "",
-      vaccines: "",
-      allergies: "",
-      food: "",
-      procedures: ""
-    };
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.changeMedication = this.changeMedication.bind(this);
-    this.changeVaccines = this.changeVaccines.bind(this);
-    this.changeAllergies = this.changeVaccines.bind(this);
-    this.changeFood = this.changeFood.bind(this);
-    this.changeProcedures = this.changeProcedures.bind(this);
+
+    this.state = {
+    petMedications: "",
+    petInoculations: "",
+    petAllergies: "",
+    petFood: "",
+    petProcedures: "",
+    currentUserId: '',
+    };
+  }
+
+  componentDidMount = () => {
+    const url = window.location.pathname;
+    const pathnameArr = url.split("/");
+    const userId = pathnameArr[pathnameArr.length - 1];
+    this.setState({ currentUserId: userId });
+  };
+
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.updateDb(this.state.currentUserId);
+  }
+
+  updateDb = (userId) => {
+    API.updatePet({ ...this.state, userId })
+      .then(res => {
+        // ADD CODE TO SEND TO CARD HERE
+        console.log(res);
+      })
+      .catch(err => console.log(err));
   }
 
   openModal() {
@@ -63,34 +82,11 @@ class MedicalModal extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  changeMedication(event) {
-    console.log("medication is saved");
-    this.setState({ medication: event.target.value });
-  }
-
-  changeVaccines(event) {
-    console.log("vaccine is saved");
-    this.setState({ vaccines: event.target.value });
-  }
-
-  changeAllergies(event) {
-    console.log("allergies are saved");
-    this.setState({ allergies: event.target.value });
-  }
-
-  changeFood(event) {
-    console.log("food is saved");
-    this.setState({ food: event.target.value });
-  }
-
-  changeProcedures(event) {
-    console.log("procedures are saved");
-    this.setState({ procedures: event.target.value });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
+  handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  };
 
   render() {
     return (
@@ -111,13 +107,14 @@ class MedicalModal extends Component {
           >
             Medical History
           </h2>
-          <form onSubmit={this.handleSubmit} method="POST">
+          <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
-                value={this.state.medication}
-                onChange={this.changeMedication}
+                id="petMedications"
+                value={this.state.petMedications}
+                onChange={this.handleChange}
                 placeholder="Medication List"
               />
             </div>
@@ -125,17 +122,19 @@ class MedicalModal extends Component {
               <input
                 type="text"
                 className="form-control"
-                value={this.state.vaccines}
-                onChange={this.changeVaccines}
-                placeholder="Vaccines"
+                id="petInoculations"
+                value={this.state.petInoculations}
+                onChange={this.handleChange}
+                placeholder="Inoculations"
               />
             </div>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
-                value={this.state.allergies}
-                onChange={this.changeAllergies}
+                value={this.state.petAllergies}
+                id='petAllergies'
+                onChange={this.handleChange}
                 placeholder="Allergies"
               />
             </div>
@@ -143,8 +142,9 @@ class MedicalModal extends Component {
               <input
                 type="text"
                 className="form-control"
-                value={this.state.food}
-                onChange={this.changeFood}
+                value={this.state.petFood}
+                id="petFood"
+                onChange={this.handleChange}
                 placeholder="Food"
               />
             </div>
@@ -152,8 +152,9 @@ class MedicalModal extends Component {
               <input
                 type="text"
                 className="form-control"
-                value={this.state.procedures}
-                onChange={this.changeProcedures}
+                id="petProcedures"
+                value={this.state.petProcedures}
+                onChange={this.handleChange}
                 placeholder="Procedures"
               />
             </div>

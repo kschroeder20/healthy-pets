@@ -22,11 +22,11 @@ const petSchema = new Schema({
     petWeight: Number,
     petRabiesTag: Number,
     petMicrochip: Number,
-    petMedications: Array,
-    petInoculations: Array,
-    petAllergies: Array,
-    petFood: Array,
-    petProcedures: Array
+    petMedications: String,
+    petInoculations: String,
+    petAllergies: String,
+    petFood: String,
+    petProcedures: String
     // pets: [{
     //     name: String,
     //     image: { data: Buffer, contentType: String },
