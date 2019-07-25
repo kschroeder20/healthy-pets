@@ -17,7 +17,6 @@ export default class index extends Component {
     callbacks: {
       signInSuccess: () => {
         window.sessionStorage.setItem("userSignedIn", true);
-
         const user = firebase.auth().currentUser;
         let newUser = {};
         if (user != null) {
@@ -29,7 +28,6 @@ export default class index extends Component {
             // you have one. Use User.getToken() instead.
           };
         }
-
         this.determineRepeatUser(newUser);
 
         //console.log(newUser);
@@ -59,6 +57,7 @@ export default class index extends Component {
   determineRepeatUser = newUser => {
     API.getPetById(newUser.uid)
       .then(res => {
+        //console.log(res);
         res.data.length === 0
           ? this.createNewUser(newUser)
           : window.location.replace(`/profile/${newUser.uid}`);
@@ -67,14 +66,13 @@ export default class index extends Component {
   };
 
   createNewUser = user => {
-    console.log(user.name);
+    console.log(user)
     API.saveData({
       ownerName: user.name,
       email: user.email,
       uid: user.uid
     })
       .then(res => {
-        //console.log(res);
         window.location.replace(`/profile/${user.uid}`);
       })
       .catch(err => console.log(err));
