@@ -7,10 +7,8 @@ class PetInfo extends Component {
   componentWillMount = (uid) => {
     Axios.get(`/api/pets/${uid}`)
     .then(res => {
-      // this.setState({ props.ownerData })
       console.log(res)
     });
-    // console.log(props);
   }
 
   render() {

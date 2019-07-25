@@ -57,6 +57,7 @@ class PetModal extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.updateDb(this.state.currentUserId);
+    this.closeModal();
   }
 
   updateDb = (userId) => {

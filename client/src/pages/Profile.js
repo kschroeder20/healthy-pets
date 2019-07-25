@@ -59,7 +59,12 @@ class Profile extends Component {
                   address={this.state.user.address}
                   vetName={this.state.user.vetName}
                   vetPhone={this.state.user.vetPhone}/>
-                <Medical />
+                <Medical 
+                  medication={this.state.user.petMedications}
+                  vaccines={this.state.user.petInnoculations}
+                  allergies={this.state.user.petAllergies}
+                  food={this.state.user.petFood}
+                  procedures={this.state.user.petProcedures}/>
               </Col>
               <Col sm={4}></Col>
               <Col sm={4}>
