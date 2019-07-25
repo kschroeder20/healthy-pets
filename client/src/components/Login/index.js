@@ -83,11 +83,16 @@ export default class index extends Component {
   render() {
     return (
       <div className="container">
-        <StyledFirebaseAuth
-          uiConfig={this.uiConfig}
-          firebaseAuth={firebase.auth()}
+        <div className="col-4" id="login-container">
+          <StyledFirebaseAuth
+            uiConfig={this.uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
+        </div>
+        <img
+          src="http://www.capecodpetresort.com/wp-content/uploads/banner-pets-dog-cat-boarding-1000x451.png"
+          alt="pets"
         />
-        <img src="http://www.capecodpetresort.com/wp-content/uploads/banner-pets-dog-cat-boarding-1000x451.png" alt="pets" />
       </div>
     );
   }
