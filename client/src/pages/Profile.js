@@ -29,7 +29,7 @@ class Profile extends Component {
   getUserInfo = (userId) => {
     API.getPetById(userId)
       .then(res => {
-        this.setState({user: res.data[0]})
+        this.setState({ user: res.data[0] })
         console.log(this.state.user);
       })
       .catch(err => console.log(err));
@@ -51,24 +51,24 @@ class Profile extends Component {
           <Container>
             <Row>
               <Col sm={4}>
-                <OwnerInfo 
+                <OwnerInfo
                   owner={this.state.user.ownerName}
                   homePhone={this.state.user.homePhone}
                   mobilePhone={this.state.user.mobilePhone}
                   email={this.state.user.email}
                   address={this.state.user.address}
                   vetName={this.state.user.vetName}
-                  vetPhone={this.state.user.vetPhone}/>
-                <Medical 
-                  medication={this.state.user.petMedications}
-                  vaccines={this.state.user.petInnoculations}
+                  vetPhone={this.state.user.vetPhone} />
+                <Medical
+                  medications={this.state.user.petMedications}
+                  vaccines={this.state.user.petInoculations}
                   allergies={this.state.user.petAllergies}
                   food={this.state.user.petFood}
-                  procedures={this.state.user.petProcedures}/>
+                  procedures={this.state.user.petProcedures} />
               </Col>
               <Col sm={4}></Col>
               <Col sm={4}>
-                <PetInfo 
+                <PetInfo
                   petName={this.state.user.petName}
                   birthday={this.state.user.petBirthday}
                   species={this.state.user.petSpecies}
@@ -77,7 +77,7 @@ class Profile extends Component {
                   sex={this.state.user.petSex}
                   weight={this.state.user.petWeight}
                   tag={this.state.user.petRabiesTag}
-                  microchip={this.state.user.petMicrochip}/>
+                  microchip={this.state.user.petMicroChip} />
               </Col>
             </Row>
           </Container>

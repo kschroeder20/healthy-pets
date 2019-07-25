@@ -35,13 +35,14 @@ class PetModal extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.state = {
       petName: "",
-      petBirthday: 0,
+      petBirthday: '',
       petColor: "",
       petBreed: "",
       petSex: "",
+      petSpecies: '',
       petWeight: 0,
       petRabiesTag: 0,
-      petMicrochip: 0,
+      petMicroChip: 0,
       currentUserId: ''
     };
   }
@@ -50,7 +51,23 @@ class PetModal extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    this.setState({ currentUserId: userId });
+
+    API.getPetById(userId)
+      .then(res => {
+        this.setState({
+          petName: res.data[0].petName,
+          petBirthday: res.data[0].petBirthday,
+          petColor: res.data[0].petColor,
+          petBreed: res.data[0].petBreed,
+          petSex: res.data[0].petSex,
+          petSpecies: res.data[0].petSpecies,
+          petWeight: res.data[0].petWeight,
+          petRabiesTag: res.data[0].petRabiesTag,
+          petMicroChip: res.data[0].petMicroChip,
+          currentUserId: res.data[0].uid
+        });
+      })
+      .catch(err => console.log(err));
   };
 
 
@@ -63,8 +80,7 @@ class PetModal extends Component {
   updateDb = (userId) => {
     API.updatePet({ ...this.state, userId })
       .then(res => {
-        // ADD CODE TO SEND TO CARD HERE
-        console.log(res);
+        console.log(res.data)
       })
       .catch(err => console.log(err));
   }
@@ -80,6 +96,7 @@ class PetModal extends Component {
 
   closeModal() {
     this.setState({ modalIsOpen: false });
+    window.location.reload();
   }
 
   handleChange = e => {
@@ -125,7 +142,7 @@ class PetModal extends Component {
                 value={this.state.petBirthday}
                 id="petBirthday"
                 onChange={this.handleChange}
-                placeholder="Birthday MM/DD/YYYY"
+                placeholder="00/00/0000"
               />
             </div>
             <div className="form-group">
