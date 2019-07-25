@@ -38,12 +38,12 @@ class MedicalModal extends Component {
     this.closeModal = this.closeModal.bind(this);
 
     this.state = {
-    petMedications: [],
-    petInoculations: [],
-    petAllergies: "",
-    petFood: [],
-    petProcedures: [],
-    currentUserId: '',
+      petMedications: "",
+      petInoculations: "",
+      petAllergies: "",
+      petFood: "",
+      petProcedures: "",
+      currentUserId: '',
     };
   }
 
@@ -51,7 +51,18 @@ class MedicalModal extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    this.setState({ currentUserId: userId });
+    API.getPetById(userId)
+      .then(res => {
+        this.setState({
+          petMedications: res.data[0].petMedications,
+          petInoculations: res.data[0].petInoculations,
+          petAllergies: res.data[0].petAllergies,
+          petFood: res.data[0].petFood,
+          petProcedures: res.data[0].petProcedures,
+          currentUserId: res.data[0].uid
+        });
+      })
+      .catch(err => console.log(err));
   };
 
 
@@ -81,6 +92,7 @@ class MedicalModal extends Component {
 
   closeModal() {
     this.setState({ modalIsOpen: false });
+    window.location.reload();
   }
 
   handleChange = e => {

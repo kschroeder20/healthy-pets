@@ -50,7 +50,20 @@ class OwnerModal extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    this.setState({ currentUserId: userId });
+    API.getPetById(userId)
+      .then(res => {
+        this.setState({
+          ownerName: res.data[0].ownerName,
+          homePhone: res.data[0].homePhone,
+          mobilePhone: res.data[0].mobilePhone,
+          email: res.data[0].email,
+          address: res.data[0].address,
+          vetName: res.data[0].vetName,
+          vetPhone: res.data[0].vetPhone,
+          currentUserId: res.data[0].uid
+        });
+      })
+      .catch(err => console.log(err));
   };
 
 
@@ -81,6 +94,7 @@ class OwnerModal extends Component {
 
   closeModal() {
     this.setState({ modalIsOpen: false });
+    window.location.reload();
   }
 
   handleChange = e => {
