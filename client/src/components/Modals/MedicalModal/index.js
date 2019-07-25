@@ -22,7 +22,7 @@ const customStyles = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgb(8, 5, 145, 0.6)"
+    backgroundColor: "rgb(12, 6, 102, 0.6)"
   }
 };
 
