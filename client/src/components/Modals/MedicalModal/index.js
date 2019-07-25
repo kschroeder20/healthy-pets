@@ -38,11 +38,11 @@ class MedicalModal extends Component {
     this.closeModal = this.closeModal.bind(this);
 
     this.state = {
-    petMedications: "",
-    petInoculations: "",
+    petMedications: [],
+    petInoculations: [],
     petAllergies: "",
-    petFood: "",
-    petProcedures: "",
+    petFood: [],
+    petProcedures: [],
     currentUserId: '',
     };
   }
@@ -58,13 +58,14 @@ class MedicalModal extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.updateDb(this.state.currentUserId);
+    this.closeModal();
   }
 
   updateDb = (userId) => {
     API.updatePet({ ...this.state, userId })
       .then(res => {
         // ADD CODE TO SEND TO CARD HERE
-        console.log(res);
+        console.log(res.data);
       })
       .catch(err => console.log(err));
   }
