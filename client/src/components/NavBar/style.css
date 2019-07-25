@@ -1,3 +1,7 @@
 .navbar-brand {
-    font-family: 'Fascinate', cursive;
+    font-family: 'Fredoka One', cursive;
+}
+
+.nav-item {
+    font-family: 'Nunito', sans-serif;
 }
