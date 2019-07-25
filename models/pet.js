@@ -1,39 +1,52 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const bookSchema = new Schema({
+const petSchema = new Schema({
     ownerName: { type: String, required: true },
-    name: String,
     homePhone: String,
+    uid: String,
     mobilePhone: { type: String, required: true },
     email: { type: String, required: true },
     address: { type: String, required: true },
-    vetContact: {
-        name: String,
-        phone: Number,
-        email: String,
-        address: String,
-    },
+    vetName: String,
+    vetPhone: String,
+    vetEmail: String,
+    vetAddress: String,
     date: { type: Date, default: Date.now },
-    dogs: [{
-        name: String,
-        image: { data: Buffer, contentType: String },
-        birthday: { type: Date },
-        species: String,
-        color: String,
-        breed: String,
-        sex: String,
-        weight: Number,
-        rabiesTag: Number,
-        microchip: Number,
-        medications: Array,
-        inoculations: Array,
-        allergies: Array,
-        food: Array,
-        procedures: Array
-    }]
+    petName: String,
+    petImage: { data: Buffer, contentType: String },
+    petBirthday: String,
+    petColor: String,
+    petBreed: String,
+    petSpecies: String,
+    petSex: String,
+    petWeight: Number,
+    petRabiesTag: Number,
+    petMicroChip: Number,
+    petMedications: String,
+    petInoculations: String,
+    petAllergies: String,
+    petFood: String,
+    petProcedures: String
+    // pets: [{
+    //     name: String,
+    //     image: { data: Buffer, contentType: String },
+    //     birthday: { type: Date },
+    //     species: String,
+    //     color: String,
+    //     breed: String,
+    //     sex: String,
+    //     weight: Number,
+    //     rabiesTag: Number,
+    //     microchip: Number,
+    //     medications: Array,
+    //     inoculations: Array,
+    //     allergies: Array,
+    //     food: Array,
+    //     procedures: Array
+    // }]
 });
 
-const Book = mongoose.model("Book", bookSchema);
+const Pet = mongoose.model("Pet", petSchema);
 
-module.exports = Book;
+module.exports = Pet;

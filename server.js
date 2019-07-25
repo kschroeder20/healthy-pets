@@ -1,11 +1,12 @@
-const express = require("express");
+require('dotenv').config()
 
+const express = require("express");
 const mongoose = require("mongoose");
-const routes = require("./routes/api");
+const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const config = require('./config/config.json');
+//const config = require('./config/config.json');
 
 
 // Define middleware here
@@ -19,7 +20,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 //Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || `mongodb://${config.database.dbName}:${config.database.dbpass}@ds351987.mlab.com:51987/heroku_wm2lrfp9`, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 // Start the API server
 app.listen(PORT, function () {

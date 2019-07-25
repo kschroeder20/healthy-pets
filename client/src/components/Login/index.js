@@ -1,50 +1,94 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import SignInWidget from '../SignInWidget';
-import { withAuth } from '@okta/okta-react';
+import firebase from "firebase";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import API from "../../utils/API.js";
 
-export default withAuth(
-    class Login extends Component {
-        constructor(props) {
-            super(props);
-            this.state = {
-                authenticated: null
-            };
-            this.checkAuthentication();
-        }
+export default class index extends Component {
+    state = {
+        isSignedIn: false
+    }
+    uiConfig = {
+        signInFlow: "popup",
+        signInOptions: [
+            firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        callbacks: {
+            signInSuccess: () => {
+                window.sessionStorage.setItem('userSignedIn', true);
 
-        async checkAuthentication() {
-            const authenticated = await this.props.auth.isAuthenticated();
-            if (authenticated !== this.state.authenticated) {
-                this.setState({ authenticated });
+                const user = firebase.auth().currentUser;
+                let newUser = {};
+                if (user != null) {
+                    newUser = {
+                        name: user.displayName,
+                        email: user.email,
+                        uid: user.uid,  // The user's ID, unique to the Firebase project. Do NOT use
+                        // this value to authenticate with your backend server, if
+                        // you have one. Use User.getToken() instead.
+                    }
+                }
+
+                this.determineRepeatUser(newUser);
+
+                //console.log(newUser);
+
+
+
+
+
+
             }
         }
-
-        componentDidUpdate() {
-            this.checkAuthentication();
-        }
-
-        onSuccess = res => {
-            return this.props.auth.redirect({
-                sessionToken: res.session.token
-            });
-        };
-
-        onError = err => {
-            console.log('error logging in', err);
-        };
-
-        render() {
-            if (this.state.authenticated === null) return null;
-            return this.state.authenticated ? (
-                <Redirect to={{ pathname: '/' }} />
-            ) : (
-                    <SignInWidget
-                        baseUrl={this.props.baseUrl}
-                        onSuccess={this.onSuccess}
-                        onError={this.onError}
-                    />
-                );
-        }
     }
-);
+
+
+
+    // editOwnerWithId = () => {
+    //     const user = JSON.parse(window.sessionStorage.getItem('user'));
+    //     const userId = user.uid;
+    //     API.updatePet(userId)
+    //         .then(res => {
+    //             console.log(res.data);
+    //         })
+    //         .catch(err => console.log(err));
+    // }
+
+    componentDidMount = () => {
+        firebase.auth().onAuthStateChanged(user => {
+            this.setState({ isSignedIn: !!user })
+            // window.sessionStorage.setItem('userName', JSON.stringify(user.displayName));
+            // window.sessionStorage.setItem('userEmail', JSON.stringify(user.email));
+            // window.sessionStorage.setItem('userId', JSON.stringify(user.uid))
+        })
+    }
+
+    determineRepeatUser = (newUser) => {
+        API.getPetById(newUser.uid)
+            .then(res => {
+                (res.data.length === 0) ? this.createNewUser(newUser) : window.location.replace(`/profile/${newUser.uid}`)
+            }).catch(err => console.log(err))
+    }
+
+    createNewUser = (user) => {
+        console.log(user.name);
+        API.saveData({
+            ownerName: user.name,
+            email: user.email,
+            uid: user.uid
+        })
+            .then(res => {
+                //console.log(res);
+                window.location.replace(`/profile/${user.uid}`)
+            }).catch(err => console.log(err))
+    }
+
+    render() {
+        return (
+            <StyledFirebaseAuth
+                uiConfig={this.uiConfig}
+                firebaseAuth={firebase.auth()}
+            />
+        )
+    }
+}
