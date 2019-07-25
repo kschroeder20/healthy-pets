@@ -45,8 +45,8 @@ class Profile extends Component {
     return (
       <div>
         <NavBar />
-        <h1>Welcome {currentUserName}</h1>
-        <p>Email: {currentUserEmail}</p>
+        {/* <h1>Welcome {currentUserName}</h1>
+        <p>Email: {currentUserEmail}</p> */}
         <div>
           <Container>
             <Row>
