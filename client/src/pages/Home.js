@@ -17,8 +17,10 @@ class Home extends Component {
     return (
       <div>
         <NavBar />
-        <Title />
-        <PetCarousel />
+        <div className="container">
+          <Title />
+          <PetCarousel />
+        </div>
       </div>
     );
   }

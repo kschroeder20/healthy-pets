@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const petSchema = new Schema({
-    ownerName: { type: String, required: true },
+    ownerName: String,
     homePhone: String,
     uid: String,
-    mobilePhone: { type: String, required: true },
-    email: { type: String, required: true },
-    address: { type: String, required: true },
+    mobilePhone: String,
+    email: String,
+    address: String,
     vetName: String,
     vetPhone: String,
     vetEmail: String,
