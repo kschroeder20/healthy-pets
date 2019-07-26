@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import OwnerInfo from "../components/OwnerInfo";
-import PetInfo from "../components/PetInfo";
-import Medical from "../components/MedicalHistory";
+import OwnerInfo from "../components/Cards/OwnerInfo";
+import PetInfo from "../components/Cards/PetInfo";
+import Medical from "../components/Cards/MedicalHistory";
 import NavBar from "../components/NavBar";
 import { Container, Row, Col } from "react-grid-system";
 import API from "../utils/API";

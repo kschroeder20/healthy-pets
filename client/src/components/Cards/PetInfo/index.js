@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import PetModal from "../Modals/PetModal";
+import PetModal from "../../Modals/PetModal";
 import Axios from "axios";
 
 class PetInfo extends Component {
@@ -14,8 +14,8 @@ class PetInfo extends Component {
         render() {
         return (
         <div className="card" id="pet-card">
-        <div className="card-body">
-          <h3 className="card-title">Pet Profile</h3>
+        <div className="card-body text-center">
+          <h3 className="card-title"><strong>Pet Profile</strong></h3>
           <PetModal/>
         </div>
         <ul className="list-group list-group-flush">
