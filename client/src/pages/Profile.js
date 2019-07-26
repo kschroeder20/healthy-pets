@@ -3,6 +3,7 @@ import OwnerInfo from "../components/Cards/OwnerInfo";
 import PetInfo from "../components/Cards/PetInfo";
 import Medical from "../components/Cards/MedicalHistory";
 import NavBar from "../components/NavBar";
+import DownloadPDF from "../components/DownloadPDF";
 import { Container, Row, Col } from "react-grid-system";
 import API from "../utils/API";
 
@@ -41,12 +42,7 @@ class Profile extends Component {
     this.setState({ isSignedIn: false })
   }
 
-  downloadPDF = () => {
-    cp.exect('ls -l', this.state.user, (err, stdout, stderr) => {
-      console.log("this did something");
-      console.log(stdout)
-    })
-  }
+
 
 
 
@@ -72,6 +68,7 @@ class Profile extends Component {
         <p>Email: {currentUserEmail}</p> */}
         <div>
           <Container>
+            <DownloadPDF />
             <Row>
               <Col sm={4}>
                 <OwnerInfo

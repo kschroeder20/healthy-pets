@@ -16,5 +16,8 @@ export default {
     },
     updatePet: (info) => {
         return axios.put(`/api/pets/${info.userId}`, info)
+    },
+    downloadPDF: (id) => {
+        return axios.get(`/api/pdf/${id}`)
     }
 };
