@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import OwnerModal from "../Modals/OwnerModal";
+import OwnerModal from "../../Modals/OwnerModal";
 import Axios from "axios";
+import "./style.css";
 
 class OwnerInfo extends Component {
   // constructor(props){
@@ -22,8 +23,8 @@ class OwnerInfo extends Component {
   render () {
     return (
       <div className="card">
-        <div className="card-body">
-          <h3 className="card-title">Owner Profile</h3>
+        <div className="card-body text-center">
+          <h3 className="card-title"><strong>Owner Profile</strong></h3>
           <OwnerModal/>
         </div>
         <ul className="list-group list-group-flush">

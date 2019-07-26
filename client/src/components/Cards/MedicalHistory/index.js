@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./style.css";
-import MedicalModal from "../Modals/MedicalModal";
+import MedicalModal from "../../Modals/MedicalModal";
 import Axios from "axios";
 
 class Medical extends Component {
@@ -17,8 +17,8 @@ class Medical extends Component {
   render () {
     return (
       <div className="card">
-        <div className="card-body">
-          <h3 className="card-title">Medical History</h3>
+        <div className="card-body text-center">
+          <h3 className="card-title"><strong>Medical History</strong></h3>
           <MedicalModal />
         </div>
         <ul className="list-group list-group-flush">
