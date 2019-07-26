@@ -18,6 +18,6 @@ export default {
         return axios.put(`/api/pets/${info.userId}`, info)
     },
     downloadPDF: (id) => {
-        return axios.get(`/api/pdf/${id}`)
+        return axios.get(`/api/pets/${id}/pdf`)
     }
 };
