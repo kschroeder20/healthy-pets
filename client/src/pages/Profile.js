@@ -6,6 +6,8 @@ import NavBar from "../components/NavBar";
 import { Container, Row, Col } from "react-grid-system";
 import API from "../utils/API";
 
+const cp = require('child_process');
+
 class Profile extends Component {
   state = {
     currentUserName: "",
@@ -38,6 +40,27 @@ class Profile extends Component {
   handleLogout = (e) => {
     this.setState({ isSignedIn: false })
   }
+
+  downloadPDF = () => {
+    cp.exect('ls -l', this.state.user, (err, stdout, stderr) => {
+      console.log("this did something");
+      console.log(stdout)
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   render() {
     const { currentUserEmail, currentUserName } = this.state;
