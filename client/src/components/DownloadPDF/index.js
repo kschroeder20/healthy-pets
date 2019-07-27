@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 
+//const fs = require('fs');
+//const download = require('download');
+
 
 export default class index extends Component {
   state = {
@@ -31,13 +34,14 @@ export default class index extends Component {
     API.downloadPDF('1')
     .then(function (response) {
       // handle success
-      console.log(response);
+//       download('http://unicorn.com/foo.jpg', 'dist').then(() => {
+//     console.log('done!');
+// });
     })
     .catch(function (error) {
       // handle error
       console.log(error);
     })
-  
   }
   
   render() {
