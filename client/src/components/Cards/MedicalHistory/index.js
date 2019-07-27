@@ -5,21 +5,23 @@ import Axios from "axios";
 
 class Medical extends Component {
 
-  componentWillMount = (uid) => {
-    Axios.get(`/api/pets/${uid}`)
-    .then(res => {
-      // this.setState({ props.ownerData })
-      console.log(res)
+  componentWillMount = uid => {
+    Axios.get(`/api/pets/${uid}`).then(res => {
+      console.log(res);
     });
-    // console.log(props);
-  }
+  };
+
+  updatedModal = () => {
+    console.log('update state')
+    this.props.getUserInfo(this.props.uid);
+  };
 
   render () {
     return (
       <div className="card">
         <div className="card-body text-center">
           <h3 className="card-title"><strong>Medical History</strong></h3>
-          <MedicalModal />
+          <MedicalModal modalUpdate={this.updatedModal}/>
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item"><strong>Medications: </strong>{this.props.medications}</li>
