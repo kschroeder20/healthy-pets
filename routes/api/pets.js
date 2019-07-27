@@ -13,4 +13,8 @@ router
     .put(petsController.update)
     .delete(petsController.remove);
 
+router
+    .route("/:id/pdf")
+    .get(petsController.downloadPDF)
+
 module.exports = router;

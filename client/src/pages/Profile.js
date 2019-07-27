@@ -3,8 +3,11 @@ import OwnerInfo from "../components/Cards/OwnerInfo";
 import PetInfo from "../components/Cards/PetInfo";
 import Medical from "../components/Cards/MedicalHistory";
 import NavBar from "../components/NavBar";
+import DownloadPDF from "../components/DownloadPDF";
 import { Container, Row, Col } from "react-grid-system";
 import API from "../utils/API";
+
+const cp = require('child_process');
 
 class Profile extends Component {
   state = {
@@ -39,6 +42,22 @@ class Profile extends Component {
     this.setState({ isSignedIn: false })
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   render() {
     const { currentUserEmail, currentUserName } = this.state;
 
@@ -49,6 +68,7 @@ class Profile extends Component {
         <p>Email: {currentUserEmail}</p> */}
         <div>
           <Container>
+            <DownloadPDF />
             <Row>
               <Col sm={4}>
                 <OwnerInfo
