@@ -5,3 +5,7 @@
 .nav-item {
     font-family: 'Nunito', sans-serif;
 }
+
+.navbar {
+    margin-bottom: 0!important;
+}

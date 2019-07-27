@@ -3,9 +3,11 @@ import OwnerInfo from "../components/Cards/OwnerInfo";
 import PetInfo from "../components/Cards/PetInfo";
 import Medical from "../components/Cards/MedicalHistory";
 import NavBar from "../components/NavBar";
+import PetNav from "../components/PetNav";
 import DownloadPDF from "../components/DownloadPDF";
 import { Container, Row, Col } from "react-grid-system";
 import API from "../utils/API";
+import CalendarComponent from "../components/Calendar";
 
 const cp = require('child_process');
 
@@ -22,7 +24,7 @@ class Profile extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split('/');
     const userId = pathnameArr[pathnameArr.length - 1];
-    console.log(userId);
+    // console.log(userId);
     this.setState({ currentUserId: userId }, () => this.getUserInfo(userId));
     //console.log(this.state)
 
@@ -33,7 +35,7 @@ class Profile extends Component {
     API.getPetById(userId)
       .then(res => {
         this.setState({ user: res.data[0] })
-        console.log(this.state.user);
+        // console.log(this.state.user);
       })
       .catch(err => console.log(err));
   }
@@ -42,30 +44,13 @@ class Profile extends Component {
     this.setState({ isSignedIn: false })
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   render() {
     const { currentUserEmail, currentUserName } = this.state;
 
     return (
       <div>
         <NavBar />
-        {/* <h1>Welcome {currentUserName}</h1>
-        <p>Email: {currentUserEmail}</p> */}
+        <PetNav />
         <div>
           <Container>
             <DownloadPDF />
@@ -86,7 +71,9 @@ class Profile extends Component {
                   food={this.state.user.petFood}
                   procedures={this.state.user.petProcedures} />
               </Col>
-              <Col sm={4}></Col>
+              <Col sm={4}>
+                <CalendarComponent />
+              </Col>
               <Col sm={4}>
                 <PetInfo
                   petName={this.state.user.petName}
@@ -105,38 +92,6 @@ class Profile extends Component {
       </div>
     );
   }
-  // componentDidMount() {
-  //   const idToken = JSON.parse(localStorage.getItem("okta-token-storage"));
-  //   this.setState({
-  //     currentUserEmail: idToken.idToken.claims.email,
-  //     currentUserName: idToken.idToken.claims.name
-  //   });
-  // }
-  // render() {
-  //   const { currentUserEmail, currentUserName } = this.state;
-  //   return (
-  //     <div>
-  //       <div className="profile-welcome text-center">
-  //         <h1>Welcome {currentUserName}!</h1>
-  //         <p>Email: {currentUserEmail}</p>
-  //       </div>
-  //       <div>
-  //         <Container>
-  //           <Row>
-  //             <Col sm={4}>
-  //               <OwnerInfo />
-  //               <Medical />
-  //             </Col>
-  //             <Col sm={4} />
-  //             <Col sm={4}>
-  //               <PetInfo />
-  //             </Col>
-  //           </Row>
-  //         </Container>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 }
 
 export default Profile;
