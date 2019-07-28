@@ -36,5 +36,27 @@ module.exports = {
             .then(dbModel => dbModel.remove())
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+    },
+    downloadPDF: function (req, res) {
+        //console.log("HERE")
+            //var jsonData = '{ property: abc }';
+            var spawn = require('child_process').spawn;
+            var child = spawn('ruby', ['client/src/components/downloadPDF/pdf.rb']);
+            var pdf = '';
+          
+            var chunks = [];
+          
+            child.stdout.on('data', function(data) {
+              // insert error check here...
+              // console.log("here")
+              chunks.push(data);
+            });
+            child.on('close', function() {
+              var pdf = Buffer.concat(chunks);
+              console.log(pdf)
+              res.setHeader('Content-Type', 'application/pdf');
+              res.send(pdf);
+            });
+          
     }
 };

@@ -3,9 +3,17 @@ import OwnerInfo from "../components/Cards/OwnerInfo";
 import PetInfo from "../components/Cards/PetInfo";
 import Medical from "../components/Cards/MedicalHistory";
 import NavBar from "../components/NavBar";
+<<<<<<< HEAD
 import PhotoUpload from "../components/PhotoUpload";
+=======
+import PetNav from "../components/PetNav";
+import DownloadPDF from "../components/DownloadPDF";
+>>>>>>> cf90c6064a32f9a281c6f0c5e0723614071baf94
 import { Container, Row, Col } from "react-grid-system";
 import API from "../utils/API";
+import CalendarComponent from "../components/Calendar";
+
+const cp = require('child_process');
 
 class Profile extends Component {
   state = {
@@ -20,7 +28,7 @@ class Profile extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    console.log(userId);
+    // console.log(userId);
     this.setState({ currentUserId: userId }, () => this.getUserInfo(userId));
     //console.log(this.state)
 
@@ -30,8 +38,13 @@ class Profile extends Component {
   getUserInfo = userId => {
     API.getPetById(userId)
       .then(res => {
+<<<<<<< HEAD
         this.setState({ user: res.data[0] });
         console.log(this.state.user);
+=======
+        this.setState({ user: res.data[0] })
+        // console.log(this.state.user);
+>>>>>>> cf90c6064a32f9a281c6f0c5e0723614071baf94
       })
       .catch(err => console.log(err));
   };
@@ -46,10 +59,10 @@ class Profile extends Component {
     return (
       <div>
         <NavBar />
-        {/* <h1>Welcome {currentUserName}</h1>
-        <p>Email: {currentUserEmail}</p> */}
+        <PetNav />
         <div>
           <Container>
+            <DownloadPDF />
             <Row>
               <Col sm={4}>
                 <OwnerInfo
@@ -69,7 +82,13 @@ class Profile extends Component {
                   procedures={this.state.user.petProcedures}
                 />
               </Col>
+<<<<<<< HEAD
               <Col sm={4} />
+=======
+              <Col sm={4}>
+                <CalendarComponent />
+              </Col>
+>>>>>>> cf90c6064a32f9a281c6f0c5e0723614071baf94
               <Col sm={4}>
                 <PetInfo
                   petName={this.state.user.petName}
@@ -90,38 +109,6 @@ class Profile extends Component {
       </div>
     );
   }
-  // componentDidMount() {
-  //   const idToken = JSON.parse(localStorage.getItem("okta-token-storage"));
-  //   this.setState({
-  //     currentUserEmail: idToken.idToken.claims.email,
-  //     currentUserName: idToken.idToken.claims.name
-  //   });
-  // }
-  // render() {
-  //   const { currentUserEmail, currentUserName } = this.state;
-  //   return (
-  //     <div>
-  //       <div className="profile-welcome text-center">
-  //         <h1>Welcome {currentUserName}!</h1>
-  //         <p>Email: {currentUserEmail}</p>
-  //       </div>
-  //       <div>
-  //         <Container>
-  //           <Row>
-  //             <Col sm={4}>
-  //               <OwnerInfo />
-  //               <Medical />
-  //             </Col>
-  //             <Col sm={4} />
-  //             <Col sm={4}>
-  //               <PetInfo />
-  //             </Col>
-  //           </Row>
-  //         </Container>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 }
 
 export default Profile;
