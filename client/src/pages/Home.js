@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Title from "../components/Title";
 import NavBar from "../components/NavBar";
 import PetCarousel from "../components/Carousel";
+import PhotoUpload from "../components/PhotoUpload";
 import "./style.css";
-
 
 // rt default withAuth(
 class Home extends Component {
