@@ -3,6 +3,7 @@ import OwnerInfo from "../components/Cards/OwnerInfo";
 import PetInfo from "../components/Cards/PetInfo";
 import Medical from "../components/Cards/MedicalHistory";
 import NavBar from "../components/NavBar";
+import PhotoUpload from "../components/PhotoUpload";
 import { Container, Row, Col } from "react-grid-system";
 import API from "../utils/API";
 
@@ -11,33 +12,33 @@ class Profile extends Component {
     currentUserName: "",
     currentUserEmail: "",
     currentUserId: 0,
-    isSignedIn: '',
+    isSignedIn: "",
     user: {}
   };
 
   componentDidMount = () => {
     const url = window.location.pathname;
-    const pathnameArr = url.split('/');
+    const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
     console.log(userId);
     this.setState({ currentUserId: userId }, () => this.getUserInfo(userId));
     //console.log(this.state)
 
     //this.getUserInfo();
-  }
+  };
 
-  getUserInfo = (userId) => {
+  getUserInfo = userId => {
     API.getPetById(userId)
       .then(res => {
-        this.setState({ user: res.data[0] })
+        this.setState({ user: res.data[0] });
         console.log(this.state.user);
       })
       .catch(err => console.log(err));
-  }
+  };
 
-  handleLogout = (e) => {
-    this.setState({ isSignedIn: false })
-  }
+  handleLogout = e => {
+    this.setState({ isSignedIn: false });
+  };
 
   render() {
     const { currentUserEmail, currentUserName } = this.state;
@@ -58,15 +59,17 @@ class Profile extends Component {
                   email={this.state.user.email}
                   address={this.state.user.address}
                   vetName={this.state.user.vetName}
-                  vetPhone={this.state.user.vetPhone} />
+                  vetPhone={this.state.user.vetPhone}
+                />
                 <Medical
                   medications={this.state.user.petMedications}
                   vaccines={this.state.user.petInoculations}
                   allergies={this.state.user.petAllergies}
                   food={this.state.user.petFood}
-                  procedures={this.state.user.petProcedures} />
+                  procedures={this.state.user.petProcedures}
+                />
               </Col>
-              <Col sm={4}></Col>
+              <Col sm={4} />
               <Col sm={4}>
                 <PetInfo
                   petName={this.state.user.petName}
@@ -77,7 +80,9 @@ class Profile extends Component {
                   sex={this.state.user.petSex}
                   weight={this.state.user.petWeight}
                   tag={this.state.user.petRabiesTag}
-                  microchip={this.state.user.petMicroChip} />
+                  microchip={this.state.user.petMicroChip}
+                />
+                <PhotoUpload />
               </Col>
             </Row>
           </Container>

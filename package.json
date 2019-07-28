@@ -11,6 +11,8 @@
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
+    "filestack-js": "^3.5.0",
+    "filestack-react": "^3.0.1",
     "firebase": "^6.3.0",
     "googleapis": "^39.2.0",
     "if-env": "^1.0.4",
