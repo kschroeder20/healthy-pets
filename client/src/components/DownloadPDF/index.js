@@ -16,35 +16,18 @@ export default class index extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    this.setState({ currentUserId: userId }, () => this.downloadPDF(this.state.currentUserId));
+    this.setState({ currentUserId: userId }, () => console.log("Hello"));
   }
 
-  // getPetInfo = (userId) =>{
-  //   API.downloadPDF(userId).then(res => {
-  //     console.log(res);
-  //   }).catch(function (error) {
-  //     // handle error
-  //     console.log(error);
-  //   })
-  // }
-
-  // constructPDF = (pet) =>{
-  //   fs.writeFile('pdfinfo.txt', `${pet}`, function (err) {
-  //     if (err) console.log(err);
-  //     console.log('Saved!');
-  //   });
-  // }
-
-  downloadPDF = (userId) =>{
-    console.log(userId)
-    API.downloadPDF(userId)
+  downloadPDF = (e) =>{
+    e.preventDefault();
+    API.downloadPDF(this.state.currentUserId)
     .then(function (response) {
-      var blob = new Blob([`${response.data}`], {type: "application/pdf"});
-      FileSaver.saveAs(blob, "hello world.pdf");
-      //console.log(response);
+      console.log(response)
+      // var blob = new Blob([`${response.data}`], {type: "application/pdf"});
+      // FileSaver.saveAs(blob, "Healthy-Pet-Info.pdf");
     })
     .catch(function (error) {
-      // handle error
       console.log(error);
     })
   }
@@ -52,7 +35,7 @@ export default class index extends Component {
   render() {
     return (
       <div className="container">
-        <button href="javascript:void(0)" download="data.txt" type="button" className="btn btn-primary" onClick={this.downloadPDF}>Download PDF</button>
+        <button href="javascript:void(0)" download="data.txt" type="button" className="btn btn-primary" onClick={(e) => this.downloadPDF(e)}>Download PDF</button>
       </div>
     );
   }

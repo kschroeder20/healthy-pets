@@ -4,9 +4,9 @@ import Axios from "axios";
 import "./style.css";
 
 class OwnerInfo extends Component {
-  componentWillMount = uid => {
-    Axios.get(`/api/pets/${uid}`).then(res => {
-      console.log(res);
+  componentWillMount = () => {
+    Axios.get(`/api/pets/${this.props.uid}`).then(res => {
+      console.log("Owner Info Loaded");
     });
   };
 
