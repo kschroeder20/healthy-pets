@@ -47,17 +47,35 @@ module.exports = {
         var spawn = require('child_process').spawn;
         var child = spawn('ruby', ['pdf.rb']);
         var pdf = '';
-        child.stdout.on('data', function(data){
-            //console.log(data)
-            pdf = data;
-        });
-        child.on('exit', function(code){
-            //if(code == 0){
-                res.setHeader('Content-Type', 'application/text');
-                console.log(pdf);
-                res.send(pdf);
-           // }
-        });
+
+        console.log(req.params)
+        db.Pet
+            .find({ uid: req.params.id })
+            .then(dbModel => res.json(dbModel))
+            .then(something => {
+                //console.log(something.data);
+                
+            })
+            .catch(err => {
+                console.log(err);
+                return res.status(422).json(err)
+            });
+
+
+
+
+
+        // var spawn = require('child_process').spawn;
+        // var child = spawn('ruby', ['pdf.rb']);
+        // var pdf = '';
+        // child.stdout.on('data', function(data){
+        //     pdf = data;
+        // });
+        // child.on('exit', function(code){
+        //         res.setHeader('Content-Type', 'application/text');
+        //         console.log(pdf);
+        //         res.send(pdf);
+        // });
           
     }
 };

@@ -9,11 +9,8 @@
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "dotenv": "^8.0.0",
-<<<<<<< HEAD
     "file-saver": "^2.0.2",
-=======
     "filestack-react": "^3.0.1",
->>>>>>> 16acbc3919966d251682694b9c9efc2bf8ab01a3
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "rc-calendar": "^9.15.4",

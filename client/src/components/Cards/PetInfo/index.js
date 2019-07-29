@@ -5,32 +5,21 @@ import Axios from "axios";
 class PetInfo extends Component {
   componentWillMount = uid => {
     Axios.get(`/api/pets/${uid}`).then(res => {
-      console.log(res);
     });
   };
 
-<<<<<<< HEAD
   updatedModal = () => {
-    console.log('update state')
     this.props.getUserInfo(this.props.uid);
   };
 
   render() {
-    console.log(this.state);
-=======
-  render() {
->>>>>>> 16acbc3919966d251682694b9c9efc2bf8ab01a3
     return (
       <div className="card" id="pet-card">
         <div className="card-body text-center">
           <h3 className="card-title">
             <strong>Pet Profile</strong>
           </h3>
-<<<<<<< HEAD
           <PetModal modalUpdate={this.updatedModal} />
-=======
-          <PetModal />
->>>>>>> 16acbc3919966d251682694b9c9efc2bf8ab01a3
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
