@@ -1,0 +1,18 @@
+.card {
+  width: 100%;
+}
+
+.card-body {
+  background-color: #343a40;
+}
+
+button {
+  text-align: center;
+  width: 50%;
+  background-color: rgb(8, 5, 145);
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+  align-content: center;
+  margin: auto;
+}

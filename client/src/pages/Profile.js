@@ -8,38 +8,46 @@ import DownloadPDF from "../components/DownloadPDF";
 import { Container, Row, Col } from "react-grid-system";
 import API from "../utils/API";
 import CalendarComponent from "../components/Calendar";
+import PhotoUpload from "../components/PhotoUpload";
 
-const cp = require('child_process');
+const cp = require("child_process");
 
 class Profile extends Component {
   state = {
     currentUserName: "",
     currentUserEmail: "",
     currentUserId: 0,
-    isSignedIn: '',
+    isSignedIn: "",
     user: {}
   };
 
   componentDidMount = () => {
     const url = window.location.pathname;
-    const pathnameArr = url.split('/');
+    const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
     // console.log(userId);
     this.setState({ currentUserId: userId }, () => this.getUserInfo(userId));
+<<<<<<< HEAD
   }
+=======
+    //console.log(this.state)
 
-  getUserInfo = (userId) => {
+    //this.getUserInfo();
+  };
+>>>>>>> 16acbc3919966d251682694b9c9efc2bf8ab01a3
+
+  getUserInfo = userId => {
     API.getPetById(userId)
       .then(res => {
-        this.setState({ user: res.data[0] })
-        // console.log(this.state.user);
+        this.setState({ user: res.data[0] });
+        console.log(this.state.user);
       })
       .catch(err => console.log(err));
-  }
+  };
 
-  handleLogout = (e) => {
-    this.setState({ isSignedIn: false })
-  }
+  handleLogout = e => {
+    this.setState({ isSignedIn: false });
+  };
 
   render() {
     const { currentUserEmail, currentUserName } = this.state;
@@ -61,16 +69,24 @@ class Profile extends Component {
                   address={this.state.user.address}
                   vetName={this.state.user.vetName}
                   vetPhone={this.state.user.vetPhone}
+<<<<<<< HEAD
                   uid={this.state.currentUserId}
                   getUserInfo={this.getUserInfo}  />
+=======
+                />
+>>>>>>> 16acbc3919966d251682694b9c9efc2bf8ab01a3
                 <Medical
                   medications={this.state.user.petMedications}
                   vaccines={this.state.user.petInoculations}
                   allergies={this.state.user.petAllergies}
                   food={this.state.user.petFood}
                   procedures={this.state.user.petProcedures}
+<<<<<<< HEAD
                   uid={this.state.currentUserId}
                   getUserInfo={this.getUserInfo}  />
+=======
+                />
+>>>>>>> 16acbc3919966d251682694b9c9efc2bf8ab01a3
               </Col>
               <Col sm={4}>
                 <CalendarComponent />
@@ -86,8 +102,13 @@ class Profile extends Component {
                   weight={this.state.user.petWeight}
                   tag={this.state.user.petRabiesTag}
                   microchip={this.state.user.petMicroChip}
+<<<<<<< HEAD
                   uid={this.state.currentUserId} 
                   getUserInfo={this.getUserInfo} />
+=======
+                />
+                <PhotoUpload />
+>>>>>>> 16acbc3919966d251682694b9c9efc2bf8ab01a3
               </Col>
             </Row>
           </Container>
