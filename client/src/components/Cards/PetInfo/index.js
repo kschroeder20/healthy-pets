@@ -5,8 +5,11 @@ import Axios from "axios";
 class PetInfo extends Component {
   componentWillMount = uid => {
     Axios.get(`/api/pets/${uid}`).then(res => {
-      console.log(res);
     });
+  };
+
+  updatedModal = () => {
+    this.props.getUserInfo(this.props.uid);
   };
 
   render() {
@@ -16,7 +19,7 @@ class PetInfo extends Component {
           <h3 className="card-title">
             <strong>Pet Profile</strong>
           </h3>
-          <PetModal />
+          <PetModal modalUpdate={this.updatedModal} />
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">

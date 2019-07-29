@@ -13,7 +13,10 @@ module.exports = {
         db.Pet
             .find({ uid: req.params.id })
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {
+                console.log(err);
+                return res.status(422).json(err)
+            });
     },
     create: function (req, res) {
         console.log(req.body)
@@ -28,7 +31,10 @@ module.exports = {
         db.Pet
             .findOneAndUpdate({ uid: req.body.userId }, req.body)
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => {
+                console.log(err);
+                return res.status(422).json(err);
+            });
     },
     remove: function (req, res) {
         db.Pet
@@ -38,25 +44,38 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     downloadPDF: function (req, res) {
-        //console.log("HERE")
-            //var jsonData = '{ property: abc }';
-            var spawn = require('child_process').spawn;
-            var child = spawn('ruby', ['client/src/components/downloadPDF/pdf.rb']);
-            var pdf = '';
-          
-            var chunks = [];
-          
-            child.stdout.on('data', function(data) {
-              // insert error check here...
-              // console.log("here")
-              chunks.push(data);
+        var spawn = require('child_process').spawn;
+        var child = spawn('ruby', ['pdf.rb']);
+        var pdf = '';
+
+        console.log(req.params)
+        db.Pet
+            .find({ uid: req.params.id })
+            .then(dbModel => res.json(dbModel))
+            .then(something => {
+                //console.log(something.data);
+                
+            })
+            .catch(err => {
+                console.log(err);
+                return res.status(422).json(err)
             });
-            child.on('close', function() {
-              var pdf = Buffer.concat(chunks);
-              console.log(pdf)
-              res.setHeader('Content-Type', 'application/pdf');
-              res.send(pdf);
-            });
+
+
+
+
+
+        // var spawn = require('child_process').spawn;
+        // var child = spawn('ruby', ['pdf.rb']);
+        // var pdf = '';
+        // child.stdout.on('data', function(data){
+        //     pdf = data;
+        // });
+        // child.on('exit', function(code){
+        //         res.setHeader('Content-Type', 'application/text');
+        //         console.log(pdf);
+        //         res.send(pdf);
+        // });
           
     }
 };

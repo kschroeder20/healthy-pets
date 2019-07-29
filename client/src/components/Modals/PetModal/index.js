@@ -95,8 +95,8 @@ class PetModal extends Component {
   }
 
   closeModal() {
+    this.props.modalUpdate();
     this.setState({ modalIsOpen: false });
-    window.location.reload();
   }
 
   handleChange = e => {

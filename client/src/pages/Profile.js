@@ -25,18 +25,14 @@ class Profile extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    // console.log(userId);
     this.setState({ currentUserId: userId }, () => this.getUserInfo(userId));
-    //console.log(this.state)
-
-    //this.getUserInfo();
-  };
+  }
+ 
 
   getUserInfo = userId => {
     API.getPetById(userId)
       .then(res => {
         this.setState({ user: res.data[0] });
-        console.log(this.state.user);
       })
       .catch(err => console.log(err));
   };
@@ -54,7 +50,7 @@ class Profile extends Component {
         <PetNav />
         <div>
           <Container>
-            <DownloadPDF />
+            <DownloadPDF uid={this.state.currentUserId}/>
             <Row>
               <Col sm={4}>
                 <OwnerInfo
@@ -65,14 +61,16 @@ class Profile extends Component {
                   address={this.state.user.address}
                   vetName={this.state.user.vetName}
                   vetPhone={this.state.user.vetPhone}
-                />
+                  uid={this.state.currentUserId}
+                  getUserInfo={this.getUserInfo}  />
                 <Medical
                   medications={this.state.user.petMedications}
                   vaccines={this.state.user.petInoculations}
                   allergies={this.state.user.petAllergies}
                   food={this.state.user.petFood}
                   procedures={this.state.user.petProcedures}
-                />
+                  uid={this.state.currentUserId}
+                  getUserInfo={this.getUserInfo}  />
               </Col>
               <Col sm={4}>
                 <CalendarComponent />
@@ -88,7 +86,8 @@ class Profile extends Component {
                   weight={this.state.user.petWeight}
                   tag={this.state.user.petRabiesTag}
                   microchip={this.state.user.petMicroChip}
-                />
+                  uid={this.state.currentUserId} 
+                  getUserInfo={this.getUserInfo} />
                 <PhotoUpload />
               </Col>
             </Row>
