@@ -1,8 +1,8 @@
 
-                Owner Name: Kevin Schroeder
-                Home Phone: 000-000-0000
-                Mobile Phone: 000-000-0000
-                Email: schroederkevin94@gmail.com
+                Owner Name: Steve
+                Home Phone: 111-111-1111
+                Mobile Phone: 111-111-1111
+                Email: steve@gmail.com
                 Address: 111 North St.
                 
                 Vet Name:
@@ -10,19 +10,20 @@
                 Vet Email:
                 Vet Address:
 
-                Pet Name:Fito
-                Pet Birthday:1994-01-03
-                Pet Color:Something
-                Pet Species: Dog
-                Pet Breed:Something
-                Pet Sex:Male
-                Pet Weight:1
+                Pet Name:
+                Pet Birthday:
+                Pet Color:
+                Pet Species: 
+                Pet Breed:
+                Pet Sex:
+                Pet Weight:0
+                Pet Picture:https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo
 
-                Medications: test meds
-                Inoculations: test inccoc
-                Allergies: test allergies
-                Procedures: test proc
+                Medications: undefined
+                Inoculations: undefined
+                Allergies: undefined
+                Procedures: undefined
 
-                Rabies Tage: 1
+                Rabies Tage: 0
                 Microchip: undefined
                 
