@@ -1,14 +1,26 @@
 import React, {Component} from "react";
 import "./style.css";
 import MedicalModal from "../../Modals/MedicalModal";
-import Axios from "axios";
+//import Axios from "axios";
+import API from "../../../utils/API";
+
+
+
 
 class Medical extends Component {
 
   componentWillMount = uid => {
-    Axios.get(`/api/pets/${uid}`).then(res => {
-      console.log(res);
+    API.getPetById(uid)
+    .then ((response) => {
+      console.log("done")
+    })
+    .catch(function(error) {
+      console.log(error);
     });
+
+    // Axios.get(`/api/pets/${uid}`).then(res => {
+    //   console.log(res);
+    // });
   };
 
   updatedModal = () => {

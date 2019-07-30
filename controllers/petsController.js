@@ -1,5 +1,6 @@
 const db = require("../models");
 const fs = require("fs");
+const path = require('path');
 
 // Defining methods for the booksController
 module.exports = {
@@ -19,19 +20,17 @@ module.exports = {
                 Email: ${dbModel[0].email}
                 Address: ${dbModel[0].address}
                 
-                Vet Name:${dbModel[0].vetName}
-                Vet Phone:${dbModel[0].vetPhone}
-                Vet Email:${dbModel[0].vetEmail}
-                Vet Address:${dbModel[0].vetAddress}
+                Vet Name: ${dbModel[0].vetName}
+                Vet Phone: ${dbModel[0].vetPhone}
 
-                Pet Name:${dbModel[0].petName}
-                Pet Birthday:${dbModel[0].petBirthday}
-                Pet Color:${dbModel[0].petColor}
+                Pet Name: ${dbModel[0].petName}
+                Pet Birthday: ${dbModel[0].petBirthday}
+                Pet Color: ${dbModel[0].petColor}
                 Pet Species: ${dbModel[0].petSpecies}
-                Pet Breed:${dbModel[0].petBreed}
-                Pet Sex:${dbModel[0].petSex}
-                Pet Weight:${dbModel[0].petWeight}
-                Pet Picture:${dbModel[0].petUrl}
+                Pet Breed: ${dbModel[0].petBreed}
+                Pet Sex: ${dbModel[0].petSex}
+                Pet Weight: ${dbModel[0].petWeight}
+                Pet Picture: ${dbModel[0].petUrl}
 
                 Medications: ${dbModel[0].petMedications}
                 Inoculations: ${dbModel[0].petInoculations}
@@ -42,8 +41,7 @@ module.exports = {
                 Microchip: ${dbModel[0].petMicrochip}
                 `;
         fs.writeFile("pdfInfo.txt", petInfo, function(err) {
-          if (err) throw err;
-          console.log("Saved!");
+          if (err) console.log(err); 
         });
         res.json(dbModel);
       })
@@ -77,14 +75,9 @@ module.exports = {
   downloadPDF: function(req, res) {
     var spawn = require("child_process").spawn;
     var child = spawn("ruby", ["pdf.rb"]);
-    var pdf = "";
-    child.stdout.on("data", function(data) {
-      console.log("HERE");
-      pdf = data;
+    child.on("exit", function(code) {;
+        res.download(`./petInfo.pdf`)
     });
-    child.on("exit", function(code) {
-      res.setHeader("Content-Type", "application/text");
-      res.send(pdf);
-    });
+
   }
 };

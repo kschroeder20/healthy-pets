@@ -1,28 +1,27 @@
 
-                Owner Name: Becca
-                Home Phone: 000-000-0000
-                Mobile Phone: 000-000-0000
-                Email: becca@gmail.com
+                Owner Name: Kevin Schroeder
+                Home Phone: 123-456-7890
+                Mobile Phone: 123-456-7890
+                Email: schroederkevin94@gmail.com
                 Address: 111 North St.
                 
-                Vet Name:
-                Vet Phone:
-                Vet Email:
-                Vet Address:
+                Vet Name: Jon Doe
+                Vet Phone: 111-111-1111
 
-                Pet Name:Fluff
-                Pet Birthday:2015-11-20
-                Pet Color:blue
-                Pet Species: bird
-                Pet Breed:parrot
-                Pet Sex:f
-                Pet Weight:32
+                Pet Name: Buster
+                Pet Birthday: 1994-01-03
+                Pet Color: Brown
+                Pet Species: Dog
+                Pet Breed: Golden Retriever
+                Pet Sex: Male
+                Pet Weight: 11111
+                Pet Picture: undefined
 
-                Medications: med 1
-                Inoculations: rabies
-                Allergies: peanut butter
-                Procedures: none
+                Medications: Some kinds
+                Inoculations: Most of them
+                Allergies: Grass, dust, cats
+                Procedures: None
 
-                Rabies Tage: 2515448
+                Rabies Tage: 11111
                 Microchip: undefined
                 
