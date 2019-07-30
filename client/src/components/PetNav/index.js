@@ -1,6 +1,7 @@
 import React from "react";
 import { Dropdown, Button } from "react-bootstrap";
 import { FaPlusSquare, FaShareAlt } from "react-icons/fa";
+import DownloadPDF from "../DownloadPDF";
 import "./style.css";
 
 const PetNav = function() {
@@ -23,9 +24,7 @@ const PetNav = function() {
           Add A Pet <FaPlusSquare />
         </Button>
 
-        <Button variant="secondary">
-          Export/Share <FaShareAlt />
-        </Button>
+        <DownloadPDF/>
       </div>
     </nav>
   );

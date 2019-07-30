@@ -4,7 +4,7 @@ import PetInfo from "../components/Cards/PetInfo";
 import Medical from "../components/Cards/MedicalHistory";
 import NavBar from "../components/NavBar";
 import PetNav from "../components/PetNav";
-import DownloadPDF from "../components/DownloadPDF";
+// import DownloadPDF from "../components/DownloadPDF";
 import { Container, Row, Col } from "react-grid-system";
 import API from "../utils/API";
 import CalendarComponent from "../components/Calendar";
@@ -42,7 +42,7 @@ class Profile extends Component {
   };
 
   render() {
-    const { currentUserEmail, currentUserName } = this.state;
+    // const { currentUserEmail, currentUserName } = this.state;
 
     return (
       <div>
@@ -50,7 +50,7 @@ class Profile extends Component {
         <PetNav />
         <div>
           <Container>
-            <DownloadPDF uid={this.state.currentUserId}/>
+            {/* <DownloadPDF /> */}
             <Row>
               <Col sm={4}>
                 <OwnerInfo

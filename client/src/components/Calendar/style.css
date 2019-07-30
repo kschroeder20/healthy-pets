@@ -6,3 +6,8 @@
     /* -ms-transform: translate(-50%, -50%); */
     transform: translate(-35%, -35%);
 }
+
+.rc-calendar {
+    background-color: #343A40;
+    color: white;
+}
