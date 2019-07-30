@@ -1,8 +1,8 @@
 
-                Owner Name: Steve
-                Home Phone: 111-111-1111
-                Mobile Phone: 111-111-1111
-                Email: steve@gmail.com
+                Owner Name: Becca
+                Home Phone: 000-000-0000
+                Mobile Phone: 000-000-0000
+                Email: becca@gmail.com
                 Address: 111 North St.
                 
                 Vet Name:
@@ -10,20 +10,19 @@
                 Vet Email:
                 Vet Address:
 
-                Pet Name:
-                Pet Birthday:
-                Pet Color:
-                Pet Species: 
-                Pet Breed:
-                Pet Sex:
-                Pet Weight:0
-                Pet Picture:https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo
+                Pet Name:Fluff
+                Pet Birthday:2015-11-20
+                Pet Color:blue
+                Pet Species: bird
+                Pet Breed:parrot
+                Pet Sex:f
+                Pet Weight:32
 
-                Medications: undefined
-                Inoculations: undefined
-                Allergies: undefined
-                Procedures: undefined
+                Medications: med 1
+                Inoculations: rabies
+                Allergies: peanut butter
+                Procedures: none
 
-                Rabies Tage: 0
+                Rabies Tage: 2515448
                 Microchip: undefined
                 
