@@ -26,8 +26,7 @@ class Profile extends Component {
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
     this.setState({ currentUserId: userId }, () => this.getUserInfo(userId));
-  }
- 
+  };
 
   getUserInfo = userId => {
     API.getPetById(userId)
@@ -62,7 +61,8 @@ class Profile extends Component {
                   vetName={this.state.user.vetName}
                   vetPhone={this.state.user.vetPhone}
                   uid={this.state.currentUserId}
-                  getUserInfo={this.getUserInfo}  />
+                  getUserInfo={this.getUserInfo}
+                />
                 <Medical
                   medications={this.state.user.petMedications}
                   vaccines={this.state.user.petInoculations}
@@ -70,9 +70,11 @@ class Profile extends Component {
                   food={this.state.user.petFood}
                   procedures={this.state.user.petProcedures}
                   uid={this.state.currentUserId}
-                  getUserInfo={this.getUserInfo}  />
+                  getUserInfo={this.getUserInfo}
+                />
               </Col>
               <Col sm={4}>
+                <PhotoUpload />
                 <CalendarComponent />
               </Col>
               <Col sm={4}>
@@ -86,9 +88,10 @@ class Profile extends Component {
                   weight={this.state.user.petWeight}
                   tag={this.state.user.petRabiesTag}
                   microchip={this.state.user.petMicroChip}
-                  uid={this.state.currentUserId} 
-                  getUserInfo={this.getUserInfo} />
-                <PhotoUpload />
+                  uid={this.state.currentUserId}
+                  getUserInfo={this.getUserInfo}
+                />
+                <img src="https://www.mercypetclinic.org/wp-content/uploads/2018/12/MPC_sliderupdates_mainslider.png" alt="pets" id="pets"/>
               </Col>
             </Row>
           </Container>

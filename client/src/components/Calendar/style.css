@@ -8,6 +8,12 @@
 }
 
 .rc-calendar {
+    margin-top: 200px;
     background-color: #343A40;
     color: white;
+}
+
+#pets {
+    height: auto;
+    width: 400px;
 }
