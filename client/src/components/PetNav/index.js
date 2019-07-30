@@ -1,6 +1,6 @@
 import React from "react";
 import { Dropdown, Button } from "react-bootstrap";
-import { FaPlusSquare, FaShareAlt } from "react-icons/fa";
+import { FaPlusSquare } from "react-icons/fa";
 import DownloadPDF from "../DownloadPDF";
 import "./style.css";
 
