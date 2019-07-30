@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import Axios from "axios";
 
-const FileSaver = require("file-saver");
-const fs = require("fs");
+const download = require('in-browser-download');
 
 export default class index extends Component {
   state = {
@@ -15,16 +13,14 @@ export default class index extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    this.setState({ currentUserId: userId }, () => console.log("Hello"));
+    this.setState({ currentUserId: userId });
   };
 
   downloadPDF = e => {
     e.preventDefault();
     API.downloadPDF(this.state.currentUserId)
-      .then(function(response) {
-        console.log(response);
-        // var blob = new Blob([`${response.data}`], {type: "application/pdf"});
-        // FileSaver.saveAs(blob, "Healthy-Pet-Info.pdf");
+      .then ((response) => {
+        download(response.data, `Healthy_Pet_Report_${this.state.currentUserId}`);
       })
       .catch(function(error) {
         console.log(error);
@@ -36,7 +32,6 @@ export default class index extends Component {
       <div>
         <button
           href="/profile"
-          download="data.txt"
           type="button"
           variant="secondary"
           className="btn btn-secondary"
