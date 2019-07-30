@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import API from "../../utils/API.js";
+import PetNav from "../PetNav";
 import "./style.css";
 
 export default class index extends Component {
@@ -62,6 +63,8 @@ export default class index extends Component {
 
   render() {
     return (
+      <div>
+        <PetNav />
       <div className="container">
         <div className="col-4" id="login-container">
           <StyledFirebaseAuth
@@ -73,6 +76,7 @@ export default class index extends Component {
           src="http://www.capecodpetresort.com/wp-content/uploads/banner-pets-dog-cat-boarding-1000x451.png"
           alt="pets"
         />
+      </div>
       </div>
     );
   }
