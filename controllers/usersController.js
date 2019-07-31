@@ -2,33 +2,25 @@ const db = require("../models");
 const fs = require("fs");
 const path = require('path');
 
-// Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-    db.Pet.find(req.query)
+    db.User.find(req.query)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    db.Pet.find({ uid: req.params.id })
+    db.User.find({ uid: req.params.id })
       .then(dbModel => {
         let petInfo = `
-                Pet Name: ${dbModel[0].petName}
-                Pet Birthday: ${dbModel[0].petBirthday}
-                Pet Color: ${dbModel[0].petColor}
-                Pet Species: ${dbModel[0].petSpecies}
-                Pet Breed: ${dbModel[0].petBreed}
-                Pet Sex: ${dbModel[0].petSex}
-                Pet Weight: ${dbModel[0].petWeight}
-
-                Medications: ${dbModel[0].petMedications}
-                Inoculations: ${dbModel[0].petInoculations}
-                Allergies: ${dbModel[0].petAllergies}
-                Procedures: ${dbModel[0].petProcedures}
-
-                Rabies Tage: ${dbModel[0].petRabiesTag}
-                Microchip: ${dbModel[0].petMicroChip}
+                Owner Name: ${dbModel[0].ownerName}
+                Home Phone: ${dbModel[0].homePhone}
+                Mobile Phone: ${dbModel[0].mobilePhone}
+                Email: ${dbModel[0].email}
+                Address: ${dbModel[0].address}
+                
+                Vet Name: ${dbModel[0].vetName}
+                Vet Phone: ${dbModel[0].vetPhone}
                 `;
         fs.writeFile("pdfInfo.txt", petInfo, function(err) {
           if (err) console.log(err); 
@@ -42,15 +34,14 @@ module.exports = {
   },
   create: function(req, res) {
     console.log(req.body);
-    db.Pet.create(req.body)
+    db.User.create(req.body)
       .then(dbModel => {
         res.json(dbModel);
       })
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    console.log(req.body)
-    db.Pet.findOneAndUpdate({ uid: req.body.userId }, req.body)
+    db.User.findOneAndUpdate({ uid: req.body.userId }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => {
         console.log(err);
@@ -58,7 +49,7 @@ module.exports = {
       });
   },
   remove: function(req, res) {
-    db.Pet.findById({ _id: req.params.id })
+    db.User.findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
