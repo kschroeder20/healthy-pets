@@ -11,6 +11,42 @@ import axios from 'axios';
 Modal.setAppElement(document.getElementById('root'));
 
 class PetNav extends Component {
+  state = {
+    userId: 0,
+    currentPetId: 0,
+    petName: [],
+    pets: []
+  }
+
+  componentWillMount = () =>{
+    const url = window.location.pathname;
+    const pathnameArr = url.split("/");
+    const userId = pathnameArr[pathnameArr.length - 1];
+    this.setState({userId: userId});
+    axios.get(`/api/pets/${userId}`)
+    .then(res => {
+      let pet = []
+      let petName = []
+      for(let i = 0; i < res.data.length; i++){
+        pet.push(res.data[i])
+        petName.push(res.data[i].petName)
+        this.setState({pets: pet})
+        this.setState({petName: petName})
+      }
+    })
+    .catch(err => console.log(err));
+  };
+
+  handlePetChange = (pet) => {
+    for(let i = 0; i < this.state.pets.length; i ++){
+      if(pet === this.state.pets[i].petName){
+        this.setState({currentPetId: this.state.pets[i]._id}, () => this.props.handlePetChange(this.state.currentPetId))
+      }
+    }
+
+    // this.props.handlePetChange(pet)
+  }
+
   //send the pet details as props from the profile page.
   // constructor() {
   //   super();
@@ -38,6 +74,11 @@ class PetNav extends Component {
   //Add onclick={this.handleSelect} for 1st dropdown.
   //Add onclick={this.addPet} for dropdown.menu.
   render() {
+    const petDropdown = this.state.petName
+
+    const navItems = petDropdown.map((pet) => 
+    <Dropdown.Item onClick={() => this.handlePetChange(pet)}>{pet}</Dropdown.Item>
+    );
     return (
       <nav className="navbar" id="pet-nav">
         <div className="container">
@@ -45,11 +86,8 @@ class PetNav extends Component {
             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
               Select Pet
             </Dropdown.Toggle>
-
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Pet 1</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Pet 2</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Pet 3</Dropdown.Item>
+              {navItems}
             </Dropdown.Menu>
           </Dropdown>
 

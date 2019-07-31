@@ -10,7 +10,6 @@ class OwnerInfo extends Component {
   // };
 
   updatedModal = () => {
-    console.log('update state')
     this.props.getUserInfo(this.props.uid);
   };
 

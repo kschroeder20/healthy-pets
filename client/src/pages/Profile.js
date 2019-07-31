@@ -4,15 +4,11 @@ import PetInfo from "../components/Cards/PetInfo";
 import Medical from "../components/Cards/MedicalHistory";
 import NavBar from "../components/NavBar";
 import PetNav from "../components/PetNav";
-// import DownloadPDF from "../components/DownloadPDF";
 import { Container, Row, Col } from "react-grid-system";
-//import API from "../utils/API";
 import CalendarComponent from "../components/Calendar";
 import PhotoUpload from "../components/PhotoUpload";
-import { userInfo } from "os";
 import axios from 'axios';
 
-//const axios = require("axios")
 
 const cp = require("child_process");
 
@@ -23,6 +19,7 @@ class Profile extends Component {
     currentUserId: 0,
     isSignedIn: "",
     currentPetIndex: 0,
+    currentPetId: 0,
     user: {},
     pet: [{
       uid: 0,
@@ -42,7 +39,8 @@ class Profile extends Component {
       petFood: "",
       petProcedures: "",
       petUrl: "https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo"
-    }]
+    }],
+    modalOpen: false
   };
 
   componentWillMount = () => {
@@ -56,10 +54,14 @@ class Profile extends Component {
       .catch(err => console.log(err));
 
     axios.get(`/api/pets/${userId}`)
-      .then(res => {this.setState({ pet: res.data })})
+      .then(res => {
+        this.setState({ 
+          pet: res.data, 
+          currentPetId: res.data[0]._id 
+      })
+    })
       .catch(err => console.log(err));
   };
-
 
   getUserInfo = userId => {
     axios.get(`/api/users/${userId}`)
@@ -70,25 +72,42 @@ class Profile extends Component {
       .catch(err => console.log(err));
   };
 
-  // getPetInfo = userId => {
-  //   axios.get(`/api/pets/${userId}`)
-  //     .then(res => {
-  //       this.setState({ pet: res.data });
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  getPetInfo = petId => {
+    axios.get(`/api/pets/${this.state.currentUserId}`)
+      .then(res => {
+        this.setState({ 
+          pet: res.data, 
+          currentPetId: res.data[0]._id 
+      })
+    })
+      .then( res => {
+        for(let i =0; i < this.state.pet.length; i++){
+          if(petId === this.state.pet[i]._id){
+            this.setState({currentPetId: this.state.pet[i]._id, currentPetIndex: i})
+          }
+      }
+    })
+      .catch(err => console.log(err));
+  }
+
+  modalOpen = (open) => {
+    this.setState({modalOpen: open})
+  }
 
   handleLogout = e => {
     this.setState({ isSignedIn: false });
   };
 
-  render() {
-    // const { currentUserEmail, currentUserName } = this.state;
+  handlePetChange = (petId) =>{
+    console.log(petId)
+    this.setState({currentPetId: petId}, () => this.getPetInfo(petId))
+  }
 
+  render() {
     return (
       <div>
         <NavBar />
-        <PetNav />
+        <PetNav handlePetChange={this.handlePetChange}/>
         <div>
           <Container>
             {/* <DownloadPDF /> */}
@@ -111,7 +130,7 @@ class Profile extends Component {
                   allergies={this.state.pet[this.state.currentPetIndex].petAllergies}
                   food={this.state.pet[this.state.currentPetIndex].petFood}
                   procedures={this.state.pet[this.state.currentPetIndex].petProcedures}
-                  petId = {this.state.pet[this.state.currentPetIndex].petId}
+                  petId = {this.state.currentPetId}
                   uid={this.state.currentUserId}
                   getUserInfo={this.getUserInfo}
                 />
@@ -125,17 +144,18 @@ class Profile extends Component {
               <Col sm={4}>
                 <PetInfo
                   petName={this.state.pet[this.state.currentPetIndex].petName}
-                  birthday={this.state.pet[this.state.currentPetIndex].petBirthday}
-                  species={this.state.pet[this.state.currentPetIndex].petSpecies}
-                  color={this.state.pet[this.state.currentPetIndex].petColor}
-                  breed={this.state.pet[this.state.currentPetIndex].petBreed}
-                  sex={this.state.pet[this.state.currentPetIndex].petSex}
-                  weight={this.state.pet[this.state.currentPetIndex].petWeight}
-                  tag={this.state.pet[this.state.currentPetIndex].petRabiesTag}
-                  microchip={this.state.pet[this.state.currentPetIndex].petMicroChip}
-                  petId = {this.state.pet.petId}
+                  petBirthday={this.state.pet[this.state.currentPetIndex].petBirthday}
+                  petSpecies={this.state.pet[this.state.currentPetIndex].petSpecies}
+                  petColor={this.state.pet[this.state.currentPetIndex].petColor}
+                  petBreed={this.state.pet[this.state.currentPetIndex].petBreed}
+                  petSex={this.state.pet[this.state.currentPetIndex].petSex}
+                  petWeight={this.state.pet[this.state.currentPetIndex].petWeight}
+                  petRabiesTag={this.state.pet[this.state.currentPetIndex].petRabiesTag}
+                  petMicroChip={this.state.pet[this.state.currentPetIndex].petMicroChip}
+                  currentPetId = {this.state.currentPetId}
                   uid={this.state.currentUserId}
-                  getUserInfo={this.getUserInfo}
+                  getPetInfo={this.getPetInfo}
+                  modalOpen={this.modalOpen}
                 />
                 <img src="https://www.mercypetclinic.org/wp-content/uploads/2018/12/MPC_sliderupdates_mainslider.png" alt="pets" id="pets"/>
               </Col>
