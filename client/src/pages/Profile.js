@@ -19,6 +19,7 @@ class Profile extends Component {
     currentUserId: 0,
     isSignedIn: "",
     user: {}
+    //pet: []
   };
 
   componentDidMount = () => {
@@ -32,6 +33,7 @@ class Profile extends Component {
     API.getPetById(userId)
       .then(res => {
         this.setState({ user: res.data[0] });
+        // this.setState({pet : pet[0]})
       })
       .catch(err => console.log(err));
   };
