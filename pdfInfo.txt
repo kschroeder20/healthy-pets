@@ -1,27 +1,27 @@
 
-                Owner Name: Rebecca S Shieh
-                Home Phone: 123-456-7890
-                Mobile Phone: 000-000-0000
-                Email: becca@gmail.com
-                Address: 123 Main St Anywhere, USA 12345
+                Owner Name: Steve
+                Home Phone: 111-111-1111
+                Mobile Phone: 111-111-1111
+                Email: steve@gmail.com
+                Address: 111 North St.
                 
-                Vet Name: Dr. Smith
-                Vet Phone: 123-456-7890
+                Vet Name: 
+                Vet Phone: 
 
-                Pet Name: George
-                Pet Birthday: 2015-11-20
-                Pet Color: blue
-                Pet Species: bird
-                Pet Breed: parrot
-                Pet Sex: f
-                Pet Weight: 32
-                Pet Picture: undefined
+                Pet Name: Jack
+                Pet Birthday: 2013-02-02
+                Pet Color: 
+                Pet Species: 
+                Pet Breed: 
+                Pet Sex: 
+                Pet Weight: 0
+                Pet Picture: https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo
 
-                Medications: med 1
-                Inoculations: rabies
-                Allergies: peanut butter
+                Medications: NA
+                Inoculations: All
+                Allergies: None
                 Procedures: none
 
-                Rabies Tage: 2515448
+                Rabies Tage: 0
                 Microchip: undefined
                 
