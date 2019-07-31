@@ -3,7 +3,7 @@ const db = require("../models");
 
 // This file empties the Pets collection and inserts the pets below
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/googlebooksearch", { useNewUrlParser: true }
+    process.env.MONGODB_URI || "mongodb://localhost/healthypets", { useNewUrlParser: true }
 );
 
 const petSeed = [
