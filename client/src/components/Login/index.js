@@ -1,50 +1,83 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import SignInWidget from '../SignInWidget';
-import { withAuth } from '@okta/okta-react';
+import React, { Component } from "react";
+import firebase from "firebase";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import API from "../../utils/API.js";
+import NavBar from "../NavBar";
+import "./style.css";
 
-export default withAuth(
-    class Login extends Component {
-        constructor(props) {
-            super(props);
-            this.state = {
-                authenticated: null
-            };
-            this.checkAuthentication();
+export default class index extends Component {
+  state = {
+    isSignedIn: false
+  };
+  uiConfig = {
+    signInFlow: "popup",
+    signInOptions: [
+      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+      signInSuccess: () => {
+        window.sessionStorage.setItem("userSignedIn", true);
+        const user = firebase.auth().currentUser;
+        let newUser = {};
+        if (user != null) {
+          newUser = {
+            name: user.displayName,
+            email: user.email,
+            uid: user.uid 
+          };
         }
-
-        async checkAuthentication() {
-            const authenticated = await this.props.auth.isAuthenticated();
-            if (authenticated !== this.state.authenticated) {
-                this.setState({ authenticated });
-            }
-        }
-
-        componentDidUpdate() {
-            this.checkAuthentication();
-        }
-
-        onSuccess = res => {
-            return this.props.auth.redirect({
-                sessionToken: res.session.token
-            });
-        };
-
-        onError = err => {
-            console.log('error logging in', err);
-        };
-
-        render() {
-            if (this.state.authenticated === null) return null;
-            return this.state.authenticated ? (
-                <Redirect to={{ pathname: '/' }} />
-            ) : (
-                    <SignInWidget
-                        baseUrl={this.props.baseUrl}
-                        onSuccess={this.onSuccess}
-                        onError={this.onError}
-                    />
-                );
-        }
+        this.determineRepeatUser(newUser);
+      }
     }
-);
+  };
+
+  componentDidMount = () => {
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({ isSignedIn: !!user });
+    });
+  };
+
+  determineRepeatUser = newUser => {
+    API.getPetById(newUser.uid)
+      .then(res => {
+        res.data.length === 0
+          ? this.createNewUser(newUser)
+          : window.location.replace(`/profile/${newUser.uid}`);
+      })
+      .catch(err => console.log(err));
+  };
+
+  createNewUser = user => {
+    console.log(user)
+    API.saveData({
+      ownerName: user.name,
+      email: user.email,
+      uid: user.uid
+    })
+      .then(res => {
+        window.location.replace(`/profile/${user.uid}`);
+      })
+      .catch(err => console.log(err));
+  };
+
+  render() {
+    return (
+      <div>
+        <NavBar />
+      <div className="container">
+        <div className="col-4" id="login-container">
+          <StyledFirebaseAuth
+            uiConfig={this.uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
+        </div>
+        <img
+          src="http://www.capecodpetresort.com/wp-content/uploads/banner-pets-dog-cat-boarding-1000x451.png"
+          alt="pets"
+        />
+      </div>
+      </div>
+    );
+  }
+}

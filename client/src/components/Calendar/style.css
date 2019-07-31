@@ -1,0 +1,19 @@
+.calendar-div {
+    margin: auto;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    /* -ms-transform: translate(-50%, -50%); */
+    transform: translate(-35%, -35%);
+}
+
+.rc-calendar {
+    margin-top: 200px;
+    background-color: #343A40;
+    color: white;
+}
+
+#pets {
+    height: auto;
+    width: 400px;
+}

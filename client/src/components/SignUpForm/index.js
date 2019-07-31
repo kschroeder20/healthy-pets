@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import NavBar from "../NavBar";
 
 class Signup extends Component {
   constructor() {
@@ -48,6 +49,8 @@ class Signup extends Component {
 
   render() {
     return (
+      <div>
+        <NavBar />
       <div className="SignupForm">
         <h4>Sign up</h4>
         <form className="form-horizontal">
@@ -90,7 +93,7 @@ class Signup extends Component {
           </div>
         </form>
       </div>
-
+      </div>
     )
   }
 }

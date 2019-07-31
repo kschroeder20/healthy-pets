@@ -4,18 +4,36 @@ export default {
     getPets: () => {
         return axios.get('/api/pets')
     },
-    getPetByEmail: (email) => {
-        email = email.replace(/[^a-zA-Z0-9]/g, '');
-        return axios.get(`/api/pets/${email}`)
+    getPetById: (id) => {
+        return axios.get(`/api/pets/${id}`)
     },
     // Saves a Pet to the database
-    savePet: (petData) => {
-        return axios.post("/api/pets", petData);
+    savePetData: (data) => {
+        return axios.post("/api/pets", data);
     },
     deletePet: (id) => {
         return axios.delete(`/api/pets/${id}`)
     },
-    updatePet: (id) => {
-        return axios.update(`/api/pets/${id}`)
+    updatePet: (info) => {
+        return axios.put(`/api/pets/${info.userId}`, info)
+    },
+    getUsers: () => {
+        return axios.get('/api/users')
+    },
+    getUserById: (id) => {
+        return axios.get(`/api/users/${id}`)
+    },
+    // Saves a Pet to the database
+    saveUserData: (data) => {
+        return axios.post("/api/users", data);
+    },
+    deleteUser: (id) => {
+        return axios.delete(`/api/users/${id}`)
+    },
+    updateUser: (info) => {
+        return axios.put(`/api/users/${info.userId}`, info)
+    },
+    downloadPDF: (id) => {
+        return axios.get(`/api/pets/pdf/${id}`)
     }
 };
