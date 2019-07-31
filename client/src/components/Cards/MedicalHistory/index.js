@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "./style.css";
 import MedicalModal from "../../Modals/MedicalModal";
-//import Axios from "axios";
 import API from "../../../utils/API";
 
 
@@ -9,8 +8,8 @@ import API from "../../../utils/API";
 
 class Medical extends Component {
 
-  componentWillMount = uid => {
-    API.getPetById(uid)
+  componentWillMount = () => {
+    API.getPetById(this.props.uid)
     .then ((response) => {
       console.log("done")
     })

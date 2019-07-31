@@ -1,27 +1,17 @@
 
-                Owner Name: Rebecca S Shieh
-                Home Phone: 123-456-7890
-                Mobile Phone: 000-000-0000
-                Email: becca@gmail.com
-                Address: 123 Main St Anywhere, USA 12345
-                
-                Vet Name: Dr. Smith
-                Vet Phone: 123-456-7890
+                Pet Name: Fito
+                Pet Birthday: 
+                Pet Color: Golden
+                Pet Species: Dog
+                Pet Breed: Golden Retriever
+                Pet Sex: Male
+                Pet Weight: 80
 
-                Pet Name: George
-                Pet Birthday: 2015-11-20
-                Pet Color: blue
-                Pet Species: bird
-                Pet Breed: parrot
-                Pet Sex: f
-                Pet Weight: 32
-                Pet Picture: undefined
+                Medications: Some
+                Inoculations: All
+                Allergies: Everything
+                Procedures: None
 
-                Medications: med 1
-                Inoculations: rabies
-                Allergies: peanut butter
-                Procedures: none
-
-                Rabies Tage: 2515448
+                Rabies Tage: 0
                 Microchip: undefined
                 
