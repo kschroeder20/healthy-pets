@@ -57,7 +57,7 @@ class PhotoUpload extends Component {
         />
         <Image
           src={this.state.petUrl}
-          style={{ width: "200px", height: "200px" }}
+          style={{ width: "200px", height: "200px", padding: "10px" }}
         />
       </div>
     );
