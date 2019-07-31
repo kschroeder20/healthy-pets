@@ -2,19 +2,14 @@ const router = require("express").Router();
 const petsController = require("../../controllers/petsController");
 
 // Matches with "/api/pets"
-router.route("/")
+router.route("/pets")
     .get(petsController.findAll)
     .post(petsController.create);
 
 // Matches with "/api/pets/:id"
 router
-    .route("/:id")
+    .route("/pets/:id")
     .get(petsController.findById)
     .put(petsController.update)
     .delete(petsController.remove);
-
-router
-    .route("/pdf/:id")
-    .get(petsController.downloadPDF)
-
 module.exports = router;

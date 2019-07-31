@@ -1,26 +1,16 @@
 
-                Owner Name: Steve
-                Home Phone: 111-111-1111
-                Mobile Phone: 111-111-1111
-                Email: steve@gmail.com
-                Address: 111 North St.
-                
-                Vet Name: 
-                Vet Phone: 
+                Pet Name: Fito
+                Pet Birthday: 
+                Pet Color: Golden
+                Pet Species: Dog
+                Pet Breed: Golden Retriever
+                Pet Sex: Male
+                Pet Weight: 80
 
-                Pet Name: Jack
-                Pet Birthday: 2013-02-02
-                Pet Color: 
-                Pet Species: 
-                Pet Breed: 
-                Pet Sex: 
-                Pet Weight: 0
-                Pet Picture: https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo
-
-                Medications: NA
+                Medications: Some
                 Inoculations: All
-                Allergies: None
-                Procedures: none
+                Allergies: Everything
+                Procedures: None
 
                 Rabies Tage: 0
                 Microchip: undefined
