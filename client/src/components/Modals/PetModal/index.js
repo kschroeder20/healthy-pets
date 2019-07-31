@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import API from "../../../utils/API";
+import axios from 'axios';
+
 
 const customStyles = {
   content: {
@@ -34,16 +36,19 @@ class PetModal extends Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.state = {
-      petName: "",
-      petBirthday: '',
-      petColor: "",
-      petBreed: "",
-      petSex: "",
-      petSpecies: '',
-      petWeight: 0,
-      petRabiesTag: 0,
-      petMicroChip: 0,
-      currentUserId: ''
+      pet: [{
+        petName: "",
+        petBirthday: '',
+        petColor: "",
+        petBreed: "",
+        petSex: "",
+        petSpecies: '',
+        petWeight: 0,
+        petRabiesTag: 0,
+        petMicroChip: 0,
+        uid: ''
+      }],
+      currentPetId: 0,
     };
   }
 
@@ -51,23 +56,15 @@ class PetModal extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-
-    API.getPetById(userId)
-      .then(res => {
-        this.setState({
-          petName: res.data[0].petName,
-          petBirthday: res.data[0].petBirthday,
-          petColor: res.data[0].petColor,
-          petBreed: res.data[0].petBreed,
-          petSex: res.data[0].petSex,
-          petSpecies: res.data[0].petSpecies,
-          petWeight: res.data[0].petWeight,
-          petRabiesTag: res.data[0].petRabiesTag,
-          petMicroChip: res.data[0].petMicroChip,
-          currentUserId: res.data[0].uid
-        });
-      })
-      .catch(err => console.log(err));
+    axios.get(`/api/pets/${userId}`)
+    .then(res => {
+      let pet = []
+      for(let i = 0; i < res.data.length; i++){
+        pet.push(res.data[i])
+        this.setState({pet: pet})
+      }
+    })
+    .catch(err => console.log(err));
   };
 
 

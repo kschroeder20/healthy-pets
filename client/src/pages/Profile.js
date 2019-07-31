@@ -61,14 +61,14 @@ class Profile extends Component {
   };
 
 
-  // getUserInfo = userId => {
-  //   axios.get(`/api/users/${userId}`)
-  //     .then(res => {
-  //       this.setState({ user: res.data[0] });
-  //       this.getPetInfo(this.state.currentUserId)
-  //           })
-  //     .catch(err => console.log(err));
-  // };
+  getUserInfo = userId => {
+    axios.get(`/api/users/${userId}`)
+      .then(res => {
+        this.setState({ user: res.data[0] });
+        this.getPetInfo(this.state.currentUserId)
+            })
+      .catch(err => console.log(err));
+  };
 
   // getPetInfo = userId => {
   //   axios.get(`/api/pets/${userId}`)

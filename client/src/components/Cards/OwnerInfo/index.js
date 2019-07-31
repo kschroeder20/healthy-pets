@@ -4,11 +4,10 @@ import Axios from "axios";
 import "./style.css";
 
 class OwnerInfo extends Component {
-  componentWillMount = () => {
-    Axios.get(`/api/pets/${this.props.uid}`).then(res => {
-      console.log("Owner Info Loaded");
-    });
-  };
+  // componentWillMount = () => {
+  //   // Axios.get(`/api/owner/${this.props.uid}`).then(res => {
+  //   // });
+  // };
 
   updatedModal = () => {
     console.log('update state')
