@@ -12,4 +12,9 @@ router
     .get(petsController.findById)
     .put(petsController.update)
     .delete(petsController.remove);
+
+    router
+    .route("/pets/update/:id")
+    .put(petsController.updateExisting)
+
 module.exports = router;

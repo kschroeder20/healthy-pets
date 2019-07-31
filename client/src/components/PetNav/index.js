@@ -8,7 +8,9 @@ import axios from 'axios';
 class PetNav extends Component {
   state = {
     userId: 0,
-    petName: []
+    currentPetId: 0,
+    petName: [],
+    pets: []
   }
 
   componentWillMount = () =>{
@@ -19,19 +21,32 @@ class PetNav extends Component {
     axios.get(`/api/pets/${userId}`)
     .then(res => {
       let pet = []
+      let petName = []
       for(let i = 0; i < res.data.length; i++){
-        pet.push(res.data[i].petName)
-        this.setState({petName: pet})
+        pet.push(res.data[i])
+        petName.push(res.data[i].petName)
+        this.setState({pets: pet})
+        this.setState({petName: petName})
       }
     })
     .catch(err => console.log(err));
   };
 
+  handlePetChange = (pet) => {
+    for(let i = 0; i < this.state.pets.length; i ++){
+      if(pet === this.state.pets[i].petName){
+        this.setState({currentPetId: this.state.pets[i]._id}, () => this.props.handlePetChange(this.state.currentPetId))
+      }
+    }
+
+    // this.props.handlePetChange(pet)
+  }
+
   render() {
     const petDropdown = this.state.petName
 
     const navItems = petDropdown.map((pet) => 
-    <Dropdown.Item href="#/{pet}">{pet}</Dropdown.Item>
+    <Dropdown.Item onClick={() => this.handlePetChange(pet)}>{pet}</Dropdown.Item>
     );
 
     return (
