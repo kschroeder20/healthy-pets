@@ -99,6 +99,7 @@ class Profile extends Component {
   };
 
   handlePetChange = (petId) =>{
+    console.log(petId)
     this.setState({currentPetId: petId}, () => this.getPetInfo(petId))
   }
 

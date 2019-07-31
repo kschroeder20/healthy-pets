@@ -74,6 +74,8 @@ class PetNav extends Component {
   //Add onclick={this.handleSelect} for 1st dropdown.
   //Add onclick={this.addPet} for dropdown.menu.
   render() {
+    const petDropdown = this.state.petName
+
     const navItems = petDropdown.map((pet) => 
     <Dropdown.Item onClick={() => this.handlePetChange(pet)}>{pet}</Dropdown.Item>
     );
@@ -84,10 +86,8 @@ class PetNav extends Component {
             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
               Select Pet
             </Dropdown.Toggle>
-
-  
             <Dropdown.Menu>
-             {navItems}
+              {navItems}
             </Dropdown.Menu>
           </Dropdown>
 
