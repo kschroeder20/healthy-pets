@@ -7,6 +7,7 @@
     "acorn": "^6.2.1",
     "bcryptjs": "^2.4.3",
     "caniuse-lite": "^1.0.30000988",
+    "concat-files": "^0.1.1",
     "connect-mongo": "^3.0.0",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.0.0",
