@@ -1,28 +1,4 @@
 
-<<<<<<< HEAD
-                Owner Name: Rebecca S Shieh
-                Home Phone: 123-456-7890
-                Mobile Phone: 000-000-0000
-                Email: becca@gmail.com
-                Address: 123 Main St Anywhere, USA 12345
-                
-                Vet Name: Dr. Smith
-                Vet Phone: 123-456-7890
-
-                Pet Name: Fluffy
-                Pet Birthday: 2015-11-20
-                Pet Color: blue
-                Pet Species: bird
-                Pet Breed: parrot
-                Pet Sex: f
-                Pet Weight: 32
-                Pet Picture: undefined
-
-                Medications: med 1
-                Inoculations: rabies
-                Allergies: peanut butter
-                Procedures: none
-=======
                 Pet Name: Fito
                 Pet Birthday: 
                 Pet Color: Golden
@@ -35,8 +11,7 @@
                 Inoculations: All
                 Allergies: Everything
                 Procedures: None
->>>>>>> 27fd35d80d3475f7be9096e9f0970d8e856a0c74
 
-                Rabies Tage: 2515448
+                Rabies Tage: 0
                 Microchip: undefined
                 
