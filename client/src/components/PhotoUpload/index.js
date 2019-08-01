@@ -41,13 +41,12 @@ class PhotoUpload extends Component {
 
   render() {
     return (
-      <div className="card" id="pet-pic">
+      <div id="pet-pic">
         <div className="card-body text-center">
           <h3 className="card-title">
             <strong>Pet Picture</strong>
           </h3>
-        </div>
-        <ReactFilestack
+          <ReactFilestack
           apikey={apiKey}
           componentDisplayMode={{
             type: "button",
@@ -65,6 +64,8 @@ class PhotoUpload extends Component {
           }}
           onError={err => console.log(err)}
         />
+        </div>
+        
         {/* <Image
           src={this.state.petUrl}
           style={{ width: "200px", height: "200px", padding: "10px" }}
