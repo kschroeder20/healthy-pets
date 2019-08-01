@@ -66,7 +66,8 @@ class PetInfo extends Component {
           currentPetId = {this.props.currentPetId}
           uid={this.props.currentUserId}
           getUserInfo={this.getUserInfo}
-          modalOpen={this.modalOpen}/>
+          modalOpen={this.modalOpen}
+          />
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
