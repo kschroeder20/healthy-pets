@@ -47,7 +47,9 @@ class Profile extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    this.setState({ currentUserId: userId });
+    this.setState({ 
+      currentUserId: userId,
+     });
 
     axios.get(`/api/users/${userId}`)
       .then(res => {this.setState({ user: res.data[0] })})
@@ -58,7 +60,8 @@ class Profile extends Component {
         console.log(res.data)
         this.setState({ 
           pet: res.data, 
-          currentPetId: res.data[0]._id 
+          currentPetId: res.data[0]._id,
+          petUrl: this.state.pet[this.state.currentPetIndex].petUrl
       })
     })
       .catch(err => console.log(err));

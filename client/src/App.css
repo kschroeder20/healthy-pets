@@ -18,4 +18,15 @@ body {
   padding: 20px;
 }
 
+img {
+  margin: 20px;
+}
+
+#pets {
+  width: 350px;
+  height: auto;
+  margin: auto 15%;
+  margin-top: 60px;
+}
+
 

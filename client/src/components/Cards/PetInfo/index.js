@@ -34,6 +34,7 @@ class PetInfo extends Component {
       petWeight: this.props.petWeight,
       petRabiesTag: this.props.petRabiesTag,
       petMicroChip: this.props.petMicroChip,
+      petUrl: this.props.petUrl
     }
     this.setState({pet: petObj, currentUserId: this.props.uid, currentPetId: this.props.currentPetId})
     
