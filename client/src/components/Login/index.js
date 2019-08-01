@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import API from "../../utils/API.js";
 import NavBar from "../NavBar";
 import "./style.css";
+import axios from 'axios';
+
 
 export default class index extends Component {
   state = {
@@ -39,7 +40,7 @@ export default class index extends Component {
   };
 
   determineRepeatUser = newUser => {
-    API.getPetById(newUser.uid)
+    axios.get(`/api/users/${newUser.uid}`)
       .then(res => {
         res.data.length === 0
           ? this.createNewUser(newUser)
@@ -50,7 +51,7 @@ export default class index extends Component {
 
   createNewUser = user => {
     console.log(user)
-    API.saveData({
+    axios.post(`/api/users`,{
       ownerName: user.name,
       email: user.email,
       uid: user.uid
