@@ -36,7 +36,6 @@ class PetModal extends Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.state = {
-      pet: [{
         petName: "",
         petBirthday: '',
         petColor: "",
@@ -46,43 +45,95 @@ class PetModal extends Component {
         petWeight: 0,
         petRabiesTag: 0,
         petMicroChip: 0,
-        uid: ''
-      }],
+        uid: '',
       currentPetId: 0,
     };
   }
 
   componentDidMount = () => {
-    const url = window.location.pathname;
-    const pathnameArr = url.split("/");
-    const userId = pathnameArr[pathnameArr.length - 1];
-    axios.get(`/api/pets/${userId}`)
-    .then(res => {
-      let pet = []
-      for(let i = 0; i < res.data.length; i++){
-        pet.push(res.data[i])
-        this.setState({pet: pet})
-      }
-    })
-    .catch(err => console.log(err));
+    // console.log(this.props);
+    // this.setState({
+    //   petName: this.props.petName,
+    //   petBirthday: this.props.petBirthday,
+    //   petSpecies: this.props.petSpecies,
+    //   petColor: this.props.petColor,
+    //   petBreed: this.props.petBreed,
+    //   petSex: this.props.petSex,
+    //   petWeight: this.props.petWeight,
+    //   petRabiesTag: this.props.petRabiesTag,
+    //   petMicroChip: this.props.petMicroChip,
+    //   currentPetId: this.props.currentPetId
+    // });
+
+
+
+
+    // // console.log(this.props)
+    // // const url = window.location.pathname;
+    // // const pathnameArr = url.split("/");
+    // // const userId = pathnameArr[pathnameArr.length - 1];
+    // // this.setState({currentPetId: this.props.petId})
+    // // console.log(this.props.petId);
+
+
+
+    // axios.get(`/api/pets/${this.state.currentPetId}`)
+    // .then(res => {
+    //   console.log(res.data);
+    //   let pet = []
+    //   for(let i = 0; i < res.data.length; i++){
+    //     pet.push(res.data[i])
+    //     this.setState({pet: pet})
+    //   }
+    // })
+    // .catch(err => console.log(err));
   };
 
 
   handleSubmit(event) {
     event.preventDefault();
-    this.updateDb(this.state.currentUserId);
+    this.updateDb(this.props.currentPetId);
     this.closeModal();
+    this.props.modalOpen(false);
   }
 
-  updateDb = (userId) => {
-    API.updatePet({ ...this.state, userId })
-      .then(res => {
-        console.log(res.data)
-      })
-      .catch(err => console.log(err));
+  updateDb = (currentPetId) => {
+    console.log(currentPetId)
+    let petObj = {
+      petName: this.state.petName,
+      petBirthday: this.state.petBirthday,
+      petSpecies: this.state.petSpecies,
+      petColor: this.state.petColor,
+      petBreed: this.state.petBreed,
+      petSex: this.state.petSex,
+      petWeight: this.state.petWeight,
+      petRabiesTag: this.state.petRabiesTag,
+      petMicroChip: this.state.petMicroChip,
+      currentPetId: currentPetId
+    }
+
+    axios.put(`/api/pets/update/${currentPetId}`, petObj)
+    .then(res => {
+      console.log(res);
+      console.log("pet updated")
+    })
+    .catch(err => console.log(err));
   }
 
   openModal() {
+    this.setState({
+      petName: this.props.petName,
+      petBirthday: this.props.petBirthday,
+      petSpecies: this.props.petSpecies,
+      petColor: this.props.petColor,
+      petBreed: this.props.petBreed,
+      petSex: this.props.petSex,
+      petWeight: this.props.petWeight,
+      petRabiesTag: this.props.petRabiesTag,
+      petMicroChip: this.props.petMicroChip,
+      currentPetId: this.props.currentPetId
+    });
+    this.props.modalOpen(true);
     this.setState({ modalIsOpen: true });
   }
 
@@ -92,7 +143,7 @@ class PetModal extends Component {
   }
 
   closeModal() {
-    this.props.modalUpdate();
+    this.props.modalUpdate(this.state.currentPetId);
     this.setState({ modalIsOpen: false });
   }
 
@@ -129,7 +180,7 @@ class PetModal extends Component {
                 value={this.state.petName}
                 id="petName"
                 onChange={this.handleChange}
-                placeholder="Pet Name"
+                placeholder={this.props.petName}
               />
             </div>
             <div className="form-group">
@@ -149,7 +200,7 @@ class PetModal extends Component {
                 value={this.state.petSpecies}
                 id="petSpecies"
                 onChange={this.handleChange}
-                placeholder="Species"
+                placeholder={this.props.petSpecies}
               />
             </div>
             <div className="form-group">
@@ -159,7 +210,7 @@ class PetModal extends Component {
                 value={this.state.petColor}
                 id="petColor"
                 onChange={this.handleChange}
-                placeholder="Color"
+                placeholder={this.props.petColor}
               />
             </div>
             <div className="form-group">
@@ -169,7 +220,7 @@ class PetModal extends Component {
                 value={this.state.petBreed}
                 id="petBreed"
                 onChange={this.handleChange}
-                placeholder="Breed"
+                placeholder={this.props.petBreed}
               />
             </div>
             <div className="form-group">
@@ -179,7 +230,7 @@ class PetModal extends Component {
                 value={this.state.petSex}
                 id="petSex"
                 onChange={this.handleChange}
-                placeholder="Sex"
+                placeholder={this.props.petSex}
               />
             </div>
             <div className="form-group">
@@ -189,7 +240,7 @@ class PetModal extends Component {
                 value={this.state.petWeight}
                 id="petWeight"
                 onChange={this.handleChange}
-                placeholder="Weight"
+                placeholder={this.props.petWeight}
               />
             </div>
             <div className="form-group">
@@ -199,7 +250,7 @@ class PetModal extends Component {
                 value={this.state.petRabiesTag}
                 id="petRabiesTag"
                 onChange={this.handleChange}
-                placeholder="Rabies Tag #"
+                placeholder={this.props.petRabiesTag}
               />
             </div>
             <div className="form-group">
@@ -209,7 +260,7 @@ class PetModal extends Component {
                 value={this.state.petMicroChip}
                 id="petMicroChip"
                 onChange={this.handleChange}
-                placeholder="Microchip #"
+                placeholder={this.props.petMicroChip}
               />
             </div>
             <input
