@@ -50,7 +50,7 @@ class PetInfo extends Component {
   render() {
     return (
       <div className="card" id="pet-card">
-        <img src={this.props.petUrl}/>
+        
         <div className="card-body text-center">
           <h3 className="card-title">
             <strong>Pet Profile</strong>
@@ -101,6 +101,11 @@ class PetInfo extends Component {
             <strong>Microchip#: </strong> {this.props.petMicroChip}
           </li>
         </ul>
+        <PhotoUpload
+        uid={this.state.currentUserId}
+        petId = {this.state.currentPetId}
+        />
+        <img src={this.props.petUrl} alt="yourPet"/>
       </div>
     );
   }
