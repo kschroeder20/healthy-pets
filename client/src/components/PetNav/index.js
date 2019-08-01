@@ -29,7 +29,6 @@ class PetNav extends Component {
   getPetInfo = (userId) => {
     axios.get(`/api/pets/${userId}`)
     .then(res => {
-      console.log(res.data)
       let pet = []
       let petName = []
       for(let i = 0; i < res.data.length; i++){

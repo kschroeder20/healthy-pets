@@ -11,7 +11,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    console.log(req.params.id)
     db.Pet.find({ uid: req.params.id })
       .then(dbModel => {
         // let petInfo = `

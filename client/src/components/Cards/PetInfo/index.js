@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PetModal from "../../Modals/PetModal";
 import Axios from "axios";
+import PhotoUpload from "../../PhotoUpload";
+
 
 class PetInfo extends Component {
 
@@ -48,6 +50,7 @@ class PetInfo extends Component {
   render() {
     return (
       <div className="card" id="pet-card">
+        <img src={this.props.petUrl}/>
         <div className="card-body text-center">
           <h3 className="card-title">
             <strong>Pet Profile</strong>
