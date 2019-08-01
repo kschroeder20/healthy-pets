@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
                 Owner Name: Steve
                 Home Phone: 000-000-0000
                 Mobile Phone: 000-000-0000
@@ -7,4 +8,30 @@
                 
                 Vet Name: 
                 Vet Phone: 
+=======
+              Owner Name: Kevin
+              Home Phone: 000-000-0000
+              Mobile Phone: 000-000-0000
+              Email: schroederkevin94@gmail.com
+              Address: 111 North St.
+              
+              Vet Name: 
+              Vet Phone: 
+              
+                Pet Name: Fito
+                Pet Birthday: 
+                Pet Color: Golden
+                Pet Species: Dog
+                Pet Breed: Golden Retriever
+                Pet Sex: Male
+                Pet Weight: 80
+
+                Medications: Some
+                Inoculations: All
+                Allergies: Everything
+                Procedures: None
+
+                Rabies Tage: 0
+                Microchip: undefined
+>>>>>>> cf2de899d12e70b47df511b529b1bced08f7e886
                 

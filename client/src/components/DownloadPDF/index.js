@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+import axios from 'axios';
 
 const download = require('in-browser-download');
 
@@ -18,9 +18,9 @@ export default class index extends Component {
 
   downloadPDF = e => {
     e.preventDefault();
-    API.downloadPDF(this.state.currentUserId)
+    axios.get(`/api/user/download/${this.state.currentUserId}`)
       .then ((response) => {
-        download(response.data, `Healthy_Pet_Report_${this.state.currentUserId}`);
+        download(response.data, `Healthy_Pet_Report_${this.state.currentUserId}.pdf`);
       })
       .catch(function(error) {
         console.log(error);

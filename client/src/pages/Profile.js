@@ -47,7 +47,9 @@ class Profile extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    this.setState({ currentUserId: userId });
+    this.setState({ 
+      currentUserId: userId,
+     });
 
     axios.get(`/api/users/${userId}`)
       .then(res => {this.setState({ user: res.data[0] })})
@@ -58,10 +60,15 @@ class Profile extends Component {
         console.log(res.data)
         this.setState({ 
           pet: res.data, 
-          currentPetId: res.data[0]._id 
+          currentPetId: res.data[0]._id,
+          petUrl: this.state.pet[this.state.currentPetIndex].petUrl
       })
     })
       .catch(err => console.log(err));
+
+      axios.get(`/api/user/writefile/${userId}`)
+      .then(res => axios.get(`/api/pets/writefile/${this.state.currentPetId}`))
+      .catch(err => console.log(err))
   };
 
   getUserInfo = userId => {
@@ -101,6 +108,10 @@ class Profile extends Component {
 
   handlePetChange = (petId) =>{
     this.setState({currentPetId: petId}, () => this.getPetInfo(petId))
+
+    axios.get(`/api/user/writefile/${this.state.currentUserId}`)
+    .then(res => axios.get(`/api/pets/writefile/${petId}`))
+    .catch(err => console.log(err))
   }
 
   render() {
@@ -108,7 +119,9 @@ class Profile extends Component {
     return (
       <div>
         <NavBar />
-        <PetNav handlePetChange={this.handlePetChange}/>
+        <PetNav 
+        handlePetChange={this.handlePetChange}
+        />
         <div>
           <Container>
             {/* <DownloadPDF /> */}

@@ -21,4 +21,8 @@ router
     .route("/pets/pic/:id")
     .get(petsController.findByPetId)
 
+router
+    .route("/pets/writefile/:id")
+    .get(petsController.writePetFile)
+
 module.exports = router;
