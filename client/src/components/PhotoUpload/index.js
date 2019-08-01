@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactFilestack from "filestack-react";
 import "./style.css";
-import Image from "react-bootstrap/Image";
+// import Image from "react-bootstrap/Image";
 import axios from 'axios';
 
 
