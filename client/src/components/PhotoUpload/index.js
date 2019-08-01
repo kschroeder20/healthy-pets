@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import ReactFilestack from "filestack-react";
 import "./style.css";
 import Image from "react-bootstrap/Image";
-import API from "../../utils/API";
+import axios from 'axios';
+
 
 const apiKey = process.env.REACT_APP_FILESTACK_API_KEY;
 
@@ -11,16 +12,31 @@ class PhotoUpload extends Component {
     super(props);
     this.state = {
       userId: 0,
+      currentPetId: 0,
       petUrl: "https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo"
     };
   }
 
-  componentWillMount = () =>{
-    this.setState({userId: this.props.uid})
+  componentDidMount = () =>{
+    this.setState({userId: this.props.uid, currentPetId: this.props.petId})
+    this.findPetPic();
+    console.log(this.props)
   }
 
-  updateDb = (userId) => {
-    API.updatePet({ ...this.state, userId })
+  findPetPic = () => {
+    console.log(this.props.petId)
+    axios.get(`/api/pets/pic/${this.props.petId}`)
+      .then(res => {
+        console.log(res)
+        this.setState({ 
+          petUrl: res.data[0].petUrl, 
+      })
+    })
+      .catch(err => console.log(err));
+  }
+
+  updateDb = (petId) => {
+    axios.put(`/api/pets/update/${petId}`, {petUrl: this.state.petUrl, currentPetId: petId})
       .then(res => {
         console.log(res)
       })
@@ -51,7 +67,7 @@ class PhotoUpload extends Component {
           }}
           onSuccess={result => {
             this.setState({petUrl: result.filesUploaded[0].url})
-            this.updateDb(this.state.uid)
+            this.updateDb(this.props.petId)
           }}
           onError={err => console.log(err)}
         />

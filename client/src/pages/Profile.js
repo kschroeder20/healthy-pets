@@ -55,6 +55,7 @@ class Profile extends Component {
 
     axios.get(`/api/pets/${userId}`)
       .then(res => {
+        console.log(res.data)
         this.setState({ 
           pet: res.data, 
           currentPetId: res.data[0]._id 
@@ -99,11 +100,11 @@ class Profile extends Component {
   };
 
   handlePetChange = (petId) =>{
-    console.log(petId)
     this.setState({currentPetId: petId}, () => this.getPetInfo(petId))
   }
 
   render() {
+    if(!this.state.currentPetId){return null}
     return (
       <div>
         <NavBar />
@@ -138,6 +139,7 @@ class Profile extends Component {
               <Col sm={4}>
                 <PhotoUpload 
                   uid={this.state.currentUserId}
+                  petId = {this.state.currentPetId}
                 />
                 <CalendarComponent />
               </Col>
