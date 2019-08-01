@@ -137,11 +137,12 @@ class Profile extends Component {
                 />
               </Col>
               <Col sm={4}>
-                <PhotoUpload 
+                {/* <PhotoUpload 
                   uid={this.state.currentUserId}
                   petId = {this.state.currentPetId}
-                />
+                /> */}
                 <CalendarComponent />
+                <img src="https://www.mercypetclinic.org/wp-content/uploads/2018/12/MPC_sliderupdates_mainslider.png" alt="pets" id="pets"/>
               </Col>
               <Col sm={4}>
                 <PetInfo
@@ -160,7 +161,7 @@ class Profile extends Component {
                   getPetInfo={this.getPetInfo}
                   modalOpen={this.modalOpen}
                 />
-                <img src="https://www.mercypetclinic.org/wp-content/uploads/2018/12/MPC_sliderupdates_mainslider.png" alt="pets" id="pets"/>
+                
               </Col>
             </Row>
           </Container>
