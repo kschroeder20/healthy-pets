@@ -62,6 +62,10 @@ class Profile extends Component {
       })
     })
       .catch(err => console.log(err));
+
+      axios.get(`/api/user/writefile/${userId}`)
+      .then(res => axios.get(`/api/pets/writefile/${this.state.currentPetId}`))
+      .catch(err => console.log(err))
   };
 
   getUserInfo = userId => {
@@ -101,6 +105,10 @@ class Profile extends Component {
 
   handlePetChange = (petId) =>{
     this.setState({currentPetId: petId}, () => this.getPetInfo(petId))
+
+    axios.get(`/api/user/writefile/${this.state.currentUserId}`)
+    .then(res => axios.get(`/api/pets/writefile/${petId}`))
+    .catch(err => console.log(err))
   }
 
   render() {
@@ -108,7 +116,9 @@ class Profile extends Component {
     return (
       <div>
         <NavBar />
-        <PetNav handlePetChange={this.handlePetChange}/>
+        <PetNav 
+        handlePetChange={this.handlePetChange}
+        />
         <div>
           <Container>
             {/* <DownloadPDF /> */}
