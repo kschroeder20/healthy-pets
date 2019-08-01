@@ -23,12 +23,13 @@ class PetNav extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    this.setState({userId: userId}, () => this.getPetInfo());
+    this.setState({userId: userId}, () => this.getPetInfo(userId));
   };
 
   getPetInfo = (userId) => {
     axios.get(`/api/pets/${userId}`)
     .then(res => {
+      console.log(res.data)
       let pet = []
       let petName = []
       for(let i = 0; i < res.data.length; i++){
