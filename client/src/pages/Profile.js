@@ -78,7 +78,7 @@ class Profile extends Component {
       .then(res => {
         this.setState({ 
           pet: res.data, 
-          currentPetId: res.data[0]._id 
+          currentPetId: res.data[0]._id,
       })
     })
       .then( res => {
@@ -154,6 +154,7 @@ class Profile extends Component {
                   petWeight={this.state.pet[this.state.currentPetIndex].petWeight}
                   petRabiesTag={this.state.pet[this.state.currentPetIndex].petRabiesTag}
                   petMicroChip={this.state.pet[this.state.currentPetIndex].petMicroChip}
+                  petUrl={this.state.pet[this.state.currentPetIndex].petUrl}
                   currentPetId = {this.state.currentPetId}
                   uid={this.state.currentUserId}
                   getPetInfo={this.getPetInfo}
