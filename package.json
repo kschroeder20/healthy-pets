@@ -69,4 +69,7 @@
     "url": "https://github.com/kschroeder20/healthy-pets/issues"
   },
   "homepage": "https://github.com/kschroeder20/healthy-pets#readme"
+},
+"engines": {
+  "node": "10.5.2"
 }
