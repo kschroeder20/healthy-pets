@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactFilestack from "filestack-react";
 import "./style.css";
-import Image from "react-bootstrap/Image";
+// import Image from "react-bootstrap/Image";
 import axios from 'axios';
 
 
@@ -23,12 +23,15 @@ class PhotoUpload extends Component {
     this.findPetPic();
   }
 
+  //Not firing this function, but also not responding with the error?
   findPetPic = () => {
     axios.get(`/api/pets/pic/${this.props.petId}`)
       .then(res => {
         this.setState({ 
           petUrl: res.data[0].petUrl, 
       })
+      console.log(this.state.petUrl);
+      console.log("found pic");
     })
       .catch(err => console.log(err));
   }
@@ -77,9 +80,10 @@ class PhotoUpload extends Component {
         />
         </div>
         
-        <Image
+        <img
           src={this.state.petUrl}
           style={{ width: "350px", height: "350px", margin: "20px" }}
+          alt="yourPet"
         />
       </div>
     );

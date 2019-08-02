@@ -43,7 +43,6 @@ class PetInfo extends Component {
 
   updatedModal = (currentPetId) => {
     this.props.getPetInfo(currentPetId);
-    this.props.petUrl(this.state.petUrl);
     this.writeFiles();
   };
 
