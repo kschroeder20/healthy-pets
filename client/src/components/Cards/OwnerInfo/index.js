@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import OwnerModal from "../../Modals/OwnerModal";
-import Axios from "axios";
+import axios from "axios";
 import "./style.css";
 
 class OwnerInfo extends Component {
@@ -11,7 +11,14 @@ class OwnerInfo extends Component {
 
   updatedModal = () => {
     this.props.getUserInfo(this.props.uid);
+    this.writeFiles()
   };
+
+  writeFiles = () => {
+    axios.get(`/api/user/writefile/${this.props.uid}`)
+      .then(res => axios.get(`/api/pets/writefile/${this.props.petId}`))
+      .catch(err => console.log(err))
+  }
 
   render () {
     return (

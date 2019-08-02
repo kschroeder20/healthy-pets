@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import './style.css';
-import API from "../../../utils/API";
+//import API from "../../../utils/API";
+import axios from "axios";
 
 
 const customStyles = {
@@ -44,44 +45,101 @@ class MedicalModal extends Component {
       petFood: "",
       petProcedures: "",
       currentUserId: '',
+      currentPetId: '',
+      modalIsOpen: false
     };
   }
 
-  componentDidMount = () => {
-    const url = window.location.pathname;
-    const pathnameArr = url.split("/");
-    const userId = pathnameArr[pathnameArr.length - 1];
-    API.getPetById(userId)
-      .then(res => {
-        this.setState({
-          petMedications: res.data[0].petMedications,
-          petInoculations: res.data[0].petInoculations,
-          petAllergies: res.data[0].petAllergies,
-          petFood: res.data[0].petFood,
-          petProcedures: res.data[0].petProcedures,
-          currentUserId: res.data[0].uid
-        });
-      })
-      .catch(err => console.log(err));
-  };
+  // componentDidMount = () => {
+  //   const url = window.location.pathname;
+  //   const pathnameArr = url.split("/");
+  //   const userId = pathnameArr[pathnameArr.length - 1];
+  //   API.getPetById(userId)
+  //     .then(res => {
+  //       this.setState({
+  //         petMedications: res.data[0].petMedications,
+  //         petInoculations: res.data[0].petInoculations,
+  //         petAllergies: res.data[0].petAllergies,
+  //         petFood: res.data[0].petFood,
+  //         petProcedures: res.data[0].petProcedures,
+  //         currentUserId: res.data[0].uid
+  //       });
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
 
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  //   this.updateDb(this.state.currentUserId);
+  //   this.closeModal();
+  // }
+
+  // updateDb = (userId) => {
+  //   API.updatePet({ ...this.state, userId })
+  //     .then(res => {
+  //       // ADD CODE TO SEND TO CARD HERE
+  //       console.log(res.data);
+  //     })
+  //     .catch(err => console.log(err));
+  // }
+
+  // openModal() {
+  //   this.setState({ modalIsOpen: true });
+  // }
+
+  // afterOpenModal() {
+  //   // references are now sync'd and can be accessed.
+  //   this.subtitle.style.color = "rgb(8, 5, 145)";
+  // }
+
+  // closeModal() {
+  //   this.props.modalUpdate();
+  //   this.setState({ modalIsOpen: false });
+  // }
+
+  // handleChange = e => {
+  //   this.setState({
+  //     [e.target.id]: e.target.value
+  //   });
+  // };
   handleSubmit(event) {
     event.preventDefault();
-    this.updateDb(this.state.currentUserId);
+    this.updateDb(this.props.petId);
     this.closeModal();
+    this.props.modalOpen(false);
   }
 
-  updateDb = (userId) => {
-    API.updatePet({ ...this.state, userId })
-      .then(res => {
-        // ADD CODE TO SEND TO CARD HERE
-        console.log(res.data);
-      })
-      .catch(err => console.log(err));
+  updateDb = (petId) => {
+    let petObj = {
+      petMedications:this.state.petMedications,
+      petInoculations:this.state.petInoculations,
+      petAllergies:this.state.petAllergies,
+      petFood:this.state.petFood,
+      petProcedures:this.state.petProcedures,
+      currentPetId: petId,
+      uid:this.state.uid,
+    }
+
+    axios.put(`/api/pets/update/${petId}`, petObj)
+    .then(res => {
+      console.log(res);
+      console.log("pet updated")
+    })
+    .catch(err => console.log(err));
   }
 
   openModal() {
+    this.setState({
+      petMedications:this.props.petMedications,
+      petInoculations:this.props.petInoculations,
+      petAllergies:this.props.petAllergies,
+      petFood:this.props.petFood,
+      petProcedures:this.props.petProcedures,
+      currentUserId:this.props.uid,
+      currentPetId:this.props.petId,
+    });
+    this.props.modalOpen(true);
     this.setState({ modalIsOpen: true });
   }
 
@@ -91,7 +149,7 @@ class MedicalModal extends Component {
   }
 
   closeModal() {
-    this.props.modalUpdate();
+    this.props.modalUpdate(this.state.currentPetId);
     this.setState({ modalIsOpen: false });
   }
 

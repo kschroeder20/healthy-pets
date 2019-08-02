@@ -8,6 +8,7 @@ import { Container, Row, Col } from "react-grid-system";
 import CalendarComponent from "../components/Calendar";
 import PhotoUpload from "../components/PhotoUpload";
 import axios from 'axios';
+import { writeFile } from "fs";
 
 
 const cp = require("child_process");
@@ -57,25 +58,27 @@ class Profile extends Component {
 
     axios.get(`/api/pets/${userId}`)
       .then(res => {
-        console.log(res.data)
         this.setState({ 
           pet: res.data, 
           currentPetId: res.data[0]._id,
           petUrl: this.state.pet[this.state.currentPetIndex].petUrl
       })
+      this.writeFiles()
     })
       .catch(err => console.log(err));
-
-      axios.get(`/api/user/writefile/${userId}`)
-      .then(res => axios.get(`/api/pets/writefile/${this.state.currentPetId}`))
-      .catch(err => console.log(err))
   };
 
+  writeFiles = () => {
+    axios.get(`/api/user/writefile/${this.state.currentUserId}`)
+      .then(res => axios.get(`/api/pets/writefile/${this.state.currentPetId}`))
+      .catch(err => console.log(err))
+  }
   getUserInfo = userId => {
     axios.get(`/api/users/${userId}`)
       .then(res => {
         this.setState({ user: res.data[0] });
         this.getPetInfo(this.state.currentUserId)
+        this.writeFile();
             })
       .catch(err => console.log(err));
   };
@@ -100,6 +103,7 @@ class Profile extends Component {
 
   modalOpen = (open) => {
     this.setState({modalOpen: open})
+
   }
 
   handleLogout = e => {
@@ -107,11 +111,11 @@ class Profile extends Component {
   };
 
   handlePetChange = (petId) =>{
-    this.setState({currentPetId: petId}, () => this.getPetInfo(petId))
-
-    axios.get(`/api/user/writefile/${this.state.currentUserId}`)
-    .then(res => axios.get(`/api/pets/writefile/${petId}`))
-    .catch(err => console.log(err))
+    this.setState({currentPetId: petId}, () => {
+      this.getPetInfo(petId)
+      this.writeFiles()
+    })
+    
   }
 
   render() {
@@ -137,16 +141,19 @@ class Profile extends Component {
                   vetPhone={this.state.user.vetPhone}
                   uid={this.state.currentUserId}
                   getUserInfo={this.getUserInfo}
+                  petId = {this.state.currentPetId}
                 />
                 <Medical
-                  medications={this.state.pet[this.state.currentPetIndex].petMedications}
-                  vaccines={this.state.pet[this.state.currentPetIndex].petInoculations}
-                  allergies={this.state.pet[this.state.currentPetIndex].petAllergies}
-                  food={this.state.pet[this.state.currentPetIndex].petFood}
-                  procedures={this.state.pet[this.state.currentPetIndex].petProcedures}
+                  petMedications={this.state.pet[this.state.currentPetIndex].petMedications}
+                  petInoculations={this.state.pet[this.state.currentPetIndex].petInoculations}
+                  petAllergies={this.state.pet[this.state.currentPetIndex].petAllergies}
+                  petFood={this.state.pet[this.state.currentPetIndex].petFood}
+                  petProcedures={this.state.pet[this.state.currentPetIndex].petProcedures}
                   petId = {this.state.currentPetId}
                   uid={this.state.currentUserId}
                   getUserInfo={this.getUserInfo}
+                  getPetInfo={this.getPetInfo}
+                  modalOpen={this.modalOpen}
                 />
               </Col>
               <Col sm={4}>
