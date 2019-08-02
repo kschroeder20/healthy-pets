@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactFilestack from "filestack-react";
 import "./style.css";
-// import Image from "react-bootstrap/Image";
+import Image from "react-bootstrap/Image";
 import axios from 'axios';
 
 
@@ -19,7 +19,7 @@ class PhotoUpload extends Component {
 
   componentDidMount = () =>{
     console.log(this.props.petId)
-    this.setState({userId: this.props.uid, currentPetId: this.props.petId })
+    this.setState({userId: this.props.uid, currentPetId: this.props.petId, petUrl: this.state.petUrl })
     this.findPetPic();
   }
 
@@ -33,10 +33,19 @@ class PhotoUpload extends Component {
       .catch(err => console.log(err));
   }
 
+  //This function is successfully updating the peturl to the db. 
   updateDb = (petId) => {
-    axios.put(`/api/pets/update/${petId}`, {petUrl: this.state.petUrl, currentPetId: petId})
-      .then(res => { console.log("database updated")})
+    let photoUrl = this.state.petUrl;
+    let id = petId
+    axios.put(`/api/pets/update/${petId}`, photoUrl, id)
+      .then(res => { console.log("database updated:" + this.state.petUrl)})
       .catch(err => console.log(err));
+  }
+
+  //photo renders upon closing, but is not persistent on changing pet or page refresh.
+  closeModal = () => {
+    this.props.modalUpdate(this.state.petUrl);
+    this.setState({ modalIsOpen: false });
   }
 
   render() {
@@ -60,16 +69,18 @@ class PhotoUpload extends Component {
           }}
           onSuccess={result => {
             this.setState({petUrl: result.filesUploaded[0].url})
+            console.log("Url: " + this.state.petUrl)
             this.updateDb(this.props.petId)
           }}
+          onRequestClose={this.closeModal}
           onError={err => console.log(err)}
         />
         </div>
         
-        {/* <Image
+        <Image
           src={this.state.petUrl}
-          style={{ width: "200px", height: "200px", padding: "10px" }}
-        /> */}
+          style={{ width: "350px", height: "350px", margin: "20px" }}
+        />
       </div>
     );
   }

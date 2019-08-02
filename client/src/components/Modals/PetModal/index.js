@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import API from "../../../utils/API";
+// import API from "../../../utils/API";
 import axios from 'axios';
 
 
@@ -190,7 +190,7 @@ class PetModal extends Component {
                 value={this.state.petBirthday}
                 id="petBirthday"
                 onChange={this.handleChange}
-                placeholder="00/00/0000"
+                placeholder="Birthday 00/00/0000"
               />
             </div>
             <div className="form-group">
@@ -235,7 +235,7 @@ class PetModal extends Component {
             </div>
             <div className="form-group">
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 value={this.state.petWeight}
                 id="petWeight"
@@ -245,7 +245,7 @@ class PetModal extends Component {
             </div>
             <div className="form-group">
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 value={this.state.petRabiesTag}
                 id="petRabiesTag"
@@ -255,7 +255,7 @@ class PetModal extends Component {
             </div>
             <div className="form-group">
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 value={this.state.petMicroChip}
                 id="petMicroChip"
