@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PetModal from "../../Modals/PetModal";
-import Axios from "axios";
+import axios from "axios";
 import PhotoUpload from "../../PhotoUpload";
 
 
@@ -42,12 +42,20 @@ class PetInfo extends Component {
 
   updatedModal = (currentPetId) => {
     this.props.getPetInfo(currentPetId);
+    this.writeFiles();
   };
 
   modalOpen = (open) => {
     this.setState({modalOpen: open})
     this.props.modalOpen(open);
   }
+
+  writeFiles = () => {
+    axios.get(`/api/user/writefile/${this.props.uid}`)
+      .then(res => axios.get(`/api/pets/writefile/${this.props.currentPetId}`))
+      .catch(err => console.log(err))
+  }
+
   render() {
     return (
       <div className="card" id="pet-card">
