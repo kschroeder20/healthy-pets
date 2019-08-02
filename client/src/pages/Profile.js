@@ -6,12 +6,12 @@ import NavBar from "../components/NavBar";
 import PetNav from "../components/PetNav";
 import { Container, Row, Col } from "react-grid-system";
 import CalendarComponent from "../components/Calendar";
-import PhotoUpload from "../components/PhotoUpload";
+// import PhotoUpload from "../components/PhotoUpload";
 import axios from 'axios';
-import { writeFile } from "fs";
+// import { writeFile } from "fs";
 
 
-const cp = require("child_process");
+// const cp = require("child_process");
 
 class Profile extends Component {
   state = {
@@ -61,9 +61,10 @@ class Profile extends Component {
         this.setState({ 
           pet: res.data, 
           currentPetId: res.data[0]._id,
-          petUrl: this.state.pet[this.state.currentPetIndex].petUrl
+          petUrl: res.data[0].petUrl
       })
       this.writeFiles()
+      console.log("Url here: " + this.state.petUrl)
     })
       .catch(err => console.log(err));
   };

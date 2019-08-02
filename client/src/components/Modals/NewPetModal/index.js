@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import API from "../../../utils/API";
+// import API from "../../../utils/API";
 import axios from 'axios';
+import { Button } from "react-bootstrap";
 import { FaPlusSquare } from "react-icons/fa";
 
 
@@ -112,10 +113,9 @@ class PetModal extends Component {
   render() {
     return (
       <div>
-        {/* <button className="edit" onClick={this.openModal}>
-          Edit
-        </button> */}
-        <FaPlusSquare onClick={this.openModal}/>
+        <Button variant="secondary">
+          Add A Pet<FaPlusSquare onClick={this.openModal}/>
+        </Button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
