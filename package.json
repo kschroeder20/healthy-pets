@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "add": "^2.0.6",
     "connect-mongo": "^3.0.0",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.0.0",
