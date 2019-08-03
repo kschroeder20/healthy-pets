@@ -82,6 +82,13 @@ class PhotoUpload extends Component {
           onError={err => console.log(err)}
         />
         </div>
+        
+        <img
+          className="petImageUpload"
+          src={this.state.petUrl}
+          style={{ width: "350px", height: "350px", margin: "20px" }}
+          alt="yourPet"
+        />
       </div>
     );
   }
