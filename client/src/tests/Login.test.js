@@ -5,7 +5,6 @@ import determineRepeatUser from '../components/Login';
 import createNewUser from '../components/Login';
 
 describe('Endpoints do not return errors', () => {
-
     it('determineRepeatUser does not return error', () => {
         expect(new determineRepeatUser('111111111')).toHaveProperty("props", "111111111");
     });

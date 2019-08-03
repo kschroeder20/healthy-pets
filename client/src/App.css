@@ -17,3 +17,41 @@ body {
   border-radius: 10px;
   padding: 20px;
 }
+
+img {
+  margin: 20px;
+}
+
+#pets {
+  width: 350px;
+  height: auto;
+  margin: auto 15%;
+  margin-top: 60px;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .Col {
+    width: 100%!important;
+  }
+
+  .card {
+    margin: 30px;
+    width: 80%;
+  }
+
+  .navbar {
+    width: 100%;
+  }
+
+  button {
+    width: 100px;
+    font-size: small;
+  }
+
+  .edit {
+    width: 60px;
+  }
+}
+
+

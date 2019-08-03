@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Modal from "react-modal";
-import API from "../../../utils/API";
+import axios from 'axios';
 
 const customStyles = {
   content: {
@@ -50,20 +50,20 @@ class OwnerModal extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    API.getPetById(userId)
-      .then(res => {
-        this.setState({
-          ownerName: res.data[0].ownerName,
-          homePhone: res.data[0].homePhone,
-          mobilePhone: res.data[0].mobilePhone,
-          email: res.data[0].email,
-          address: res.data[0].address,
-          vetName: res.data[0].vetName,
-          vetPhone: res.data[0].vetPhone,
-          currentUserId: res.data[0].uid
-        });
+    axios.get(`/api/users/${userId}`)
+    .then(res => {
+      this.setState({ 
+        ownerName: res.data[0].ownerName,
+        homePhone: res.data[0].homePhone,
+        mobilePhone: res.data[0].mobilePhone,
+        email: res.data[0].email,
+        address: res.data[0].address,
+        vetName: res.data[0].vetName,
+        vetPhone: res.data[0].vetPhone,
+        currentUserId: res.data[0].uid
       })
-      .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
   };
 
 
@@ -74,13 +74,22 @@ class OwnerModal extends Component {
   }
 
   updateDb = (userId) => {
-    API.updatePet({ ...this.state, userId })
-      .then(res => {
-        const ownerData = res.data;
-        // ADD CODE TO SEND TO CARD HERE
-        console.log(ownerData.ownerName);
-      })
-      .catch(err => console.log(err));
+    let userObj = {
+      ownerName: this.state.ownerName,
+      homePhone: this.state.homePhone,
+      mobilePhone: this.state.mobilePhone,
+      email: this.state.email,
+      address: this.state.address,
+      vetName: this.state.vetName,
+      vetPhone: this.state.vetPhone,
+      userId: userId
+    }
+
+    axios.put(`/api/users/${userId}`, userObj)
+    .then(res => {
+      console.log("user updated")
+    })
+    .catch(err => console.log(err));
   }
 
   openModal() {
@@ -93,8 +102,8 @@ class OwnerModal extends Component {
   }
 
   closeModal() {
+    this.props.modalUpdate();
     this.setState({ modalIsOpen: false });
-    window.location.reload();
   }
 
   handleChange = e => {

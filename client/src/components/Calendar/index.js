@@ -1,21 +1,24 @@
-import React, { Component } from "react";
-import Calendar from "react-calendar";
+import React, {Component} from 'react';
+import Calendar from 'rc-calendar';
+import 'rc-calendar/assets/index.css';
+import moment from 'moment';
 import "./style.css";
 
-class PetCalendar extends Component {
-  state = {
-    date: new Date()
-  };
+class CalendarComponent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            time: moment()
+        }
+    }
 
-  onChange = date => this.setState({ date });
-
-  render() {
-    return (
-      <div>
-        <Calendar onChange={this.onChange} value={this.state.date} />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="calendar-div">
+              <Calendar/>
+            </div>
+        )
+    }
 }
 
-export default PetCalendar;
+export default CalendarComponent;
