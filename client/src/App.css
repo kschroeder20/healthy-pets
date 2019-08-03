@@ -29,4 +29,29 @@ img {
   margin-top: 60px;
 }
 
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .Col {
+    width: 100%!important;
+  }
+
+  .card {
+    margin: 30px;
+    width: 80%;
+  }
+
+  .navbar {
+    width: 100%;
+  }
+
+  button {
+    width: 100px;
+    font-size: small;
+  }
+
+  .edit {
+    width: 60px;
+  }
+}
+
 

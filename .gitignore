@@ -1,3 +1,12 @@
+#Don't need this uploaded repo, stores personal info
+seedDB.js
+
+#folder created using mongo backup tool
+db-backup
+
+#file created by pdf download
+pdfInfo.txt
+
 # Logs
 logs
 *.log

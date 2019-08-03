@@ -17,3 +17,26 @@
     height: auto;
     width: 400px;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+
+    .calendar-div {
+        /* position: relative;
+        margin: auto;
+        margin-bottom: 30px; */
+        display: none;
+    }
+
+    #pets {
+        /* z-index: 0;
+        position: static;
+        margin-top: 60px;
+        padding: 60px; */
+        display: none;
+    }
+
+    .rc-calendar {
+        margin-top: 0;
+    }
+}

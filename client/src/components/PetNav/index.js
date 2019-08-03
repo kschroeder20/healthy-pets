@@ -55,7 +55,7 @@ class PetNav extends Component {
     <Dropdown.Item onClick={() => this.handlePetChange(pet)}>{pet}</Dropdown.Item>
     );
     return (
-      <nav className="navbar" id="pet-nav">
+      <nav className="navbar navbar-expand-sm" id="pet-nav">
         <div className="container">
           <Dropdown>
             <Dropdown.Toggle variant="secondary" id="dropdown-basic">

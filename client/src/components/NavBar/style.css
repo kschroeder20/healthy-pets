@@ -9,3 +9,11 @@
 .navbar {
     margin-bottom: 0!important;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .navbar-toggler {
+        width: 50px;
+    }
+
+  }

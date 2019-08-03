@@ -67,7 +67,7 @@ export default class index extends Component {
       <div>
         <NavBar />
       <div className="container">
-        <div className="col-4" id="login-container">
+        <div className="col" id="login-container">
           <StyledFirebaseAuth
             uiConfig={this.uiConfig}
             firebaseAuth={firebase.auth()}
@@ -76,6 +76,7 @@ export default class index extends Component {
         <img
           src="http://www.capecodpetresort.com/wp-content/uploads/banner-pets-dog-cat-boarding-1000x451.png"
           alt="pets"
+          id="static-pets"
         />
       </div>
       </div>
