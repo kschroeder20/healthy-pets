@@ -11,7 +11,8 @@ class Medical extends Component {
   state = {
     pet: {},
     currentPetId: 0,
-    currentUserId: 0
+    currentUserId: 0,
+    modalOpen: false
   }
 
   componentDidMount = () => {

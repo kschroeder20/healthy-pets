@@ -132,7 +132,6 @@ class Profile extends Component {
         />
         <div>
           <Container>
-            {/* <DownloadPDF /> */}
             <Row>
               <Col sm={4}>
                 <OwnerInfo
@@ -161,10 +160,6 @@ class Profile extends Component {
                 />
               </Col>
               <Col sm={4}>
-                {/* <PhotoUpload 
-                  uid={this.state.currentUserId}
-                  petId = {this.state.currentPetId}
-                /> */}
                 <CalendarComponent />
                 <img src="https://www.mercypetclinic.org/wp-content/uploads/2018/12/MPC_sliderupdates_mainslider.png" alt="pets" id="pets"/>
               </Col>

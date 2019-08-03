@@ -19,7 +19,7 @@ class PhotoUpload extends Component {
 
   componentDidMount = () =>{
     console.log(this.props.petId)
-    this.setState({userId: this.props.uid, currentPetId: this.props.petId, petUrl: this.state.petUrl })
+    this.setState({userId: this.props.uid, currentPetId: this.props.petId, petUrl: this.props.petUrl })
     this.findPetPic();
   }
 
@@ -39,9 +39,11 @@ class PhotoUpload extends Component {
   //This function is successfully updating the peturl to the db. 
   updateDb = (petId) => {
     let photoUrl = this.state.petUrl;
-    let id = petId
-    axios.put(`/api/pets/update/${petId}`, photoUrl, id)
-      .then(res => { console.log("database updated:" + this.state.petUrl)})
+    axios.put(`/api/pets/update/${petId}`, {petUrl: photoUrl, currentPetId: petId})
+      .then(res => { 
+        console.log(res);
+        console.log("database updated:" + this.state.petUrl)
+      })
       .catch(err => console.log(err));
   }
 

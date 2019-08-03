@@ -112,9 +112,9 @@ class PetInfo extends Component {
           </li>
         </ul>
         <PhotoUpload
-        uid={this.state.currentUserId}
-        petId = {this.state.currentPetId}
-        petUrl = {this.state.petUrl}
+        uid={this.props.currentUserId}
+        petId = {this.props.currentPetId}
+        petUrl = {this.props.petUrl}
         />
         {/* <img src={this.props.petUrl} alt="yourPet"/> */}
       </div>
