@@ -133,7 +133,7 @@ class Profile extends Component {
         <div>
           <Container>
             <Row>
-              <Col sm={4}>
+              <Col sm={12} md={4} lg={4}>
                 <OwnerInfo
                   owner={this.state.user.ownerName}
                   homePhone={this.state.user.homePhone}
@@ -159,11 +159,11 @@ class Profile extends Component {
                   modalOpen={this.modalOpen}
                 />
               </Col>
-              <Col sm={4}>
+              <Col sm={12} md={4} lg={4}>
                 <CalendarComponent />
                 <img src="https://www.mercypetclinic.org/wp-content/uploads/2018/12/MPC_sliderupdates_mainslider.png" alt="pets" id="pets"/>
               </Col>
-              <Col sm={4}>
+              <Col sm={12} md={4} lg={4}>
                 <PetInfo
                   petName={this.state.pet[this.state.currentPetIndex].petName}
                   petBirthday={this.state.pet[this.state.currentPetIndex].petBirthday}

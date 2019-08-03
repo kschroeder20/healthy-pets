@@ -8,7 +8,25 @@ img {
     background-color: rgba(12, 6, 102, 0.5);
     border-radius: 10px;
     border: 2px solid lightgray;
-    margin: auto 30%;
+    margin: auto;
+    width: 40%;
     margin-top: 5%;
     padding: 10px;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+      width: 100%;
+    }
+
+    #login-container {
+        margin: 0;
+        width: 700px!important;
+    }
+
+    #static-pets {
+        position: absolute;
+        bottom: 10px;
+    }
+  }

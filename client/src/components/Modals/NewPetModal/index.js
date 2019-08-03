@@ -113,7 +113,7 @@ class PetModal extends Component {
   render() {
     return (
       <div>
-        <Button variant="secondary">
+        <Button variant="secondary" className="addPet">
           Add A Pet<FaPlusSquare onClick={this.openModal}/>
         </Button>
         <Modal
