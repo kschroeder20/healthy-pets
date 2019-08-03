@@ -5,22 +5,22 @@
               Email: schroederkevin94@gmail.com
               Address: 111 North St.
               
-              Vet Name: Jon Doe
-              Vet Phone: 888-999-1010
+              Vet Name: 
+              Vet Phone: 
               
-                Pet Name: Fito
-                Pet Birthday: 1199-11-11
-                Pet Color: Golden
+                Pet Name: Buster
+                Pet Birthday: 
+                Pet Color: Brown
                 Pet Species: Dog
-                Pet Breed: Golden Retriever
+                Pet Breed: Austrailian Shepard
                 Pet Sex: Male
                 Pet Weight: 80
 
-                Medications: None
+                Medications: Some
                 Inoculations: All
-                Allergies: Grass, dust, cats
+                Allergies: Everything
                 Procedures: None
 
-                Rabies Tage: 222
-                Microchip: 222
+                Rabies Tage: 0
+                Microchip: undefined
                 

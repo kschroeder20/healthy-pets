@@ -6,12 +6,12 @@ import NavBar from "../components/NavBar";
 import PetNav from "../components/PetNav";
 import { Container, Row, Col } from "react-grid-system";
 import CalendarComponent from "../components/Calendar";
-import PhotoUpload from "../components/PhotoUpload";
+// import PhotoUpload from "../components/PhotoUpload";
 import axios from 'axios';
-import { writeFile } from "fs";
+// import { writeFile } from "fs";
 
 
-const cp = require("child_process");
+// const cp = require("child_process");
 
 class Profile extends Component {
   state = {
@@ -39,7 +39,7 @@ class Profile extends Component {
       petAllergies: "",
       petFood: "",
       petProcedures: "",
-      petUrl: "https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo"
+      petUrl: ""
     }],
     modalOpen: false
   };
@@ -61,9 +61,10 @@ class Profile extends Component {
         this.setState({ 
           pet: res.data, 
           currentPetId: res.data[0]._id,
-          petUrl: this.state.pet[this.state.currentPetIndex].petUrl
+          // petUrl: res.data[0].petUrl
       })
       this.writeFiles()
+      // console.log("Url here: " + res.data[0].petUrl)
     })
       .catch(err => console.log(err));
   };
@@ -89,12 +90,15 @@ class Profile extends Component {
         this.setState({ 
           pet: res.data, 
           currentPetId: res.data[0]._id,
+          petUrl: res.data[0].petUrl
       })
+      console.log("Url here: " + res.data[0].petUrl)
     })
       .then( res => {
         for(let i =0; i < this.state.pet.length; i++){
           if(petId === this.state.pet[i]._id){
             this.setState({currentPetId: this.state.pet[i]._id, currentPetIndex: i})
+            
           }
       }
     })

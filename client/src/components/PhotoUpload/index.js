@@ -19,24 +19,38 @@ class PhotoUpload extends Component {
 
   componentDidMount = () =>{
     console.log(this.props.petId)
-    this.setState({userId: this.props.uid, currentPetId: this.props.petId })
+    this.setState({userId: this.props.uid, currentPetId: this.props.petId, petUrl: this.props.petUrl })
     this.findPetPic();
   }
 
+  //Not firing this function, but also not responding with the error?
   findPetPic = () => {
     axios.get(`/api/pets/pic/${this.props.petId}`)
       .then(res => {
         this.setState({ 
           petUrl: res.data[0].petUrl, 
       })
+      console.log(this.state.petUrl);
+      console.log("found pic");
     })
       .catch(err => console.log(err));
   }
 
+  //This function is successfully updating the peturl to the db. 
   updateDb = (petId) => {
-    axios.put(`/api/pets/update/${petId}`, {petUrl: this.state.petUrl, currentPetId: petId})
-      .then(res => { console.log("database updated")})
+    let photoUrl = this.state.petUrl;
+    axios.put(`/api/pets/update/${petId}`, {petUrl: photoUrl, currentPetId: petId})
+      .then(res => { 
+        console.log(res);
+        console.log("database updated:" + this.state.petUrl)
+      })
       .catch(err => console.log(err));
+  }
+
+  //photo renders upon closing, but is not persistent on changing pet or page refresh.
+  closeModal = () => {
+    this.props.modalUpdate(this.state.petUrl);
+    this.setState({ modalIsOpen: false });
   }
 
   render() {
@@ -60,16 +74,19 @@ class PhotoUpload extends Component {
           }}
           onSuccess={result => {
             this.setState({petUrl: result.filesUploaded[0].url})
+            console.log("Url: " + this.state.petUrl)
             this.updateDb(this.props.petId)
           }}
+          onRequestClose={this.closeModal}
           onError={err => console.log(err)}
         />
         </div>
         
-        {/* <Image
+        <img
           src={this.state.petUrl}
-          style={{ width: "200px", height: "200px", padding: "10px" }}
-        /> */}
+          style={{ width: "350px", height: "350px", margin: "20px" }}
+          alt="yourPet"
+        />
       </div>
     );
   }

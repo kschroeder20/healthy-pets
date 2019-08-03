@@ -17,6 +17,7 @@ class PetInfo extends Component {
       petWeight: 0,
       petRabiesTag: "",
       petMicroChip: "",
+      petUrl: ""
     },
     currentPetId: 0,
     currentUserId: 0,
@@ -36,7 +37,7 @@ class PetInfo extends Component {
       petMicroChip: this.props.petMicroChip,
       petUrl: this.props.petUrl
     }
-    this.setState({pet: petObj, currentUserId: this.props.uid, currentPetId: this.props.currentPetId})
+    this.setState({pet: petObj, currentUserId: this.props.uid, currentPetId: this.props.currentPetId, petUrl: this.props.petUrl})
     
   };
 
@@ -111,10 +112,11 @@ class PetInfo extends Component {
           </li>
         </ul>
         <PhotoUpload
-        uid={this.state.currentUserId}
-        petId = {this.state.currentPetId}
+        uid={this.props.currentUserId}
+        petId = {this.props.currentPetId}
+        petUrl = {this.props.petUrl}
         />
-        <img src={this.props.petUrl} alt="yourPet"/>
+        {/* <img src={this.props.petUrl} alt="yourPet"/> */}
       </div>
     );
   }

@@ -1,10 +1,14 @@
 #pet-nav {
-    top: 0;
-    padding: 0!important;
-    background-color: #6C757D;
-  }
+  top: 0;
+  padding: 0 !important;
+  background-color: #6c757d;
+}
 
 .btn {
-    margin: 0;
-    width: 150px;
+  margin: 0;
+  width: 150px;
+}
+
+svg {
+  margin: 10px;
 }
