@@ -132,92 +132,84 @@ class PetModal extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <input
+                contentLabel="Name"
                 type="text"
                 className="form-control"
-                value={this.state.petName}
                 id="petName"
                 onChange={this.handleChange}
-                placeholder={this.props.petName}
+                placeholder="Name"
               />
             </div>
             <div className="form-group">
               <input
                 type="date"
                 className="form-control"
-                value={this.state.petBirthday}
                 id="petBirthday"
                 onChange={this.handleChange}
-                placeholder="00/00/0000"
+                placeholder="Birthday"
               />
             </div>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
-                value={this.state.petSpecies}
                 id="petSpecies"
                 onChange={this.handleChange}
-                placeholder={this.props.petSpecies}
+                placeholder="Species"
               />
             </div>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
-                value={this.state.petColor}
                 id="petColor"
                 onChange={this.handleChange}
-                placeholder={this.props.petColor}
+                placeholder="Color"
               />
             </div>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
-                value={this.state.petBreed}
                 id="petBreed"
                 onChange={this.handleChange}
-                placeholder={this.props.petBreed}
+                placeholder="Breed"
               />
             </div>
             <div className="form-group">
               <input
                 type="text"
                 className="form-control"
-                value={this.state.petSex}
                 id="petSex"
                 onChange={this.handleChange}
-                placeholder={this.props.petSex}
+                placeholder="Sex"
               />
             </div>
             <div className="form-group">
               <input
                 type="number"
                 className="form-control"
-                value={this.state.petWeight}
                 id="petWeight"
                 onChange={this.handleChange}
-                placeholder={this.props.petWeight}
+                placeholder="Weight"
               />
             </div>
             <div className="form-group">
               <input
                 type="number"
                 className="form-control"
-                value={this.state.petRabiesTag}
                 id="petRabiesTag"
                 onChange={this.handleChange}
-                placeholder={this.props.petRabiesTag}
+                placeholder="Rabies Tag"
               />
             </div>
             <div className="form-group">
               <input
                 type="number"
                 className="form-control"
-                value={this.state.petMicroChip}
                 id="petMicroChip"
                 onChange={this.handleChange}
-                placeholder={this.props.petMicroChip}
+                placeholder="Microchip Number"
               />
             </div>
             <input
