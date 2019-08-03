@@ -50,6 +50,7 @@ class PetModal extends Component {
         uid: '',
         currentPetId: 0,
         userId: 0,
+        petUrl: 'https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo'
     };
   }
 
@@ -79,7 +80,8 @@ class PetModal extends Component {
       petWeight: this.state.petWeight,
       petRabiesTag: this.state.petRabiesTag,
       petMicroChip: this.state.petMicroChip,
-      uid: uid
+      uid: uid,
+      petUrl: this.state.petUrl
     }
 
     axios.post(`/api/pets`, petObj)

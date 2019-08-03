@@ -8,11 +8,11 @@
               Vet Name: Jon Doe
               Vet Phone: 000-000-0000
               
-                Pet Name: Buster
+                Pet Name: Fito
                 Pet Birthday: 
-                Pet Color: Brown
+                Pet Color: Golden
                 Pet Species: Dog
-                Pet Breed: Austrailian Shepard
+                Pet Breed: Golden Retriever
                 Pet Sex: Male
                 Pet Weight: 80
 
@@ -21,6 +21,6 @@
                 Allergies: Everything
                 Procedures: None
 
-                Rabies Tage: 222
-                Microchip: 222
+                Rabies Tage: 111
+                Microchip: 111
                 
