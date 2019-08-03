@@ -119,7 +119,7 @@ class PetInfo extends Component {
         <img
           src={this.props.petUrl}
           style={{ width: "350px", height: "350px", margin: "20px" }}
-          alt="pet photo"
+          alt="your pet"
         />
         {/* <img src={this.props.petUrl} alt="yourPet"/> */}
       </div>
