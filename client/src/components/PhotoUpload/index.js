@@ -13,7 +13,8 @@ class PhotoUpload extends Component {
     this.state = {
       userId: 0,
       currentPetId: 0,
-      petUrl: "https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo"
+      petUrl: "https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo",
+      modalIsOpen: true
     };
   }
 
@@ -49,7 +50,7 @@ class PhotoUpload extends Component {
 
   //photo renders upon closing, but is not persistent on changing pet or page refresh.
   closeModal = () => {
-    this.props.updatedModal(this.state.currentPetId);
+    //this.props.updatedModal(this.state.currentPetId);
     this.setState({ modalIsOpen: false });
   }
 

@@ -59,8 +59,7 @@ class PetInfo extends Component {
 
   render() {
     return (
-      <div className="card" id="pet-card">
-        
+      <div className="card" id="pet-card"> 
         <div className="card-body text-center">
           <h3 className="card-title">
             <strong>Pet Profile</strong>
@@ -120,7 +119,7 @@ class PetInfo extends Component {
         <img
           src={this.props.petUrl}
           style={{ width: "350px", height: "350px", margin: "20px" }}
-          alt="yourPet"
+          alt="pet photo"
         />
         {/* <img src={this.props.petUrl} alt="yourPet"/> */}
       </div>
