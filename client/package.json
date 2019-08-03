@@ -26,8 +26,7 @@
     "react-scripts": "3.0.1",
     "reactstrap": "^8.0.1",
     "save": "^2.4.0",
-    "spectre.css": "^0.5.8",
-    "stream-buffers": "^3.0.2"
+    "spectre.css": "^0.5.8"
   },
   "scripts": {
     "start": "react-scripts start",
