@@ -115,6 +115,12 @@ class PetInfo extends Component {
         uid={this.props.currentUserId}
         petId = {this.props.currentPetId}
         petUrl = {this.props.petUrl}
+        updatedModal={this.updatedModal}
+        />
+        <img
+          src={this.props.petUrl}
+          style={{ width: "350px", height: "350px", margin: "20px" }}
+          alt="yourPet"
         />
         {/* <img src={this.props.petUrl} alt="yourPet"/> */}
       </div>

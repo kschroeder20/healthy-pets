@@ -5,8 +5,8 @@
               Email: schroederkevin94@gmail.com
               Address: 111 North St.
               
-              Vet Name: 
-              Vet Phone: 
+              Vet Name: Jon Doe
+              Vet Phone: 000-000-0000
               
                 Pet Name: Buster
                 Pet Birthday: 
@@ -21,6 +21,6 @@
                 Allergies: Everything
                 Procedures: None
 
-                Rabies Tage: 0
-                Microchip: undefined
+                Rabies Tage: 222
+                Microchip: 222
                 

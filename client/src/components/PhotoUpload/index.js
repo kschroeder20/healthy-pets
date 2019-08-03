@@ -49,7 +49,7 @@ class PhotoUpload extends Component {
 
   //photo renders upon closing, but is not persistent on changing pet or page refresh.
   closeModal = () => {
-    this.props.modalUpdate(this.state.petUrl);
+    this.props.updatedModal(this.state.currentPetId);
     this.setState({ modalIsOpen: false });
   }
 
@@ -76,17 +76,12 @@ class PhotoUpload extends Component {
             this.setState({petUrl: result.filesUploaded[0].url})
             console.log("Url: " + this.state.petUrl)
             this.updateDb(this.props.petId)
+            this.closeModal();
           }}
           onRequestClose={this.closeModal}
           onError={err => console.log(err)}
         />
         </div>
-        
-        <img
-          src={this.state.petUrl}
-          style={{ width: "350px", height: "350px", margin: "20px" }}
-          alt="yourPet"
-        />
       </div>
     );
   }
