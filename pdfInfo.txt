@@ -1,26 +1,26 @@
 
-              Owner Name: Kevin Schroeder
+              Owner Name: Steve
               Home Phone: 000-000-0000
               Mobile Phone: 000-000-0000
-              Email: schroederkevin94@gmail.com
+              Email: steve@gmail.com
               Address: 111 North St.
               
-              Vet Name: Jon Doe
-              Vet Phone: 000-000-0000
+              Vet Name: 1test
+              Vet Phone: 5555555
               
-                Pet Name: Buster
-                Pet Birthday: 
-                Pet Color: Brown
+                Pet Name: Lady
+                Pet Birthday: 2012-02-02
+                Pet Color: Tan
                 Pet Species: Dog
-                Pet Breed: Austrailian Shepard
-                Pet Sex: Male
-                Pet Weight: 80
+                Pet Breed: 
+                Pet Sex: 
+                Pet Weight: 0
 
-                Medications: Some
-                Inoculations: All
-                Allergies: Everything
-                Procedures: None
+                Medications: undefined
+                Inoculations: undefined
+                Allergies: undefined
+                Procedures: undefined
 
-                Rabies Tage: 222
-                Microchip: 222
+                Rabies Tage: 0
+                Microchip: 0
                 

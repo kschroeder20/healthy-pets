@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import Modal from 'react-modal';
-import './style.css';
-//import API from "../../../utils/API";
+import React, { Component } from "react";
+import Modal from "react-modal";
+import "./style.css";
 import axios from "axios";
 
 
@@ -44,65 +43,12 @@ class MedicalModal extends Component {
       petAllergies: "",
       petFood: "",
       petProcedures: "",
-      currentUserId: '',
-      currentPetId: '',
+      currentUserId: "",
+      currentPetId: "",
       modalIsOpen: false
     };
   }
 
-  // componentDidMount = () => {
-  //   const url = window.location.pathname;
-  //   const pathnameArr = url.split("/");
-  //   const userId = pathnameArr[pathnameArr.length - 1];
-  //   API.getPetById(userId)
-  //     .then(res => {
-  //       this.setState({
-  //         petMedications: res.data[0].petMedications,
-  //         petInoculations: res.data[0].petInoculations,
-  //         petAllergies: res.data[0].petAllergies,
-  //         petFood: res.data[0].petFood,
-  //         petProcedures: res.data[0].petProcedures,
-  //         currentUserId: res.data[0].uid
-  //       });
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
-
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   this.updateDb(this.state.currentUserId);
-  //   this.closeModal();
-  // }
-
-  // updateDb = (userId) => {
-  //   API.updatePet({ ...this.state, userId })
-  //     .then(res => {
-  //       // ADD CODE TO SEND TO CARD HERE
-  //       console.log(res.data);
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-
-  // openModal() {
-  //   this.setState({ modalIsOpen: true });
-  // }
-
-  // afterOpenModal() {
-  //   // references are now sync'd and can be accessed.
-  //   this.subtitle.style.color = "rgb(8, 5, 145)";
-  // }
-
-  // closeModal() {
-  //   this.props.modalUpdate();
-  //   this.setState({ modalIsOpen: false });
-  // }
-
-  // handleChange = e => {
-  //   this.setState({
-  //     [e.target.id]: e.target.value
-  //   });
-  // };
   handleSubmit(event) {
     event.preventDefault();
     this.updateDb(this.props.petId);
@@ -204,7 +150,7 @@ class MedicalModal extends Component {
                 type="text"
                 className="form-control"
                 value={this.state.petAllergies}
-                id='petAllergies'
+                id="petAllergies"
                 onChange={this.handleChange}
                 placeholder="Allergies"
               />

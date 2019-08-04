@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
-import Modal from 'react-modal';
-// import API from "../../../utils/API";
-import axios from 'axios';
+import React, { Component } from "react";
+import Modal from "react-modal";
+import axios from "axios";
 
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '40rem',
-    height: '40rem'
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "40rem",
+    height: "40rem"
   },
   overlay: {
     position: "fixed",
@@ -26,7 +25,7 @@ const customStyles = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement(document.getElementById('root'));
+Modal.setAppElement(document.getElementById("root"));
 
 class PetModal extends Component {
   constructor() {
@@ -37,15 +36,15 @@ class PetModal extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.state = {
         petName: "",
-        petBirthday: '',
+        petBirthday: "",
         petColor: "",
         petBreed: "",
         petSex: "",
-        petSpecies: '',
+        petSpecies: "",
         petWeight: 0,
         petRabiesTag: 0,
         petMicroChip: 0,
-        uid: '',
+        uid: "",
       currentPetId: 0,
     };
   }

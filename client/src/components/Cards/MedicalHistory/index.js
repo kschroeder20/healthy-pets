@@ -3,9 +3,6 @@ import "./style.css";
 import MedicalModal from "../../Modals/MedicalModal";
 import axios from "axios";
 
-
-
-
 class Medical extends Component {
 
   state = {

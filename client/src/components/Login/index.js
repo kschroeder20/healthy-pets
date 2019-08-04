@@ -3,7 +3,7 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import NavBar from "../NavBar";
 import "./style.css";
-import axios from 'axios';
+import axios from "axios";
 
 
 export default class index extends Component {
