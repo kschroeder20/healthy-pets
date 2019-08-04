@@ -10,8 +10,8 @@ class Navbar extends Component {
 
     handleLogout = (e) => {
         firebase.auth().signOut();
-        window.sessionStorage.setItem('userSignedIn', false);
-        window.sessionStorage.setItem('user', null);
+        window.sessionStorage.setItem("userSignedIn", false);
+        window.sessionStorage.setItem("user", null);
     }
 
     render() {
@@ -38,7 +38,7 @@ class Navbar extends Component {
                         <FaPaw />
                     </IconContext.Provider>
                     <div className="collapse navbar-collapse" id="navbarNav">
-                        {window.sessionStorage.getItem('userSignedIn') === "true" ? (
+                        {window.sessionStorage.getItem("userSignedIn") === "true" ? (
                             <ul className="navbar-nav ml-auto">
                                 {/* <li className="nav-item">
                                     <Link className="nav-link" to="/">

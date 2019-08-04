@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import ReactFilestack from "filestack-react";
 import "./style.css";
-// import Image from "react-bootstrap/Image";
-import axios from 'axios';
+import axios from "axios";
 
 
 const apiKey = process.env.REACT_APP_FILESTACK_API_KEY;
@@ -24,7 +23,7 @@ class PhotoUpload extends Component {
     this.findPetPic();
   }
 
-  //Not firing this function, but also not responding with the error?
+  // Not firing this function, but also not responding with the error?
   findPetPic = () => {
     axios.get(`/api/pets/pic/${this.props.petId}`)
       .then(res => {
@@ -37,7 +36,7 @@ class PhotoUpload extends Component {
       .catch(err => console.log(err));
   }
 
-  //This function is successfully updating the peturl to the db. 
+  // This function is successfully updating the peturl to the db. 
   updateDb = (petId) => {
     let photoUrl = this.state.petUrl;
     axios.put(`/api/pets/update/${petId}`, {petUrl: photoUrl, currentPetId: petId})
@@ -48,7 +47,7 @@ class PhotoUpload extends Component {
       .catch(err => console.log(err));
   }
 
-  //photo renders upon closing, but is not persistent on changing pet or page refresh.
+  // photo renders upon closing, but is not persistent on changing pet or page refresh.
   closeModal = () => {
     //this.props.updatedModal(this.state.currentPetId);
     this.setState({ modalIsOpen: false });

@@ -3,7 +3,6 @@ import PetModal from "../../Modals/PetModal";
 import axios from "axios";
 import PhotoUpload from "../../PhotoUpload";
 
-
 class PetInfo extends Component {
 
   state = {

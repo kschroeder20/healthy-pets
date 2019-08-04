@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import axios from "axios";
 
-const download = require('in-browser-download');
+const download = require("in-browser-download");
 
 export default class index extends Component {
   state = {

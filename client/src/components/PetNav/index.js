@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Dropdown } from "react-bootstrap";
 import DownloadPDF from "../DownloadPDF";
 import NewPetModal from "../Modals/NewPetModal"
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import "./style.css";
-import axios from 'axios';
+import axios from "axios";
 
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement(document.getElementById('root'));
+Modal.setAppElement(document.getElementById("root"));
 
 class PetNav extends Component {
   state = {

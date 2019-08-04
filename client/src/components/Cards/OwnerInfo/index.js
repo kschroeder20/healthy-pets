@@ -4,10 +4,6 @@ import axios from "axios";
 import "./style.css";
 
 class OwnerInfo extends Component {
-  // componentWillMount = () => {
-  //   // Axios.get(`/api/owner/${this.props.uid}`).then(res => {
-  //   // });
-  // };
 
   updatedModal = () => {
     this.props.getUserInfo(this.props.uid);
