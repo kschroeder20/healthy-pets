@@ -70,7 +70,7 @@ class PhotoUpload extends Component {
             accept: "image/*",
             fromSources: ["local_file_system"],
             maxSize: 1024 * 1024,
-            maxFiles: 1
+            maxFiles: 1,
           }}
           onSuccess={result => {
             this.setState({petUrl: result.filesUploaded[0].url})
