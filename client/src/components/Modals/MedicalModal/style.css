@@ -10,3 +10,9 @@
     margin: 10px;
     padding: 10px;
 }
+
+label {
+    color: rgb(8, 5, 145);
+    padding: 10px;
+    font-weight: bold;
+}

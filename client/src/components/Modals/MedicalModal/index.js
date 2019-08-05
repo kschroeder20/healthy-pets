@@ -56,7 +56,7 @@ class MedicalModal extends Component {
     this.props.modalOpen(false);
   }
 
-  updateDb = (petId) => {
+  updateDb(petId) {
     let petObj = {
       petMedications:this.state.petMedications,
       petInoculations:this.state.petInoculations,
@@ -126,6 +126,7 @@ class MedicalModal extends Component {
           </h2>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
+              <label for="petMedications">Medication list</label>
               <input
                 type="text"
                 className="form-control"
@@ -136,6 +137,7 @@ class MedicalModal extends Component {
               />
             </div>
             <div className="form-group">
+              <label for="petInoculations">Vaccines</label>
               <input
                 type="text"
                 className="form-control"
@@ -146,6 +148,7 @@ class MedicalModal extends Component {
               />
             </div>
             <div className="form-group">
+            <label for="petAllergies">Allergies</label>
               <input
                 type="text"
                 className="form-control"
@@ -156,6 +159,7 @@ class MedicalModal extends Component {
               />
             </div>
             <div className="form-group">
+              <label for="petFood">Pet Food</label>
               <input
                 type="text"
                 className="form-control"
@@ -166,6 +170,7 @@ class MedicalModal extends Component {
               />
             </div>
             <div className="form-group">
+              <label for="petProcedures">Medical Procedures</label>
               <input
                 type="text"
                 className="form-control"
