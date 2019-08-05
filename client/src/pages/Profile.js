@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar";
 import PetNav from "../components/PetNav";
 import { Container, Row, Col } from "react-grid-system";
 import CalendarComponent from "../components/Calendar";
-import axios from 'axios';
+import axios from "axios";
 
 class Profile extends Component {
   state = {
