@@ -17,18 +17,12 @@ class PhotoUpload extends Component {
     };
   }
 
-<<<<<<< HEAD
   componentDidMount() {
-    console.log(this.props.petId)
-=======
-  componentDidMount = () =>{
->>>>>>> 1ffa68a9dff9b35fb78c568c35574666e96031c5
     this.setState({userId: this.props.uid, currentPetId: this.props.petId, petUrl: this.props.petUrl })
     this.props.modalOpen(true);
     this.findPetPic();
   }
 
-  // Not firing this function, but also not responding with the error?
   findPetPic() {
     axios.get(`/api/pets/pic/${this.props.petId}`)
       .then(res => {
@@ -39,7 +33,7 @@ class PhotoUpload extends Component {
       .catch(err => console.log(err));
   }
 
-  // This function is successfully updating the peturl to the db. 
+  //Updates the peturl to the db. 
   updateDb(petId) {
     let photoUrl = this.state.petUrl;
     axios.put(`/api/pets/update/${petId}`, {petUrl: photoUrl, currentPetId: petId})
@@ -49,7 +43,6 @@ class PhotoUpload extends Component {
       .catch(err => console.log(err));
   }
 
-  // photo renders upon closing, but is not persistent on changing pet or page refresh.
   closeModal = () => {
     this.props.updatedModal(this.props.currentPetId);
     this.setState({ modalIsOpen: false });
@@ -84,13 +77,6 @@ class PhotoUpload extends Component {
           onError={err => console.log(err)}
         />
         </div>
-        
-        {/* <img
-          className="petImageUpload"
-          src={this.state.petUrl}
-          style={{ width: "350px", height: "350px", margin: "20px" }}
-          alt="yourPet"
-        /> */}
       </div>
     );
   }
