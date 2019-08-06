@@ -13,16 +13,33 @@ Upon visiting the site, the user will need to login then create their profiles u
 ## Technologies Used
 
 ```
-React
-Mongo
-Mongoose
-Ruby
-ReactFileStack
-RC Calendar
-React-Bootstrap
-JavaScript
-CSS
+# Languages:
+- JavaScript
+- Ruby
+- CSS
+- HTML
 
+# Back-End Framework
+- Node.js
+
+# Front-End Framework
+- React
+- React-Bootstrap
+
+# Database:
+- Mongo
+- Mongoose
+
+# NPM Packages:
+- [ReactFileStack] (https://www.npmjs.com/package/filestack-react)
+- [RC Calendar] (https://www.npmjs.com/package/rc-calendar- Axios)
+- [Save] (https://www.npmjs.com/package/save)
+
+# Ruby Gem
+- [Prawn] (https://github.com/prawnpdf/prawn)
+
+# Authentication
+- Firebase
 ```
 ## Authors
 
