@@ -69,7 +69,7 @@ module.exports = {
                 Allergies: ${dbModel[0].petAllergies}
                 Procedures: ${dbModel[0].petProcedures}
 
-                Rabies Tage: ${dbModel[0].petRabiesTag}
+                Rabies Tag: ${dbModel[0].petRabiesTag}
                 Microchip: ${dbModel[0].petMicroChip}
                 `;
         fs.appendFile("pdfInfo.txt", petInfo, function(err) {
