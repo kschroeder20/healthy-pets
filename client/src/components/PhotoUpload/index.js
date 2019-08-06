@@ -3,7 +3,6 @@ import ReactFilestack from "filestack-react";
 import "./style.css";
 import axios from "axios";
 
-
 const apiKey = process.env.REACT_APP_FILESTACK_API_KEY;
 
 class PhotoUpload extends Component {
@@ -17,39 +16,46 @@ class PhotoUpload extends Component {
     };
   }
 
-  componentDidMount = () =>{
-    this.setState({userId: this.props.uid, currentPetId: this.props.petId, petUrl: this.props.petUrl })
+  componentDidMount() {
+    this.setState({
+      userId: this.props.uid,
+      currentPetId: this.props.petId,
+      petUrl: this.props.petUrl
+    });
     this.props.modalOpen(true);
     this.findPetPic();
   }
 
-  // Not firing this function, but also not responding with the error?
-  findPetPic = () => {
-    axios.get(`/api/pets/pic/${this.props.petId}`)
+  findPetPic() {
+    axios
+      .get(`/api/pets/pic/${this.props.petId}`)
       .then(res => {
-        this.setState({ 
-          petUrl: res.data[0].petUrl, 
+        this.setState({
+          petUrl: res.data[0].petUrl
+        });
       })
-    })
       .catch(err => console.log(err));
   }
 
-  // This function is successfully updating the peturl to the db. 
-  updateDb = (petId) => {
+  //Updates the peturl to the db.
+  updateDb(petId) {
     let photoUrl = this.state.petUrl;
-    axios.put(`/api/pets/update/${petId}`, {petUrl: photoUrl, currentPetId: petId})
-      .then(res => { 
+    axios
+      .put(`/api/pets/update/${petId}`, {
+        petUrl: photoUrl,
+        currentPetId: petId
+      })
+      .then(res => {
         console.log(res);
       })
       .catch(err => console.log(err));
   }
 
-  // photo renders upon closing, but is not persistent on changing pet or page refresh.
   closeModal = () => {
     this.props.updatedModal(this.props.currentPetId);
     this.setState({ modalIsOpen: false });
-    this.props.modalOpen(false)
-  }
+    this.props.modalOpen(false);
+  };
 
   render() {
     return (
@@ -59,33 +65,26 @@ class PhotoUpload extends Component {
             <strong>Pet Picture</strong>
           </h3>
           <ReactFilestack
-          apikey={apiKey}
-          componentDisplayMode={{
-            type: "button",
-            customText: "Upload Photo"
-          }}
-          clientOptions={{
-            accept: "image/*",
-            fromSources: ["local_file_system"],
-            maxSize: 1024 * 1024,
-            maxFiles: 1
-          }}
-          onSuccess={result => {
-            this.setState({petUrl: result.filesUploaded[0].url})
-            this.updateDb(this.props.petId)
-            this.closeModal();
-          }}
-          onRequestClose={this.closeModal}
-          onError={err => console.log(err)}
-        />
+            apikey={apiKey}
+            componentDisplayMode={{
+              type: "button",
+              customText: "Upload Photo"
+            }}
+            clientOptions={{
+              accept: "image/*",
+              fromSources: ["local_file_system"],
+              maxSize: 1024 * 1024,
+              maxFiles: 1
+            }}
+            onSuccess={result => {
+              this.setState({ petUrl: result.filesUploaded[0].url });
+              this.updateDb(this.props.petId);
+              this.closeModal();
+            }}
+            onRequestClose={this.closeModal}
+            onError={err => console.log(err)}
+          />
         </div>
-        
-        {/* <img
-          className="petImageUpload"
-          src={this.state.petUrl}
-          style={{ width: "350px", height: "350px", margin: "20px" }}
-          alt="yourPet"
-        /> */}
       </div>
     );
   }

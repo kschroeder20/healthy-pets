@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Modal from "react-modal";
 import axios from "axios";
 
-
 const customStyles = {
   content: {
     top: "50%",
@@ -24,7 +23,6 @@ const customStyles = {
   }
 };
 
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement(document.getElementById("root"));
 
 class PetModal extends Component {
@@ -35,20 +33,19 @@ class PetModal extends Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.state = {
-        petName: "",
-        petBirthday: "",
-        petColor: "",
-        petBreed: "",
-        petSex: "",
-        petSpecies: "",
-        petWeight: 0,
-        petRabiesTag: 0,
-        petMicroChip: 0,
-        uid: "",
-      currentPetId: 0,
+      petName: "",
+      petBirthday: "",
+      petColor: "",
+      petBreed: "",
+      petSex: "",
+      petSpecies: "",
+      petWeight: 0,
+      petRabiesTag: 0,
+      petMicroChip: 0,
+      uid: "",
+      currentPetId: 0
     };
   }
-
 
   handleSubmit(event) {
     event.preventDefault();
@@ -58,7 +55,7 @@ class PetModal extends Component {
   }
 
   updateDb(currentPetId) {
-    console.log(currentPetId)
+    console.log(currentPetId);
     let petObj = {
       petName: this.state.petName,
       petBirthday: this.state.petBirthday,
@@ -70,14 +67,15 @@ class PetModal extends Component {
       petRabiesTag: this.state.petRabiesTag,
       petMicroChip: this.state.petMicroChip,
       currentPetId: currentPetId
-    }
+    };
 
-    axios.put(`/api/pets/update/${currentPetId}`, petObj)
-    .then(res => {
-      console.log(res);
-      console.log("pet updated")
-    })
-    .catch(err => console.log(err));
+    axios
+      .put(`/api/pets/update/${currentPetId}`, petObj)
+      .then(res => {
+        console.log(res);
+        console.log("pet updated");
+      })
+      .catch(err => console.log(err));
   }
 
   openModal() {
