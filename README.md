@@ -31,7 +31,7 @@ Upon visiting the site, the user will need to login then create their profiles u
 
 # NPM Packages:
 - [ReactFileStack](https://www.npmjs.com/package/filestack-react)
-- [RC Calendar](https://www.npmjs.com/package/rc-calendar- Axios)
+- [RC Calendar](https://www.npmjs.com/package/rc-calendar-Axios)
 - [Save](https://www.npmjs.com/package/save)
 - [Ract-Modal](https://www.npmjs.com/package/react-modal)
 
