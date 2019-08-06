@@ -5,7 +5,7 @@ const Title = function() {
   return (
     <div className="jumbotron p-4 jumbotron-fluid text-center">
       <div className="container">
-        <h1 className="display-4">Welcome to HealthyPet!</h1>
+        <h1 className="display-4">Welcome to HealthyPets!</h1>
         <h3 className="hsmall">
           Your one stop location for all your pet's information.
         </h3>
