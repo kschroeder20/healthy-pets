@@ -119,7 +119,7 @@ class Profile extends Component {
     if(!this.state.currentPetId){return null}
     return (
       <div>
-        <NavBar />
+        <NavBar data-testid="navbar"/>
         <PetNav 
         handlePetChange={this.handlePetChange}
         />

@@ -17,9 +17,14 @@ class PhotoUpload extends Component {
     };
   }
 
+<<<<<<< HEAD
   componentDidMount() {
     console.log(this.props.petId)
+=======
+  componentDidMount = () =>{
+>>>>>>> 1ffa68a9dff9b35fb78c568c35574666e96031c5
     this.setState({userId: this.props.uid, currentPetId: this.props.petId, petUrl: this.props.petUrl })
+    this.props.modalOpen(true);
     this.findPetPic();
   }
 
@@ -30,8 +35,6 @@ class PhotoUpload extends Component {
         this.setState({ 
           petUrl: res.data[0].petUrl, 
       })
-      console.log(this.state.petUrl);
-      console.log("found pic");
     })
       .catch(err => console.log(err));
   }
@@ -42,15 +45,15 @@ class PhotoUpload extends Component {
     axios.put(`/api/pets/update/${petId}`, {petUrl: photoUrl, currentPetId: petId})
       .then(res => { 
         console.log(res);
-        console.log("database updated:" + this.state.petUrl)
       })
       .catch(err => console.log(err));
   }
 
   // photo renders upon closing, but is not persistent on changing pet or page refresh.
   closeModal = () => {
-    //this.props.updatedModal(this.state.currentPetId);
+    this.props.updatedModal(this.props.currentPetId);
     this.setState({ modalIsOpen: false });
+    this.props.modalOpen(false)
   }
 
   render() {
@@ -74,7 +77,6 @@ class PhotoUpload extends Component {
           }}
           onSuccess={result => {
             this.setState({petUrl: result.filesUploaded[0].url})
-            console.log("Url: " + this.state.petUrl)
             this.updateDb(this.props.petId)
             this.closeModal();
           }}
