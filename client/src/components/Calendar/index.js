@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Calendar from "rc-calendar";
 import "rc-calendar/assets/index.css";
 import moment from "moment";
@@ -15,7 +15,7 @@ class CalendarComponent extends Component {
 	render() {
 		return (
 			<div className="calendar-div">
-				<Calendar/>
+				<Calendar />
 			</div>
 		);
 	}

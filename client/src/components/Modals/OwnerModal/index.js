@@ -73,7 +73,7 @@ class OwnerModal extends Component {
     this.closeModal();
   }
 
-  updateDb = (userId) => {
+  updateDb(userId) {
     let userObj = {
       ownerName: this.state.ownerName,
       homePhone: this.state.homePhone,
