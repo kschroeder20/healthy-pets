@@ -24,13 +24,13 @@ class OwnerInfo extends Component {
           <OwnerModal modalUpdate={this.updatedModal}/>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item"><strong>Name:</strong> {this.props.owner}</li>
-          <li className="list-group-item"><strong>Home Phone:</strong> {this.props.homePhone}</li>
-          <li className="list-group-item"><strong>Cell Phone:</strong> {this.props.mobilePhone}</li>
-          <li className="list-group-item"><strong>Email:</strong> {this.props.email}</li>
-          <li className="list-group-item"><strong>Address:</strong> {this.props.address}</li>
-          <li className="list-group-item"><strong>Primary Vet Name:</strong> {this.props.vetName}</li>
-          <li className="list-group-item"><strong>Primary Vet Phone:</strong> {this.props.vetPhone}</li>
+          <li className="list-group-item" data-testid="owner"><strong>Name:</strong> {this.props.owner}</li>
+          <li className="list-group-item" data-testid="homePhone"><strong>Home Phone:</strong> {this.props.homePhone}</li>
+          <li className="list-group-item" data-testid="mobilePhone"><strong>Cell Phone:</strong> {this.props.mobilePhone}</li>
+          <li className="list-group-item" data-testid="email"><strong>Email:</strong> {this.props.email}</li>
+          <li className="list-group-item" data-testid="address"><strong>Address:</strong> {this.props.address}</li>
+          <li className="list-group-item" data-testid="vetName"><strong>Primary Vet Name:</strong> {this.props.vetName}</li>
+          <li className="list-group-item" data-testid="vetPhone"><strong>Primary Vet Phone:</strong> {this.props.vetPhone}</li>
         </ul>
       </div>
     );

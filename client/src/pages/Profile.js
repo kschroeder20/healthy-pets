@@ -85,7 +85,6 @@ class Profile extends Component {
           currentPetId: res.data[0]._id,
           petUrl: res.data[0].petUrl
       })
-      console.log("Url here: " + res.data[0].petUrl)
     })
       .then( res => {
         for(let i =0; i < this.state.pet.length; i++){
@@ -93,14 +92,13 @@ class Profile extends Component {
             this.setState({currentPetId: this.state.pet[i]._id, currentPetIndex: i})
             
           }
-      }
+        }
     })
       .catch(err => console.log(err));
   }
 
   modalOpen = (open) => {
     this.setState({modalOpen: open})
-
   }
 
   handleLogout = e => {

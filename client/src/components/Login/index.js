@@ -50,7 +50,6 @@ export default class index extends Component {
   };
 
   createNewUser = user => {
-    console.log(user)
     axios.post(`/api/users`,{
       ownerName: user.name,
       email: user.email,
@@ -65,7 +64,7 @@ export default class index extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar data-testid="NavBar"/>
       <div className="container">
         <div className="col" id="login-container">
           <StyledFirebaseAuth

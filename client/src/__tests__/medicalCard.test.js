@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, cleanup, waitForElement, getByTestId} from '@testing-library/react'
+import { render, cleanup, getByTestId} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import Medical from '../components/Cards/MedicalHistory'
 
