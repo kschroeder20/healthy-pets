@@ -31,12 +31,12 @@ Upon visiting the site, the user will need to login then create their profiles u
 - Mongoose
 
 # NPM Packages:
-- [ReactFileStack] (https://www.npmjs.com/package/filestack-react)
-- [RC Calendar] (https://www.npmjs.com/package/rc-calendar- Axios)
-- [Save] (https://www.npmjs.com/package/save)
+- [ReactFileStack](https://www.npmjs.com/package/filestack-react)
+- [RC Calendar](https://www.npmjs.com/package/rc-calendar- Axios)
+- [Save](https://www.npmjs.com/package/save)
 
 # Ruby Gem
-- [Prawn] (https://github.com/prawnpdf/prawn)
+- [Prawn](https://github.com/prawnpdf/prawn)
 
 # Authentication
 - Firebase
