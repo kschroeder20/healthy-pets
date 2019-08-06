@@ -114,6 +114,7 @@ class PetInfo extends Component {
         petId = {this.props.currentPetId}
         petUrl = {this.props.petUrl}
         updatedModal={this.updatedModal}
+        modalOpen={this.modalOpen}
         />
         <img
           src={this.props.petUrl}
