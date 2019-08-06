@@ -107,7 +107,7 @@ class MedicalModal extends Component {
   render() {
     return (
       <div>
-        <button className="edit" onClick={this.openModal}>
+        <button className="edit" data-testid="petMedications" onClick={this.openModal}>
           Edit
         </button>
         <Modal
