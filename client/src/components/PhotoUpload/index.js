@@ -17,14 +17,14 @@ class PhotoUpload extends Component {
     };
   }
 
-  componentDidMount = () =>{
+  componentDidMount() {
     console.log(this.props.petId)
     this.setState({userId: this.props.uid, currentPetId: this.props.petId, petUrl: this.props.petUrl })
     this.findPetPic();
   }
 
   // Not firing this function, but also not responding with the error?
-  findPetPic = () => {
+  findPetPic() {
     axios.get(`/api/pets/pic/${this.props.petId}`)
       .then(res => {
         this.setState({ 
@@ -37,7 +37,7 @@ class PhotoUpload extends Component {
   }
 
   // This function is successfully updating the peturl to the db. 
-  updateDb = (petId) => {
+  updateDb(petId) {
     let photoUrl = this.state.petUrl;
     axios.put(`/api/pets/update/${petId}`, {petUrl: photoUrl, currentPetId: petId})
       .then(res => { 
