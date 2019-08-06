@@ -1,26 +1,10 @@
 
-              Owner Name: Steve
+              Owner Name: Becca
               Home Phone: 000-000-0000
               Mobile Phone: 000-000-0000
-              Email: steve@gmail.com
+              Email: becca@gamil.com
               Address: 111 North St.
               
-              Vet Name: 1test
-              Vet Phone: 5555555
+              Vet Name: Dr. Smith
+              Vet Phone: 111-111-1111
               
-                Pet Name: Lady
-                Pet Birthday: 2012-02-02
-                Pet Color: Tan
-                Pet Species: Dog
-                Pet Breed: 
-                Pet Sex: 
-                Pet Weight: 0
-
-                Medications: undefined
-                Inoculations: undefined
-                Allergies: undefined
-                Procedures: undefined
-
-                Rabies Tage: 0
-                Microchip: 0
-                
