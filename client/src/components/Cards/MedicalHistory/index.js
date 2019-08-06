@@ -59,11 +59,11 @@ class Medical extends Component {
           />
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item"><strong>Medications: </strong>{this.props.petMedications}</li>
-          <li className="list-group-item"><strong>Vaccines: </strong>{this.props.petInoculations}</li>
-          <li className="list-group-item"><strong>Allergies: </strong>{this.props.petAllergies}</li>
-          <li className="list-group-item"><strong>Food: </strong>{this.props.petFood}</li>
-          <li className="list-group-item"><strong>Procedures: </strong>{this.props.petProcedures}</li>
+          <li className="list-group-item" data-testid="Medications"><strong>Medications: </strong>{this.props.petMedications}</li>
+          <li className="list-group-item" data-testid="Vaccines"><strong>Vaccines: </strong>{this.props.petInoculations}</li>
+          <li className="list-group-item" data-testid="Allergies"><strong>Allergies: </strong>{this.props.petAllergies}</li>
+          <li className="list-group-item" data-testid="Food"><strong>Food: </strong>{this.props.petFood}</li>
+          <li className="list-group-item" data-testid="Procedures"><strong>Procedures: </strong>{this.props.petProcedures}</li>
         </ul>
       </div>
     );
