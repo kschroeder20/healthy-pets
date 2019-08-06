@@ -23,7 +23,6 @@ const customStyles = {
   }
 };
 
-//Binds modal to root element of app.
 Modal.setAppElement(document.getElementById("root"));
 
 class OwnerModal extends Component {
@@ -50,22 +49,22 @@ class OwnerModal extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    axios.get(`/api/users/${userId}`)
-    .then(res => {
-      this.setState({ 
-        ownerName: res.data[0].ownerName,
-        homePhone: res.data[0].homePhone,
-        mobilePhone: res.data[0].mobilePhone,
-        email: res.data[0].email,
-        address: res.data[0].address,
-        vetName: res.data[0].vetName,
-        vetPhone: res.data[0].vetPhone,
-        currentUserId: res.data[0].uid
+    axios
+      .get(`/api/users/${userId}`)
+      .then(res => {
+        this.setState({
+          ownerName: res.data[0].ownerName,
+          homePhone: res.data[0].homePhone,
+          mobilePhone: res.data[0].mobilePhone,
+          email: res.data[0].email,
+          address: res.data[0].address,
+          vetName: res.data[0].vetName,
+          vetPhone: res.data[0].vetPhone,
+          currentUserId: res.data[0].uid
+        });
       })
-    })
-    .catch(err => console.log(err));
-  };
-
+      .catch(err => console.log(err));
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -83,13 +82,14 @@ class OwnerModal extends Component {
       vetName: this.state.vetName,
       vetPhone: this.state.vetPhone,
       userId: userId
-    }
+    };
 
-    axios.put(`/api/users/${userId}`, userObj)
-    .then(res => {
-      console.log("user updated")
-    })
-    .catch(err => console.log(err));
+    axios
+      .put(`/api/users/${userId}`, userObj)
+      .then(res => {
+        console.log("user updated");
+      })
+      .catch(err => console.log(err));
   }
 
   openModal() {

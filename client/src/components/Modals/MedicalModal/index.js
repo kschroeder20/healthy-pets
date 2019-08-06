@@ -3,7 +3,6 @@ import Modal from "react-modal";
 import "./style.css";
 import axios from "axios";
 
-
 const customStyles = {
   content: {
     top: "50%",
@@ -26,7 +25,6 @@ const customStyles = {
   }
 };
 
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement(document.getElementById("root"));
 
 class MedicalModal extends Component {
@@ -58,32 +56,33 @@ class MedicalModal extends Component {
 
   updateDb(petId) {
     let petObj = {
-      petMedications:this.state.petMedications,
-      petInoculations:this.state.petInoculations,
-      petAllergies:this.state.petAllergies,
-      petFood:this.state.petFood,
-      petProcedures:this.state.petProcedures,
+      petMedications: this.state.petMedications,
+      petInoculations: this.state.petInoculations,
+      petAllergies: this.state.petAllergies,
+      petFood: this.state.petFood,
+      petProcedures: this.state.petProcedures,
       currentPetId: petId,
-      uid:this.state.uid,
-    }
+      uid: this.state.uid
+    };
 
-    axios.put(`/api/pets/update/${petId}`, petObj)
-    .then(res => {
-      console.log(res);
-      console.log("pet updated")
-    })
-    .catch(err => console.log(err));
+    axios
+      .put(`/api/pets/update/${petId}`, petObj)
+      .then(res => {
+        console.log(res);
+        console.log("pet updated");
+      })
+      .catch(err => console.log(err));
   }
 
   openModal() {
     this.setState({
-      petMedications:this.props.petMedications,
-      petInoculations:this.props.petInoculations,
-      petAllergies:this.props.petAllergies,
-      petFood:this.props.petFood,
-      petProcedures:this.props.petProcedures,
-      currentUserId:this.props.uid,
-      currentPetId:this.props.petId,
+      petMedications: this.props.petMedications,
+      petInoculations: this.props.petInoculations,
+      petAllergies: this.props.petAllergies,
+      petFood: this.props.petFood,
+      petProcedures: this.props.petProcedures,
+      currentUserId: this.props.uid,
+      currentPetId: this.props.petId
     });
     this.props.modalOpen(true);
     this.setState({ modalIsOpen: true });
@@ -148,7 +147,7 @@ class MedicalModal extends Component {
               />
             </div>
             <div className="form-group">
-            <label for="petAllergies">Allergies</label>
+              <label for="petAllergies">Allergies</label>
               <input
                 type="text"
                 className="form-control"

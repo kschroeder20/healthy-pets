@@ -18,9 +18,13 @@ export default class index extends Component {
 
   downloadPDF = e => {
     e.preventDefault();
-    axios.get(`/api/user/download/${this.state.currentUserId}`)
-      .then ((response) => {
-        download(response.data, `Healthy_Pet_Report_${this.state.currentUserId}.pdf`);
+    axios
+      .get(`/api/user/download/${this.state.currentUserId}`)
+      .then(response => {
+        download(
+          response.data,
+          `Healthy_Pet_Report_${this.state.currentUserId}.pdf`
+        );
       })
       .catch(function(error) {
         console.log(error);
