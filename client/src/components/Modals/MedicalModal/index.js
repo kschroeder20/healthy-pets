@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import Modal from 'react-modal';
-import './style.css';
-//import API from "../../../utils/API";
+import React, { Component } from "react";
+import Modal from "react-modal";
+import "./style.css";
 import axios from "axios";
-
 
 const customStyles = {
   content: {
@@ -27,7 +25,6 @@ const customStyles = {
   }
 };
 
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement(document.getElementById("root"));
 
 class MedicalModal extends Component {
@@ -44,65 +41,12 @@ class MedicalModal extends Component {
       petAllergies: "",
       petFood: "",
       petProcedures: "",
-      currentUserId: '',
-      currentPetId: '',
+      currentUserId: "",
+      currentPetId: "",
       modalIsOpen: false
     };
   }
 
-  // componentDidMount = () => {
-  //   const url = window.location.pathname;
-  //   const pathnameArr = url.split("/");
-  //   const userId = pathnameArr[pathnameArr.length - 1];
-  //   API.getPetById(userId)
-  //     .then(res => {
-  //       this.setState({
-  //         petMedications: res.data[0].petMedications,
-  //         petInoculations: res.data[0].petInoculations,
-  //         petAllergies: res.data[0].petAllergies,
-  //         petFood: res.data[0].petFood,
-  //         petProcedures: res.data[0].petProcedures,
-  //         currentUserId: res.data[0].uid
-  //       });
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
-
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   this.updateDb(this.state.currentUserId);
-  //   this.closeModal();
-  // }
-
-  // updateDb = (userId) => {
-  //   API.updatePet({ ...this.state, userId })
-  //     .then(res => {
-  //       // ADD CODE TO SEND TO CARD HERE
-  //       console.log(res.data);
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-
-  // openModal() {
-  //   this.setState({ modalIsOpen: true });
-  // }
-
-  // afterOpenModal() {
-  //   // references are now sync'd and can be accessed.
-  //   this.subtitle.style.color = "rgb(8, 5, 145)";
-  // }
-
-  // closeModal() {
-  //   this.props.modalUpdate();
-  //   this.setState({ modalIsOpen: false });
-  // }
-
-  // handleChange = e => {
-  //   this.setState({
-  //     [e.target.id]: e.target.value
-  //   });
-  // };
   handleSubmit(event) {
     event.preventDefault();
     this.updateDb(this.props.petId);
@@ -110,34 +54,35 @@ class MedicalModal extends Component {
     this.props.modalOpen(false);
   }
 
-  updateDb = (petId) => {
+  updateDb(petId) {
     let petObj = {
-      petMedications:this.state.petMedications,
-      petInoculations:this.state.petInoculations,
-      petAllergies:this.state.petAllergies,
-      petFood:this.state.petFood,
-      petProcedures:this.state.petProcedures,
+      petMedications: this.state.petMedications,
+      petInoculations: this.state.petInoculations,
+      petAllergies: this.state.petAllergies,
+      petFood: this.state.petFood,
+      petProcedures: this.state.petProcedures,
       currentPetId: petId,
-      uid:this.state.uid,
-    }
+      uid: this.state.uid
+    };
 
-    axios.put(`/api/pets/update/${petId}`, petObj)
-    .then(res => {
-      console.log(res);
-      console.log("pet updated")
-    })
-    .catch(err => console.log(err));
+    axios
+      .put(`/api/pets/update/${petId}`, petObj)
+      .then(res => {
+        console.log(res);
+        console.log("pet updated");
+      })
+      .catch(err => console.log(err));
   }
 
   openModal() {
     this.setState({
-      petMedications:this.props.petMedications,
-      petInoculations:this.props.petInoculations,
-      petAllergies:this.props.petAllergies,
-      petFood:this.props.petFood,
-      petProcedures:this.props.petProcedures,
-      currentUserId:this.props.uid,
-      currentPetId:this.props.petId,
+      petMedications: this.props.petMedications,
+      petInoculations: this.props.petInoculations,
+      petAllergies: this.props.petAllergies,
+      petFood: this.props.petFood,
+      petProcedures: this.props.petProcedures,
+      currentUserId: this.props.uid,
+      currentPetId: this.props.petId
     });
     this.props.modalOpen(true);
     this.setState({ modalIsOpen: true });
@@ -162,7 +107,7 @@ class MedicalModal extends Component {
   render() {
     return (
       <div>
-        <button className="edit" onClick={this.openModal}>
+        <button className="edit" data-testid="petMedications" onClick={this.openModal}>
           Edit
         </button>
         <Modal
@@ -180,6 +125,7 @@ class MedicalModal extends Component {
           </h2>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
+              <label for="petMedications">Medication list</label>
               <input
                 type="text"
                 className="form-control"
@@ -190,6 +136,7 @@ class MedicalModal extends Component {
               />
             </div>
             <div className="form-group">
+              <label for="petInoculations">Vaccines</label>
               <input
                 type="text"
                 className="form-control"
@@ -200,16 +147,18 @@ class MedicalModal extends Component {
               />
             </div>
             <div className="form-group">
+              <label for="petAllergies">Allergies</label>
               <input
                 type="text"
                 className="form-control"
                 value={this.state.petAllergies}
-                id='petAllergies'
+                id="petAllergies"
                 onChange={this.handleChange}
                 placeholder="Allergies"
               />
             </div>
             <div className="form-group">
+              <label for="petFood">Pet Food</label>
               <input
                 type="text"
                 className="form-control"
@@ -220,6 +169,7 @@ class MedicalModal extends Component {
               />
             </div>
             <div className="form-group">
+              <label for="petProcedures">Medical Procedures</label>
               <input
                 type="text"
                 className="form-control"

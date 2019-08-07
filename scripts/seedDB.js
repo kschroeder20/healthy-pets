@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 const db = require("../models");
 
 // This file empties the Pets collection and inserts the pets below
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/healthypets", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/healthypets", {
+  useNewUrlParser: true
+});
 
 const petSeed = [
   {
@@ -120,7 +122,7 @@ const petSeed = [
     petFood: "Most",
     petProcedures: "None",
     petUrl: "https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo"
-  },
+  }
 ];
 
 const userSeed = [
@@ -135,7 +137,7 @@ const userSeed = [
     vetPhone: "",
     vetEmail: "",
     vetAddress: "",
-    date: new Date(Date.now()),
+    date: new Date(Date.now())
   },
   {
     uid: "v6SQAHRi9MciGmPJM2EYZPcb96U2",
@@ -148,7 +150,7 @@ const userSeed = [
     vetPhone: "",
     vetEmail: "",
     vetAddress: "",
-    date: new Date(Date.now()),
+    date: new Date(Date.now())
   },
   {
     uid: "SkrS3tejzhZ1ddMY5Ah2wsVtyd22",
@@ -161,7 +163,7 @@ const userSeed = [
     vetPhone: "",
     vetEmail: "",
     vetAddress: "",
-    date: new Date(Date.now()),
+    date: new Date(Date.now())
   }
 ];
 
@@ -176,7 +178,7 @@ db.Pet.remove({})
     process.exit(1);
   });
 
-  db.User.remove({})
+db.User.remove({})
   .then(() => db.User.collection.insertMany(userSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");

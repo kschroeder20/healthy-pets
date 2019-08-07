@@ -15,7 +15,6 @@ const PetCarousel = function() {
             <div className="hero">
               <hgroup>
                 <h3>Store</h3>
-                {/* <p>Store your pet's medical information.</p> */}
               </hgroup>
             </div>
           </Carousel.Caption>
@@ -28,7 +27,6 @@ const PetCarousel = function() {
                 <h3>Access</h3>
               </hgroup>
             </div>
-            {/* <p>Access your pet's medical information from anywhere.</p> */}
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -39,7 +37,6 @@ const PetCarousel = function() {
                 <h3>Share</h3>
               </hgroup>
             </div>
-            {/* <p>Share your pet's medical information with anyone.</p> */}
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

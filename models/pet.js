@@ -19,7 +19,7 @@ const petSchema = new Schema({
   petAllergies: String,
   petFood: String,
   petProcedures: String,
-  petUrl: String,
+  petUrl: String
 });
 
 const Pet = mongoose.model("Pet", petSchema);

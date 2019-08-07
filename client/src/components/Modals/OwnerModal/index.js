@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Modal from "react-modal";
-import axios from 'axios';
+import axios from "axios";
 
 const customStyles = {
   content: {
@@ -23,7 +23,6 @@ const customStyles = {
   }
 };
 
-//Binds modal to root element of app.
 Modal.setAppElement(document.getElementById("root"));
 
 class OwnerModal extends Component {
@@ -46,26 +45,26 @@ class OwnerModal extends Component {
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    axios.get(`/api/users/${userId}`)
-    .then(res => {
-      this.setState({ 
-        ownerName: res.data[0].ownerName,
-        homePhone: res.data[0].homePhone,
-        mobilePhone: res.data[0].mobilePhone,
-        email: res.data[0].email,
-        address: res.data[0].address,
-        vetName: res.data[0].vetName,
-        vetPhone: res.data[0].vetPhone,
-        currentUserId: res.data[0].uid
+    axios
+      .get(`/api/users/${userId}`)
+      .then(res => {
+        this.setState({
+          ownerName: res.data[0].ownerName,
+          homePhone: res.data[0].homePhone,
+          mobilePhone: res.data[0].mobilePhone,
+          email: res.data[0].email,
+          address: res.data[0].address,
+          vetName: res.data[0].vetName,
+          vetPhone: res.data[0].vetPhone,
+          currentUserId: res.data[0].uid
+        });
       })
-    })
-    .catch(err => console.log(err));
-  };
-
+      .catch(err => console.log(err));
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -73,7 +72,7 @@ class OwnerModal extends Component {
     this.closeModal();
   }
 
-  updateDb = (userId) => {
+  updateDb(userId) {
     let userObj = {
       ownerName: this.state.ownerName,
       homePhone: this.state.homePhone,
@@ -83,13 +82,14 @@ class OwnerModal extends Component {
       vetName: this.state.vetName,
       vetPhone: this.state.vetPhone,
       userId: userId
-    }
+    };
 
-    axios.put(`/api/users/${userId}`, userObj)
-    .then(res => {
-      console.log("user updated")
-    })
-    .catch(err => console.log(err));
+    axios
+      .put(`/api/users/${userId}`, userObj)
+      .then(res => {
+        console.log("user updated");
+      })
+      .catch(err => console.log(err));
   }
 
   openModal() {
@@ -140,7 +140,7 @@ class OwnerModal extends Component {
               value={this.state.ownerName}
               onChange={this.handleChange}
             />
-            <label htmlFor="homePhone">Home Phone</label>
+            <label for="homePhone">Home Phone</label>
             <input
               type="tel"
               className="form-control"
@@ -148,7 +148,7 @@ class OwnerModal extends Component {
               onChange={this.handleChange}
               value={this.state.homePhone}
             />
-            <label htmlFor="mobilePhone">Cell Phone</label>
+            <label for="mobilePhone">Cell Phone</label>
             <input
               type="tel"
               className="form-control"
@@ -156,7 +156,7 @@ class OwnerModal extends Component {
               onChange={this.handleChange}
               value={this.state.mobilePhone}
             />
-            <label htmlFor="email">Email Address</label>
+            <label for="email">Email Address</label>
             <input
               type="email"
               className="form-control"
@@ -164,7 +164,7 @@ class OwnerModal extends Component {
               onChange={this.handleChange}
               value={this.state.email}
             />
-            <label htmlFor="address">Address</label>
+            <label for="address">Address</label>
             <input
               type="text"
               className="form-control"
@@ -172,7 +172,7 @@ class OwnerModal extends Component {
               onChange={this.handleChange}
               value={this.state.address}
             />
-            <label htmlFor="vetName">Vet Name</label>
+            <label for="vetName">Vet Name</label>
             <input
               type="tel"
               className="form-control"
@@ -180,7 +180,7 @@ class OwnerModal extends Component {
               onChange={this.handleChange}
               value={this.state.vetName}
             />
-            <label htmlFor="vetPhone">Vet Phone</label>
+            <label for="vetPhone">Vet Phone</label>
             <input
               type="tel"
               className="form-control"

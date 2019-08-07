@@ -3,8 +3,7 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import NavBar from "../NavBar";
 import "./style.css";
-import axios from 'axios';
-
+import axios from "axios";
 
 export default class index extends Component {
   state = {
@@ -25,7 +24,7 @@ export default class index extends Component {
           newUser = {
             name: user.displayName,
             email: user.email,
-            uid: user.uid 
+            uid: user.uid
           };
         }
         this.determineRepeatUser(newUser);
@@ -40,7 +39,8 @@ export default class index extends Component {
   };
 
   determineRepeatUser = newUser => {
-    axios.get(`/api/users/${newUser.uid}`)
+    axios
+      .get(`/api/users/${newUser.uid}`)
       .then(res => {
         res.data.length === 0
           ? this.createNewUser(newUser)
@@ -50,12 +50,12 @@ export default class index extends Component {
   };
 
   createNewUser = user => {
-    console.log(user)
-    axios.post(`/api/users`,{
-      ownerName: user.name,
-      email: user.email,
-      uid: user.uid
-    })
+    axios
+      .post(`/api/users`, {
+        ownerName: user.name,
+        email: user.email,
+        uid: user.uid
+      })
       .then(res => {
         window.location.replace(`/profile/${user.uid}`);
       })
@@ -66,19 +66,19 @@ export default class index extends Component {
     return (
       <div>
         <NavBar />
-      <div className="container">
-        <div className="col" id="login-container">
-          <StyledFirebaseAuth
-            uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}
+        <div className="container">
+          <div className="col" id="login-container">
+            <StyledFirebaseAuth
+              uiConfig={this.uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
+          </div>
+          <img
+            src="http://www.capecodpetresort.com/wp-content/uploads/banner-pets-dog-cat-boarding-1000x451.png"
+            alt="pets"
+            id="static-pets"
           />
         </div>
-        <img
-          src="http://www.capecodpetresort.com/wp-content/uploads/banner-pets-dog-cat-boarding-1000x451.png"
-          alt="pets"
-          id="static-pets"
-        />
-      </div>
       </div>
     );
   }

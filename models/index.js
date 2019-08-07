@@ -1,4 +1,4 @@
 module.exports = {
-    User: require("./user"),
-    Pet: require("./pet"),
+  User: require("./user"),
+  Pet: require("./pet")
 };

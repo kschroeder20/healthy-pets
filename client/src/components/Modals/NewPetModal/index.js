@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
-import Modal from 'react-modal';
-// import API from "../../../utils/API";
-import axios from 'axios';
+import React, { Component } from "react";
+import Modal from "react-modal";
+import axios from "axios";
 import { Button } from "react-bootstrap";
 import { FaPlusSquare } from "react-icons/fa";
 
-
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '40rem',
-    height: '40rem'
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "40rem",
+    height: "40rem"
   },
   overlay: {
     position: "fixed",
@@ -27,8 +25,7 @@ const customStyles = {
   }
 };
 
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement(document.getElementById('root'));
+Modal.setAppElement(document.getElementById("root"));
 
 class PetModal extends Component {
   constructor() {
@@ -38,19 +35,19 @@ class PetModal extends Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.state = {
-        petName: "",
-        petBirthday: '',
-        petColor: "",
-        petBreed: "",
-        petSex: "",
-        petSpecies: '',
-        petWeight: 0,
-        petRabiesTag: 0,
-        petMicroChip: 0,
-        uid: '',
-        currentPetId: 0,
-        userId: 0,
-        petUrl: 'https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo'
+      petName: "",
+      petBirthday: "",
+      petColor: "",
+      petBreed: "",
+      petSex: "",
+      petSpecies: "",
+      petWeight: 0,
+      petRabiesTag: 0,
+      petMicroChip: 0,
+      uid: "",
+      currentPetId: 0,
+      userId: 0,
+      petUrl: "https://dummyimage.com/200x200/696669/ffffff&text=Add+a+Photo"
     };
   }
 
@@ -58,18 +55,16 @@ class PetModal extends Component {
     const url = window.location.pathname;
     const pathnameArr = url.split("/");
     const userId = pathnameArr[pathnameArr.length - 1];
-    this.setState({userId: userId});
+    this.setState({ userId: userId });
   };
-
 
   handleSubmit(event) {
     event.preventDefault();
     this.updateDb(this.state.userId);
     this.closeModal();
-    // this.props.modalOpen(false);
   }
 
-  updateDb = (uid) => {
+  updateDb = uid => {
     let petObj = {
       petName: this.state.petName,
       petBirthday: this.state.petBirthday,
@@ -82,16 +77,17 @@ class PetModal extends Component {
       petMicroChip: this.state.petMicroChip,
       uid: uid,
       petUrl: this.state.petUrl
-    }
+    };
 
-    axios.post(`/api/pets`, petObj)
-    .then(res => {
-      console.log(res);
-      this.props.getPetInfo(uid)
-      console.log("pet updated")
-    })
-    .catch(err => console.log(err));
-  }
+    axios
+      .post(`/api/pets`, petObj)
+      .then(res => {
+        console.log(res);
+        this.props.getPetInfo(uid);
+        console.log("pet updated");
+      })
+      .catch(err => console.log(err));
+  };
 
   openModal() {
     this.setState({ modalIsOpen: true });
@@ -116,7 +112,8 @@ class PetModal extends Component {
     return (
       <div>
         <Button variant="secondary" className="addPet">
-          Add A Pet<FaPlusSquare onClick={this.openModal}/>
+          Add A Pet
+          <FaPlusSquare onClick={this.openModal} />
         </Button>
         <Modal
           isOpen={this.state.modalIsOpen}

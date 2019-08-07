@@ -33,27 +33,3 @@ class App extends Component {
 }
 
 export default App;
-
-// render() {
-//   return (
-//     <Router>
-//         <div className="App">
-//           <Navbar />
-//           <div className="container">
-//             <Route path="/" exact={true} component={Home} />
-//             <SecureRoute path="/profile" exact={true} component={Profile} />
-//             <Route
-//               path="/login"
-//               render={() => (
-//                 <Login baseUrl="https://dev-217893.okta.com" />
-//               )}
-//             />
-//             <Route path="/implicit/callback" component={ImplicitCallback} />
-//           </div>
-//         </div>
-//     </Router>
-//   );
-// }
-// }
-
-// export default App;
